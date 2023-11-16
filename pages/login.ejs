@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0">
+    <title>Brand-o-pedia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap">
+    <link rel="stylesheet" href="/css/style_main-page.css">
+    <link rel="stylesheet" href="/css/style_login-page.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/test.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <%- include ('../pages/partials/header/header.ejs')%>
+    </header>
+    <form class="login-form" autocomplete="off" action="/login" method="post">
+        <!-- <div class="login-form__input-container">
+                    <input
+                        aria-label="User"
+                        class="login-form__input"
+                        type="text"
+                        id="user"
+                        placeholder=" "
+                    />
+                    <label class="login-form__input-label" for="user">Name</label>
+                </div>  -->
+        <div class="login-form__input-container">
+            <label class="login-form__input-label" for="password">Zaloguj się</label>
+            <input aria-label="Password" class="login-form__input" type="password" class="password-input"
+                placeholder="Wprawadź hasło" name="password" value="kris" />
+        </div>
+        <button type="submit" class="login-form__btn">Zaloguj się</button>
+    </form>
+
+    <script src="../js/login/login.js"></script>
+    
+
+</body>
+
+</html>

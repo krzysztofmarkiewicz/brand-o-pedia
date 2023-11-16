@@ -1,0 +1,190 @@
+*,
+*::before,
+*::after 
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+
+
+body 
+    position: relative
+    background-color: #fff
+    color: #222
+    font-size: 16px
+    line-height: 1.4
+    font-family: "Montserrat", sans-serif
+
+
+
+
+
+main
+    position: relative
+.name-brand 
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    align-items: center
+    width: 100%
+
+
+.name-brand h2 
+    font-size: 40px
+
+
+
+
+
+.wrap-order 
+    display: flex
+    justify-content: space-between
+
+
+.main-info 
+    margin: 30px
+
+
+.how-order 
+    flex-direction: column
+    margin: 30px
+    list-style-position: inside
+
+
+.how-order__box 
+    width: 450px
+    border: 1px #000 solid
+    border-top: 0
+
+
+.how-order__box:first-of-type 
+    border-top: 1px #000 solid
+
+
+.how-order__header 
+    display: flex
+    justify-content: space-between
+    font-size: 20px
+    font-weight: bold
+    padding: 10px 20px
+    transition: background-color .3s
+    cursor: pointer
+
+
+.how-order__header.show 
+    background-color: #ececec
+    transition: background-color .3s
+
+
+.how-order__header.show::after 
+    content: "V"
+    transform: rotate(180deg)
+
+
+.how-order__header::after 
+    content: "V"
+
+
+.how-order__info 
+    max-height: 0px
+    padding: 0px 20px 0px 20px
+    transition: max-height .3s ease-out
+    overflow: hidden
+
+
+.how-order__info p:first-of-type 
+    padding-top: 15px
+
+
+.how-order__info p:last-of-type 
+    padding-bottom: 15px
+
+
+.how-order__info.show 
+    max-height: 200px
+    transition: max-height .3s ease-in
+
+
+.about-brand 
+    padding: 0 30px
+
+
+.ordering-instructions 
+    display: flex
+    position: fixed
+    top: 0
+    width: 100vw
+    height: 100vh
+    background-color: rgba(108, 108, 108, .564)
+    z-index: 2
+
+
+.ordering-instructions .instruction-content-wrap 
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    position: absolute
+    font-size: 14px
+    background-color: #fff
+    border-radius: 30px
+    top: 30px
+    bottom: 30px
+    right: 100px
+    width: 400px
+
+
+.ordering-instructions .instruction-content-wrap .instruction-content 
+    padding-left: 20px
+    margin-top: 30px
+    margin-left: 15px
+    overflow: auto
+
+
+
+
+
+a 
+    color: #b51515
+    text-decoration: none
+
+
+a:hover 
+    color: #3c8dbc
+    transition: color .2s
+
+
+.about 
+    height: 50px
+
+
+.hide 
+    display: none
+
+
+@media screen and (max-width: 768px) 
+    .wrap-order 
+        flex-direction: column
+
+    .how-order__box 
+        padding-top: 0
+        width: 100%
+    
+    .hide
+        display: none
+
+@media screen and (max-width: 500px) 
+    .ordering-instructions .instruction-content-wrap 
+        position: fixed
+        flex-direction: column
+        justify-content: space-between
+        font-size: 14px
+        background-color: #fff
+        border-radius: 30px
+        top: 0
+        bottom: 30px
+        right: 0
+        width: 100%
+        height: 100%
+    
+
+
+/*# sourceMappingURL=style.css.map */

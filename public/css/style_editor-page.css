@@ -1,0 +1,134 @@
+h1::after {
+  position: absolute;
+  content: "EDITOR";
+  top: 30px;
+  right: 0;
+  color: red;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px;
+}
+
+section {
+  width: 100%;
+  max-width: 1080px;
+}
+
+.section-header {
+  cursor: pointer;
+}
+
+.brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  cursor: pointer;
+}
+.brand__name {
+  font-weight: bolder;
+  font-size: 20px;
+  margin-left: 50px;
+  padding: 5px 0;
+}
+.brand__wrap-elements {
+  border: 1px black solid;
+  border-radius: 5px;
+  margin-left: 100px;
+  padding: 10px;
+}
+.brand__element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 0;
+}
+.brand__element-name {
+  width: 250px;
+  padding: 0 20px;
+  font-weight: bold;
+}
+.brand__element-edited {
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  overflow: hidden;
+}
+.brand__element-value {
+  width: 100%;
+  max-width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  resize: vertical;
+}
+
+.hide {
+  display: none;
+}
+
+.popup-wrap {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2980392157);
+  top: 0;
+  overflow: hidden;
+}
+
+.popup {
+  overflow: auto;
+  width: 50%;
+  height: 50%;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  h1::after {
+    display: none;
+  }
+  h1::before {
+    content: "EDITOR ";
+    color: red;
+    font-weight: bolder;
+  }
+  .brand__name {
+    margin-left: 20px;
+  }
+  .brand__wrap-elements {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .brand__element {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-left: 20px;
+  }
+}/*# sourceMappingURL=style_editor-page.css.map */

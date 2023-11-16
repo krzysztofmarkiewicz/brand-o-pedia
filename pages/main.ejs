@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0">
+    <title>Brand-o-pedia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap">
+    <link rel="stylesheet" href="/css/style_main-page.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/test.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <%- include ('../pages/partials/header/header.ejs')%>
+            <%- include ('../modules/searchbar.ejs')%>
+            <%- include ('../modules/buttons/headerbuttons/menubtn.ejs')%>
+                <div class="menu-wrap">
+
+                        <div class="menu">
+
+                            <%- include ('..//modules/buttons/headerbuttons/editorbtn.ejs')%>
+                                <%- include ('..//modules/buttons/headerbuttons/logoutbtn.ejs')%>
+                        </div>
+                </div>
+                <!-- <h1>brand-o-pedia</h1> -->
+
+                <!-- <nav>
+            <form action="">
+                <input type="text" class="finder" placeholder="podaj nazwę marki">
+            </form>
+            <div class="brand-btns">
+                here is generating a list of buttons with names nad links to brands
+            example:   <button class="menu-btn" data-name-brand="Actona">Actona</button>
+
+            </div>
+
+        </nav> -->
+                <!-- <div class="header-btns">
+            <form action="/editor" method="get">
+                <button class="menu-btn header-btn" type="submit">editor</button>
+            </form>
+            <form action="/logout" method="get">
+                <button class="menu-btn header-btn" type="submit">logout</button>
+            </form>
+        </div> -->
+
+    </header>
+
+
+    <main class="brand hide">
+
+        <div class="wrap-order">
+            <div class="main-info">
+                <div class="name-brand">
+                    <h2 class="brand-name"></h2> <a class="brand-url" href=""></a>
+                </div>
+                <div class="fulfilment-time">
+                    <h3 class="supplier">Dostawca: <span class="brand-supplier"></span>
+                        <button class="order-inst-btn menu-btn menu-btn--order-inst-btn hide">Jak
+                            zamawiać?</button>
+                    </h3>
+                    <h3 class="we-order-via">Zamawiamy poprzez: <span class="we-order-via-type"></span></h3>
+
+                    <h3>Czas realizacji</h3>
+                    <div class="fulfilment-lasts">
+                    </div>
+                </div>
+                <div>
+                    <h2>Podstawowe informacje<span></span></h2>
+                    <p class="details"></p>
+                </div>
+            </div>
+            <div class="how-order">
+                <div class="check-availability how-order__box">
+                    <h3 class="how-order__header">Sprawdzanie dostępności</h3>
+                    <div class="how-order__info"></div>
+                </div>
+                <div class="orders how-order__box">
+                    <h3 class="how-order__header">Zamówienia</h3>
+                    <div class="how-order__info"></div>
+                </div>
+                <div class="queries how-order__box">
+                    <h3 class="how-order__header">Zapytania</h3>
+                    <div class="how-order__info"></div>
+                </div>
+                <div class="complaints how-order__box">
+                    <h3 class="how-order__header">Reklamacje</h3>
+                    <div class="how-order__info"></div>
+                </div>
+                <div class="returns how-order__box">
+                    <h3 class="how-order__header">Zwroty</h3>
+                    <div class="how-order__info"></div>
+                </div>
+            </div>
+        </div>
+        <div class="about-brand">
+            <div>
+                <h2>O marce: <span></span></h2>
+                <p class="about">
+                </p>
+            </div>
+
+        </div>
+    </main>
+    <div class="ordering-instructions hide">
+        <div class="instruction-content-wrap">
+            <div class="instruction-content"></div>
+            <div class="instruction-btns">
+                <button class="instr-btn instr-btn--prev menu-btn menu-btn--instr-btn">PREV</button><button
+                    class="instr-btn instr-btn--close menu-btn menu-btn--instr-btn">CLOSE</button><button
+                    class="instr-btn instr-btn--next menu-btn menu-btn--instr-btn">NEXT</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="../js/main/main.js"></script>
+    <script type="module" src="../js/modules/searchbar/finder.js"></script>
+    <script type="module" src="../js/modules/buttons/buttons.js"></script>
+
+</body>
+
+</html>
