@@ -1,4 +1,5 @@
-const textAreas = document.querySelectorAll('.brand__element-value')
+export const textareas = () => {
+    const textAreas = document.querySelectorAll('.brand__element-value')
 
     function limitTextarea(e) {
         e.target.id = "edit"
@@ -16,9 +17,15 @@ const textAreas = document.querySelectorAll('.brand__element-value')
             textarea.style.height = `0px`
             textarea.style.height = `${textarea.scrollHeight}px`
         }
+
+
+
+
+
+
+
+
     }
-
-
     textAreas.forEach(el => {
         el.addEventListener('click', limitTextarea)
         el.addEventListener('input', limitTextarea)
@@ -33,3 +40,4 @@ const textAreas = document.querySelectorAll('.brand__element-value')
 
 
     })
+}

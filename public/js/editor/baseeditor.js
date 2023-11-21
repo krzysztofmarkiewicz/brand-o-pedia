@@ -1,6 +1,6 @@
 import {
-    listeners
-} from './listeners.js'
+    textareas
+} from './textareas.js'
 import {
     getDatabaseFromServer
 } from '../get_json_database.js'
@@ -83,7 +83,6 @@ const addNewElement = (parent, jsonData) => {
 
 
     for (const key in jsonData) {
-        // console.log(jsonData[key]);
         addNewLineInElement(BrandElements, key, jsonData[key])
     }
     const wrapBrandBtns = new NewHTMLElement('div', ['brand__wrap-btns'], null, '').createHTMLElement()
@@ -153,7 +152,7 @@ const dataBaseTableGenerate = async () => {
         }
 
     }
-    listeners()
+    textareas()
 
 
 }
@@ -163,7 +162,6 @@ dataBaseTableGenerate()
 
 const generateContent = async (elem) => {
     const brand = await getDatabaseFromServer(`/brand?level=brands&name=${elem}`)
-    // console.log(elem.id);
     const content = document.querySelector(`[data-id="${brand.id}"].brand`)
 
     console.log(content);
@@ -171,15 +169,9 @@ const generateContent = async (elem) => {
         'id': 'brands'
     }, '').createHTMLElement()
     div.appendChild(content)
-    // const content = addNewElement(div, brand)
-    // const content ='ss'
-
-    // main.innerText = null
+    div.firstElementChild.children[1].classList.remove('hide')
     const clog = () => {
         location.reload()
-        // dataBaseTableGenerate()
-        // content.classList.remove('hide')
-        console.log('click');
     }
 
 
