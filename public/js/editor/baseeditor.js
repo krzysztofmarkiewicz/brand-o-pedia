@@ -133,8 +133,8 @@ const dataBaseTableGenerate = async () => {
 
         //sorts elements ascending by name
         jsonData[elem].sort((a, b) => {
-            const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-            const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+            const nameA = a.name.toUpperCase()
+            const nameB = b.name.toUpperCase()
             if (nameA < nameB) {
                 return -1;
             }
@@ -164,57 +164,18 @@ const generateContent = async (elem) => {
     const brand = await getDatabaseFromServer(`/brand?level=brands&name=${elem}`)
     const content = document.querySelector(`[data-id="${brand.id}"].brand`)
 
-    console.log(content);
     const div = new NewHTMLElement('section', null, {
         'id': 'brands'
     }, '').createHTMLElement()
+
     div.appendChild(content)
     div.firstElementChild.children[1].classList.remove('hide')
+    div.firstElementChild.firstElementChild.removeEventListener('click', showContent)
+
     const clog = () => {
         location.reload()
     }
-
-
     popup(div, clog)
-
-    // const popup = document.createElement('div')
-    // popup.classList.add('popup')
-
-    // main.appendChild(popup)
-
-    // const section = document.createElement('section')
-    // section.setAttribute('id', 'brands')
-    // popup.appendChild(section)
-    // addNewElement(popup, brand)
-    // section.innerHTML = `<h2 class='section-header'>brands</h2>`
-    // const wrapBrands = document.createElement('div')
-    // wrapBrands.classList.add('wrap-brands', 'hide')
-    // section.appendChild(wrapBrands)
-    // const divBrand = document.createElement('div')
-    // divBrand.classList.add('brand')
-    // section.appendChild(divBrand)
-    // divBrand.setAttribute('data-id', brand.id)
-    // const brandName = document.createElement('p')
-    // brandName.classList.add('brand-name')
-    // divBrand.appendChild(brandName)
-    // brandName.innerText = brand.name
-    // const wrapBrandElements = document.createElement('div')
-    // divBrand.appendChild(wrapBrandElements)
-    // // wrapBrandElements.classList.add('wrap-brand-elements', 'hide')
-
-    // for (const key in brand) {
-    //     const divBrandElement = document.createElement('div')
-    //     wrapBrandElements.appendChild(divBrandElement)
-    //     divBrandElement.classList.add('brand-element')
-    //     const divKey = document.createElement('div')
-    //     divKey.classList.add('element-name')
-    //     divBrandElement.appendChild(divKey)
-    //     divKey.textContent = key
-    //     const divValue = document.createElement('div')
-    //     divValue.classList.add('element-value')
-    //     divBrandElement.appendChild(divValue)
-    //     divValue.innerHTML = brand[key]
-    // }
 }
 
 
@@ -223,14 +184,12 @@ searchbar(generateContent)
 
 //send data from textarea to database
 const sendDatatoDB = (e) => {
-    console.log(e.target);
     // const allEditableFileds = document.querySelectorAll('.brand__element-value')
 
     const root = e.target.closest('section').getAttribute('id')
     const key = e.target.closest('.brand__element ').firstElementChild.textContent
     const id = e.target.closest('.brand').getAttribute('data-id')
     const content = e.target.closest('.brand__wrap-elements').previousSibling.innerHTML
-    console.log(content);
 
     let item = {}
     if (key === 'id') {
@@ -304,7 +263,6 @@ const addNewElementToDatabase = (e) => {
             const xxx = Number(e.id)
             return xxx
         })
-
 
         //gets the higher number from list and +1 and set newID
         const newID = Math.max(...listOfID) + 1
@@ -415,7 +373,6 @@ const deleteLastLine = (e) => {
                 "Content-type": "application/json",
             }
         })
-
         stepToDelete.remove()
     }
 }
@@ -432,8 +389,6 @@ const deleteElementFromDataBase = async (e) => {
         id: id
     }
 
-
-
     fetch('/delelement', {
         method: 'POST',
         body: JSON.stringify(item),
@@ -445,7 +400,4 @@ const deleteElementFromDataBase = async (e) => {
             elementToDelete.remove()
         }
     })
-
-
-
 }

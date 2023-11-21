@@ -146,9 +146,16 @@ section {
       -ms-flex-align: center;
           align-items: center;
   overflow: auto;
-  width: 50%;
-  height: 50%;
+  width: 80%;
+  height: 80%;
   background-color: #fff;
+}
+.popup .brand__name {
+  margin-left: 0;
+}
+.popup .brand__wrap-elements {
+  margin-left: 0;
+  border: 0;
 }
 
 @media screen and (max-width: 768px) {
