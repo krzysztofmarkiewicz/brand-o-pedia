@@ -1,3 +1,6 @@
+body
+    // overflow: hidden
+    
 h1 
     &::after
         position: absolute
@@ -14,10 +17,14 @@ main
     align-items: center
     margin: 20px
 section
+    display: flex
+    flex-direction: column
     width: 100%
     max-width: 1080px
 .section-header
     cursor: pointer
+    order: 1
+
 
 .brand
     display: flex
@@ -55,7 +62,23 @@ section
         font-size: 16px
         padding: 10px
         resize: vertical
-        
+.add-Element-Btn
+    order: 2
+    align-self: left
+    // width: 40px
+    // height: 40px
+    border-radius: 20px
+    // font-size: 20px
+    color: #3c8dbc
+    
+
+.add-Element-Btn[disabled='true']
+    color: #94acba
+    cursor: auto
+
+
+.wrap-brands
+    order: 3
        
 
 .hide 
@@ -66,8 +89,7 @@ section
 
 
 .popup-wrap
-    // display: flex
-    display: none
+    display: flex
     justify-content: center
     align-items: center
     position: fixed
@@ -77,6 +99,10 @@ section
     top: 0
     overflow: hidden
 .popup
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
     overflow: auto
     width: 50%
     height: 50%

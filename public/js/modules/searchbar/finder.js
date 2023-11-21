@@ -4,26 +4,24 @@ import {
 
 export const searchbar = (generateContent) => {
     let nameBrand = ''
-
+    let database
     const navGenerate = async () => {
         const jsondata = await getDatabaseFromServer('/list?level=brands&key=name')
-        const database = jsondata.elements
-        //sorts the 'database' array by key 'name'
-        // The key we want to sort by (e.g. 'name' for name)
-        let sortKey = 'key';
+        database = jsondata.elements
 
-        // A function that compares objects based on the selected key
-        function compareObjects(a, b) {
-            if (a[sortKey] < b[sortKey]) {
-                return -1;
+        database.sort((a, b) => {
+            const nameA = a.key.toUpperCase()
+            const nameB = b.key.toUpperCase()
+            if (nameA < nameB) {
+                return -1
             }
-            if (a[sortKey] > b[sortKey]) {
-                return 1;
+            if (nameA > nameB) {
+                return 1
             }
-            return 0;
-        }
-        // Sorts the table
-        database.sort(compareObjects);
+            // names must be equal
+            return 0
+        })
+
         database.map(el => {
             const btn = $(`<button type="button" class="hide" data-id="${el.id}"data-name-brand="${el.key}">${el.key}</button>`)
             $('.brand-btns').append(btn)
@@ -33,8 +31,10 @@ export const searchbar = (generateContent) => {
 
     const finder = () => {
         const finder = document.querySelector('.finder')
-        const brandBox = document.querySelector('.brand')
+        // const brandBox = document.querySelector('.brand')
         const brandBtns = document.querySelector('.brand-btns')
+
+        const arr = []
 
         const hideFinderBtns = () => {
             brandBtns.classList.add('hide')
@@ -46,14 +46,14 @@ export const searchbar = (generateContent) => {
             brandBtns.classList.remove('hide')
             const text = e.target.value;
             const arr = [...brandBtns.children]
-            arr.forEach(el => {
 
+            arr.forEach(el => {
                 if (e.target.value === '') {
                     el.classList.add('hide')
-                    brandBox.classList.remove('hide')
+                    // brandBox.classList.remove('hide')
                 } else if (el.dataset.nameBrand.toLowerCase().includes(text.toLowerCase())) {
                     el.classList.remove('hide')
-                } else if (e.target.value === 'all') {
+                } else if (e.target.value === 'a') {
                     el.classList.remove('hide')
                 } else {
                     el.classList.add('hide')
@@ -66,22 +66,24 @@ export const searchbar = (generateContent) => {
             generateContent(nameBrand)
             hideFinderBtns()
         }
-
         //nasłuch na pasek wyszukiwania
         finder.addEventListener('keyup', searchEngine);
 
         //nasłuch na enter w pasku wyszukiwania
         finder.addEventListener('keypress', function (e) {
+
             if (e.key === 'Enter') {
-                nameBrand = e.target.value
-                generateContent(nameBrand)
-                hideFinderBtns()
+                database.forEach(el => {
+                    if (el.key.toLowerCase() === e.target.value.toLowerCase()) {
+                        nameBrand = e.target.value
+                        generateContent(nameBrand)
+                        hideFinderBtns()
+                    }
+                })
                 e.preventDefault()
             }
         });
-
         brandBtns.addEventListener('click', showContent)
-
     }
     finder()
 }

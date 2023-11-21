@@ -2,12 +2,9 @@ import {
     writeFile,
     readFile
 } from "fs"
-import {
-    setTimeout
-} from "timers/promises"
 
 // const baseUrl = './database/database.json'
-const baseUrl = './database/brands ORYG.json'
+const baseUrl = './database/database.json'
 
 class databaseController {
 
@@ -33,11 +30,13 @@ class databaseController {
                     return;
                 }
                 const parsedData = JSON.parse(data);
+                console.log(parsedData);
                 const numOfElements = parsedData[root].map(e => {
+                    console.log(e.id);
                     return e.id
                 })
                 const index = numOfElements.indexOf(id)
-
+ 
                 parsedData[root][index][key] = content
                 writeFile(baseUrl, JSON.stringify(parsedData, null, 2), (err) => {
                     if (err) {
@@ -231,8 +230,8 @@ class databaseController {
             try {
                 const name = (req.query.name)
                 const jsonData = JSON.parse(data)
-// console.log(name);
-// console.log(jsonData.ordering);
+                // console.log(name);
+                // console.log(jsonData.ordering);
                 let elem
                 jsonData.ordering.forEach(e => {
                     if (e.name === name) {
@@ -315,7 +314,7 @@ class databaseController {
                     return;
                 }
                 const parsedData = JSON.parse(data);
-                
+
                 parsedData.ordering.forEach(el => {
                     if (el.id === id) {
                         const keysArr = []
@@ -376,7 +375,12 @@ class databaseController {
                 if (list.elements.length > 0) {
                     res.send(list)
                 } else {
-                    res.send({elements:[{key:'0', id:'0'}]})
+                    res.send({
+                        elements: [{
+                            key: '0',
+                            id: '0'
+                        }]
+                    })
 
                     // console.log(`Baza jest pusta`);
                     // res.status(404).send()

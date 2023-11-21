@@ -20,3 +20,33 @@ export const showHideElements = (showOrHide, elementsToShowOrHide) => {
         console.error('Second argument of this function must be an array with only string elements.');
     }
 }
+
+
+
+// const xxx = new NewHTMLElement('', [], '', '').createHTMLElement()
+// xxx.appendChild(xxx)
+export class NewHTMLElement {
+    constructor(type, classNames, atributes, content) {
+        this.type = type;
+        this.classNames = classNames
+        this.atributes = atributes
+        this.content = content
+    }
+    createHTMLElement = function () {
+
+        const element = document.createElement(this.type)
+        if (this.classNames !== null) {
+            this.classNames.forEach(el => {
+                element.classList.add(el)
+            })
+        }
+        if (this.atributes !== null) {
+            for (const elem in this.atributes) {
+                element.setAttribute(elem, this.atributes[elem])
+            }
+        }
+        // element.setAttribute(this.atribute[0], this.atribute[1])
+        element.innerHTML = this.content
+        return element
+    }
+}

@@ -7,46 +7,65 @@ import {
 import {
     searchbar
 } from '../modules/searchbar/finder.js'
+import {
+    RunTinymceEditor
+} from './tinymce_add.js'
+
+import {
+    NewHTMLElement
+} from '../functions.js'
+
+import {
+    popup
+} from '../modules/popup/popup.js'
 
 const main = document.querySelector('main')
+
+
 //elements that do not have TinyMCE editor option
 const oneLiners = ['name', 'id', 'index', 'url', 'howWeOrder', 'supplier']
 
 const showContent = (e) => {
-
     e.target.nextElementSibling.classList.toggle('hide')
 }
-// const xxx = new NewHTMLElement('', [], '', '', '').createHTMLElement()
-// xxx.appendChild(xxx)
-class NewHTMLElement {
-    constructor(type, classNames, atributes, content) {
-        this.type = type;
-        this.classNames = classNames
-        this.atributes = atributes
-        this.content = content
-    }
-    createHTMLElement = function () {
 
-        const element = document.createElement(this.type)
-        if (this.classNames !== null) {
-            this.classNames.forEach(el => {
-                element.classList.add(el)
-            })
-        }
-        if (this.atributes !== null) {
-            for (const elem in this.atributes) {
-                element.setAttribute(elem, this.atributes[elem])
-            }
-        }
-        // element.setAttribute(this.atribute[0], this.atribute[1])
-        element.innerHTML = this.content
-        return element
+const addNewLineInElement = (parent, nameElement, content) => {
+    const divBrandElement = new NewHTMLElement('div', ['brand__element'], null, '').createHTMLElement()
+    parent.appendChild(divBrandElement)
+
+    const divKey = new NewHTMLElement('div', ['brand__element-name'], null, nameElement).createHTMLElement()
+    divBrandElement.appendChild(divKey)
+
+    const divElementEdited = new NewHTMLElement('div', ['brand__element-edited'], null, '').createHTMLElement()
+    divBrandElement.appendChild(divElementEdited)
+
+    const divValue = new NewHTMLElement('textarea', ['brand__element-value'], null, content).createHTMLElement()
+    divElementEdited.appendChild(divValue)
+
+    const editorBtns = new NewHTMLElement('div', ['brand__editor-btns'], null, '').createHTMLElement()
+    divElementEdited.appendChild(editorBtns)
+
+    const saveBtn = new NewHTMLElement('button', ['btn', 'brand__btn', 'brand__btn--save'], null, 'Save').createHTMLElement()
+    editorBtns.appendChild(saveBtn)
+    saveBtn.addEventListener('click', sendDatatoDB)
+
+    if (oneLiners.includes(divKey.textContent)) {
+        divValue.dataset.oneliner = true
+        divValue.setAttribute('maxlength', '30')
+        divValue.setAttribute('rows', '1')
+    } else {
+        const runTinymceEditorBtn = new NewHTMLElement('button', ['btn', 'brand__btn', 'brand__btn--tinyMCE'], {
+            'xxx': 'xxx'
+        }, 'TinyMce').createHTMLElement()
+        editorBtns.appendChild(runTinymceEditorBtn)
+        divValue.setAttribute('rows', '5')
+        divValue.dataset.oneliner = false
+        runTinymceEditorBtn.addEventListener('click', RunTinymceEditor)
     }
 }
 
+
 const addNewElement = (parent, jsonData) => {
-
-
     const divBrand = new NewHTMLElement('div', ['brand'], {
         'data-id': jsonData.id
     }, '').createHTMLElement()
@@ -54,43 +73,18 @@ const addNewElement = (parent, jsonData) => {
 
     const brandName = new NewHTMLElement('p', ['brand__name'], null, jsonData.name).createHTMLElement()
     divBrand.appendChild(brandName)
+    brandName.addEventListener('click', showContent)
 
     const wrapBrandElements = new NewHTMLElement('div', ['brand__wrap-elements', 'hide'], null, '').createHTMLElement()
     divBrand.appendChild(wrapBrandElements)
 
+    const BrandElements = new NewHTMLElement('div', ['brand__elements'], null, '').createHTMLElement()
+    wrapBrandElements.appendChild(BrandElements)
+
+
     for (const key in jsonData) {
-        const divBrandElement = new NewHTMLElement('div', ['brand__element'], null, '').createHTMLElement()
-        wrapBrandElements.appendChild(divBrandElement)
-
-        const divKey = new NewHTMLElement('div', ['brand__element-name'], null, key).createHTMLElement()
-        divBrandElement.appendChild(divKey)
-
-        const divElementEdited = new NewHTMLElement('div', ['brand__element-edited'], null, '').createHTMLElement()
-        divBrandElement.appendChild(divElementEdited)
-
-        const divValue = new NewHTMLElement('textarea', ['brand__element-value'], null, jsonData[key]).createHTMLElement()
-        divElementEdited.appendChild(divValue)
-
-        const editorBtns = new NewHTMLElement('div', ['brand__editor-btns'], null, '').createHTMLElement()
-        divElementEdited.appendChild(editorBtns)
-
-        const saveBtn = new NewHTMLElement('button', ['btn', 'brand__btn', 'brand__btn--save'], null, 'Save').createHTMLElement()
-        editorBtns.appendChild(saveBtn)
-
-
-        if (oneLiners.includes(divKey.textContent)) {
-            divValue.dataset.oneliner = true
-            divValue.setAttribute('maxlength', '30')
-            divValue.setAttribute('rows', '1')
-        } else {
-            const runTinymceEditorBtn = new NewHTMLElement('button', ['btn', 'brand__btn', 'brand__btn--tinyMCE'], {
-                'xxx': 'xxx'
-            }, 'TinyMce').createHTMLElement()
-            editorBtns.appendChild(runTinymceEditorBtn)
-            divValue.setAttribute('rows', '5')
-            divValue.dataset.oneliner = false
-        }
-
+        // console.log(jsonData[key]);
+        addNewLineInElement(BrandElements, key, jsonData[key])
     }
     const wrapBrandBtns = new NewHTMLElement('div', ['brand__wrap-btns'], null, '').createHTMLElement()
     wrapBrandElements.appendChild(wrapBrandBtns)
@@ -107,22 +101,16 @@ const addNewElement = (parent, jsonData) => {
         const deleteLastStep = new NewHTMLElement('button', ['delete-last-line-Btn'], null, `Delete last STEP`).createHTMLElement()
         wrapBrandBtns.appendChild(deleteLastStep)
 
+        addNewStep.addEventListener('click', addNewStepToOrderingElement)
         deleteLastStep.addEventListener('click', deleteLastLine)
 
     }
-
-    // listeners
-    brandName.addEventListener('click', showContent)
-    // deleteELBtn.forEach(e => e.addEventListener('click', deleteElementFromDataBase))
-    // addNewLineBtn.forEach(e => e.addEventListener('click', addNewStepToOrderingElement))
-    // deleteLastStep.addEventListener('click', deleteLastLine)
 }
 
 
 
 const dataBaseTableGenerate = async () => {
     const jsonData = await getDatabaseFromServer('/database')
-
 
     for (const elem in jsonData) {
 
@@ -131,24 +119,40 @@ const dataBaseTableGenerate = async () => {
         }, '').createHTMLElement()
         main.appendChild(section)
 
-        const addElementBtn = new NewHTMLElement('button', ['add-Element-Btn'], {'title':`Add new element to ${elem}`}, '+').createHTMLElement()
-    
-        section.appendChild(addElementBtn)
-
         const sectionHeader = new NewHTMLElement('h2', ['section-header'], null, elem).createHTMLElement()
         section.appendChild(sectionHeader)
+        sectionHeader.addEventListener('click', showContent)
 
         const wrapBrands = new NewHTMLElement('div', ['wrap-brands', 'hide'], null, '').createHTMLElement()
         section.appendChild(wrapBrands)
 
-        for (const key in jsonData[elem]) {
+        const addElementBtn = new NewHTMLElement('button', ['add-Element-Btn'], {
+            'title': `Add new element to ${elem}`
+        }, `+ New element`).createHTMLElement()
+        wrapBrands.appendChild(addElementBtn)
+        addElementBtn.addEventListener('click', addNewElementToDatabase)
+
+        //sorts elements ascending by name
+        jsonData[elem].sort((a, b) => {
+            const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+            const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+
+            // names must be equal
+            return 0;
+        });
+        for (const key in jsonData[elem].sort((a, b) => {
+                a.name - b.name
+            })) {
             addNewElement(wrapBrands, jsonData[elem][key])
-
-
         }
 
     }
-
     listeners()
 
 
@@ -159,46 +163,66 @@ dataBaseTableGenerate()
 
 const generateContent = async (elem) => {
     const brand = await getDatabaseFromServer(`/brand?level=brands&name=${elem}`)
+    // console.log(elem.id);
+    const content = document.querySelector(`[data-id="${brand.id}"].brand`)
 
-    const popup = document.createElement('div')
-    popup.classList.add('popup')
-    main.appendChild(popup)
-    const section = document.createElement('section')
-    section.setAttribute('id', 'brands')
-    section.innerHTML = `<h2 class='section-header'>brands</h2>`
-    popup.appendChild(section)
-    const wrapBrands = document.createElement('div')
-    wrapBrands.classList.add('wrap-brands', 'hide')
-    section.appendChild(wrapBrands)
-    const divBrand = document.createElement('div')
-    divBrand.classList.add('brand')
-    section.appendChild(divBrand)
-    divBrand.setAttribute('data-id', brand.id)
-    const brandName = document.createElement('p')
-    brandName.classList.add('brand-name')
-    divBrand.appendChild(brandName)
-    brandName.innerText = brand.name
-    const wrapBrandElements = document.createElement('div')
-    divBrand.appendChild(wrapBrandElements)
-    // wrapBrandElements.classList.add('wrap-brand-elements', 'hide')
+    console.log(content);
+    const div = new NewHTMLElement('section', null, {
+        'id': 'brands'
+    }, '').createHTMLElement()
+    div.appendChild(content)
+    // const content = addNewElement(div, brand)
+    // const content ='ss'
 
-    for (const key in brand) {
-        const divBrandElement = document.createElement('div')
-        wrapBrandElements.appendChild(divBrandElement)
-        divBrandElement.classList.add('brand-element')
-        const divKey = document.createElement('div')
-        divKey.classList.add('element-name')
-        divBrandElement.appendChild(divKey)
-        divKey.textContent = key
-        const divValue = document.createElement('div')
-        divValue.classList.add('element-value')
-        divBrandElement.appendChild(divValue)
-        divValue.innerHTML = brand[key]
+    // main.innerText = null
+    const clog = () => {
+        location.reload()
+        // dataBaseTableGenerate()
+        // content.classList.remove('hide')
+        console.log('click');
     }
 
 
-    // listeners()
+    popup(div, clog)
 
+    // const popup = document.createElement('div')
+    // popup.classList.add('popup')
+
+    // main.appendChild(popup)
+
+    // const section = document.createElement('section')
+    // section.setAttribute('id', 'brands')
+    // popup.appendChild(section)
+    // addNewElement(popup, brand)
+    // section.innerHTML = `<h2 class='section-header'>brands</h2>`
+    // const wrapBrands = document.createElement('div')
+    // wrapBrands.classList.add('wrap-brands', 'hide')
+    // section.appendChild(wrapBrands)
+    // const divBrand = document.createElement('div')
+    // divBrand.classList.add('brand')
+    // section.appendChild(divBrand)
+    // divBrand.setAttribute('data-id', brand.id)
+    // const brandName = document.createElement('p')
+    // brandName.classList.add('brand-name')
+    // divBrand.appendChild(brandName)
+    // brandName.innerText = brand.name
+    // const wrapBrandElements = document.createElement('div')
+    // divBrand.appendChild(wrapBrandElements)
+    // // wrapBrandElements.classList.add('wrap-brand-elements', 'hide')
+
+    // for (const key in brand) {
+    //     const divBrandElement = document.createElement('div')
+    //     wrapBrandElements.appendChild(divBrandElement)
+    //     divBrandElement.classList.add('brand-element')
+    //     const divKey = document.createElement('div')
+    //     divKey.classList.add('element-name')
+    //     divBrandElement.appendChild(divKey)
+    //     divKey.textContent = key
+    //     const divValue = document.createElement('div')
+    //     divValue.classList.add('element-value')
+    //     divBrandElement.appendChild(divValue)
+    //     divValue.innerHTML = brand[key]
+    // }
 }
 
 
@@ -206,14 +230,15 @@ searchbar(generateContent)
 
 
 //send data from textarea to database
-export const sendDatatoDB = (e) => {
-    const allEditableFileds = document.querySelectorAll('.brand__element-value')
+const sendDatatoDB = (e) => {
+    console.log(e.target);
+    // const allEditableFileds = document.querySelectorAll('.brand__element-value')
 
     const root = e.target.closest('section').getAttribute('id')
     const key = e.target.closest('.brand__element ').firstElementChild.textContent
     const id = e.target.closest('.brand').getAttribute('data-id')
-    const content = e.target.closest('.brand__editor-btns').previousSibling
-
+    const content = e.target.closest('.brand__wrap-elements').previousSibling.innerHTML
+    console.log(content);
 
     let item = {}
     if (key === 'id') {
@@ -229,6 +254,7 @@ export const sendDatatoDB = (e) => {
         key: key,
         content: newContent
     }
+    console.log(item);
 
     fetch("/update", {
         method: "POST",
@@ -238,21 +264,31 @@ export const sendDatatoDB = (e) => {
         }
 
     })
+
+    if (key === 'name') {
+        const searchbarBtn = document.querySelector(`[data-name-brand="${content}"]`)
+        searchbarBtn.innerText = newContent
+        // searchbarBtn.removeAttribute('data-name-brand')
+        searchbarBtn.setAttribute('data-name-brand', newContent)
+
+
+
+        e.target.closest('.brand__wrap-elements').previousSibling.innerHTML = newContent
+    }
 }
 
-export const addNewElementToDatabase = (e) => {
+const addNewElementToDatabase = (e) => {
 
     const root = e.target.closest('section').getAttribute('id')
     const addBtns = document.querySelectorAll('.add-Element-Btn')
     const oldContent = e.target.closest('section').lastElementChild
     let newElement
-
     //set disable addbuttons in half second
     addBtns.forEach(e => {
         e.setAttribute('disabled', 'true')
         const oldContent = e.innerHTML
 
-        let i = 3
+        let i = 1
         e.innerHTML = oldContent + ' ' + i + 's'
         const counter = () => {
             i -= 1
@@ -264,7 +300,7 @@ export const addNewElementToDatabase = (e) => {
             e.removeAttribute('disabled')
             e.innerHTML = oldContent
             clearInterval(xxx)
-        }, 3000);
+        }, 1000);
     })
 
 
@@ -272,7 +308,6 @@ export const addNewElementToDatabase = (e) => {
         const jsonData = await getDatabaseFromServer(`/list?level=${level}&key=${key}`)
         const database = jsonData.elements
 
-        console.log(jsonData);
         const listOfID = database.map(e => {
             const xxx = Number(e.id)
             return xxx
@@ -294,7 +329,7 @@ export const addNewElementToDatabase = (e) => {
             newElement = {
                 "id": String(res),
                 "index": "",
-                "name": `Nowy element ID: ${String(res)}`,
+                "name": `- New element ID: ${String(res)} -`,
                 "url": "",
                 "howWeOrder": "",
                 "about": "",
@@ -318,7 +353,6 @@ export const addNewElementToDatabase = (e) => {
             }
         }
 
-
         const item = {
             root: root,
             newElement: newElement
@@ -331,10 +365,9 @@ export const addNewElementToDatabase = (e) => {
             }
         })
 
-
-
         addNewElement(oldContent, newElement)
     })
+
 }
 
 const addNewLineToElement = (e, key) => {
@@ -356,60 +389,24 @@ const addNewLineToElement = (e, key) => {
         }
     })
 
-
-    const divBrandElement = new NewHTMLElement('div', ['brand__element'], null, '').createHTMLElement()
-
-    const parentDivBrandElement = e.target.closest('.brand__wrap-elements')
-    const parentButtons = e.target.parentElement
-
-    parentDivBrandElement.insertBefore(divBrandElement, parentButtons);
-
-    const divKey = new NewHTMLElement('div', ['brand__element-name'], null, key).createHTMLElement()
-    divBrandElement.appendChild(divKey)
-
-    const divElementEdited = new NewHTMLElement('div', ['brand__element-edited'], null, '').createHTMLElement()
-    divBrandElement.appendChild(divElementEdited)
-
-    const divValue = new NewHTMLElement('textarea', ['brand__element-value'], null, '').createHTMLElement()
-    divElementEdited.appendChild(divValue)
-
-    const editorBtns = new NewHTMLElement('div', ['brand__editor-btns'], null, '').createHTMLElement()
-    divElementEdited.appendChild(editorBtns)
-
-    const saveBtn = new NewHTMLElement('button', ['btn', 'brand__btn', 'brand__btn--save'], null, 'Save').createHTMLElement()
-    editorBtns.appendChild(saveBtn)
-
-
-    if (oneLiners.includes(divKey.textContent)) {
-        divValue.dataset.oneliner = true
-        divValue.setAttribute('maxlength', '30')
-        divValue.setAttribute('rows', '1')
-    } else {
-        const runTinymceEditorBtn = new NewHTMLElement('button', ['btn', 'brand__btn', 'brand__btn--tinyMCE'], {
-            'xxx': 'xxx'
-        }, 'TinyMce').createHTMLElement()
-        editorBtns.appendChild(runTinymceEditorBtn)
-        divValue.setAttribute('rows', '5')
-        divValue.dataset.oneliner = false
-    }
-
-
+    const parentDivBrandElement = e.target.parentElement.previousSibling
+    addNewLineInElement(parentDivBrandElement, key, '')
 }
 const howManyIsOrderingSteps = async (id) => {
     const jsonData = await getDatabaseFromServer(`/numberoforderingsteps?&key=${id}`)
     return jsonData.steps
 }
-export const addNewStepToOrderingElement = (e) => {
+const addNewStepToOrderingElement = (e) => {
     const id = e.target.closest('.brand').dataset.id
 
     howManyIsOrderingSteps(id).then(key => addNewLineToElement(e, `step${key+1}`))
 
 }
 
-export const deleteLastLine = (e) => {
+const deleteLastLine = (e) => {
     const deleteBtn = e.target
     const root = deleteBtn.closest('section').id
-    const stepToDelete = deleteBtn.parentElement.previousSibling
+    const stepToDelete = deleteBtn.parentElement.previousSibling.lastElementChild
     const id = deleteBtn.closest('.brand').dataset.id
 
     const item = {
@@ -429,11 +426,9 @@ export const deleteLastLine = (e) => {
 
         stepToDelete.remove()
     }
-
-
 }
 
-export const deleteElementFromDataBase = async (e) => {
+const deleteElementFromDataBase = async (e) => {
 
     const deleteBtn = e.target
     const root = deleteBtn.closest('section').id
@@ -445,7 +440,7 @@ export const deleteElementFromDataBase = async (e) => {
         id: id
     }
 
-    elementToDelete.style.display = 'none'
+
 
     fetch('/delelement', {
         method: 'POST',
@@ -453,13 +448,12 @@ export const deleteElementFromDataBase = async (e) => {
         headers: {
             "Content-type": "application/json",
         }
+    }).then((req) => {
+        if (req.status === 200) {
+            elementToDelete.remove()
+        }
     })
 
-    // const jsonData= await (getDatabaseFromServer(`/list?level=${level}&key=${key}`))
+
 
 }
-
-// const refreshContent=(oldContent)=>{
-//     const oldContent = oldContent
-
-// }

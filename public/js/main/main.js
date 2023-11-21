@@ -8,12 +8,9 @@ import {
 } from '../modules/searchbar/finder.js'
 
 
-
-
-
 const generateContent = async (elem) => {
     const brand = await getDatabaseFromServer(`/brand?level=brands&name=${elem}`)
-   
+
     $(".brand-name").text(brand.name);
     $(".we-order-via-type").text(brand.howWeOrder)
     $(".brand-url").html(brand.url)
@@ -29,10 +26,10 @@ const generateContent = async (elem) => {
     $(".queries").children("div").html(brand.queries)
     $(".complaints").children("div").html(brand.complaints)
     $(".returns").children("div").html(brand.returns)
-    
+
     $(".brand").show()
     $(".order-inst-btn").show()
-    
+
 }
 searchbar(generateContent)
 
@@ -53,10 +50,9 @@ let currentStep = 0;
 let stepsNumber = 0
 
 const showInstuction = async (e) => {
-    const getType = $('.we-order-via-type').text()
+    const getType = $('.we-order-via-type').text().toLowerCase()
 
     const jsondata = await getDatabaseFromServer(`/orderingsteps?name=${getType}`)
-
     currentStep = e
     const stepsArr = []
     for (const data in jsondata) {
@@ -95,5 +91,3 @@ $('.instr-btn--next').click(nextStepInstruction)
 $('.instr-btn--prev').click(prevStepInstruction)
 $(".order-inst-btn").click(startInstruction)
 $('.instr-btn--close').click(closeInstruction)
-
-

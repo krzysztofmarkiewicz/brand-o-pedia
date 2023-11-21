@@ -22,11 +22,11 @@
             "index": "",
             "name": "Firma nr 1",
             "url": "https://firma1.com/",
-            "howWeOrder": "Panel B2B'",
+            "howWeOrder": "B2B'",
             "about": "Firma 1 zajmuje się sprzedażą. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corporis? Accusamus, ipsam obcaecati tempora voluptatum consectetur ipsa soluta vero quibusdam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut. Omnis dolore nesciunt itaque eius modi quae perferendis, illum odit assumenda. Veniam voluptatem molestias nemo fuga eaque impedit aut esse libero, ad error voluptatibus perspiciatis obcaecati necessitatibus assumenda porro aliquam id velit fugit ut iusto quasi doloremque. Odit excepturi facere ad necessitatibus! Atque dolorum expedita molestiae delectus qui sapiente voluptatem deserunt optio impedit quisquam rerum assumenda suscipit, sint ad, soluta nulla. Qui fugiat ipsum modi.",
             "supplier": "Dostawca firmy 1",
             "fulfilmentLasts": "<p> 1) gdy dostępne 24/48 h (1-2 dni robocze) </p> <p>gdy brak min. 3 miesiące </p>",
-            "details": "Firma 1 sp. z o.o. <br>Opiekun handlowy pani Alicja , zajmuje się wycenam i większymi zamówieniami:<br>@: alicja@firma1.com<br>tel",
+            "details": "Firma 1 sp. z o.o. <br>Opiekun handlowy pani Jakaś , zajmuje się wycenam i większymi zamówieniami:<br>@: pani@firma1.com<br>tel",
             "checkAvailability": "<p><strong>Panel B2B - </strong> <a href='https://panelfirma1.com</a></p><p><strong>Mailowo:</strong><a href='mailto:sprzedaż@firma1.com'>sprzedaż@firma1.com</a></p><p><strong>tel: 22-000-00-00</strong></p>'",
             "queries": " czat na stronie",
             "orders": "Panel B2B - https://panel.firma1.com",
@@ -69,14 +69,11 @@
         {
             "id": "1",
             "index": "",
-            "name": "step",
+            "name": "b2b",
             "step1": "step1",
             "step2": "step2",
             "step3": "step3",
-            "step4": "step4",
-            "step5": "step5",
-            "step6": "step6",
-            "step7": "step7"
+            "step4": "step4"
         }
     ]
 }
