@@ -9,7 +9,7 @@ import {
 
 
 const generateContent = async (elem) => {
-    const brand = await getDatabaseFromServer(`/brand?level=brands&name=${elem.nameBrand}`)
+    const brand = await getDatabaseFromServer(`/brand?level=brands&id=${elem.id}`)
     // const brand = await getDatabaseFromServer(`/brand?level=brands&name=BRAK`)
     // const brand = ''
     console.log(typeof elem.nameBrand);

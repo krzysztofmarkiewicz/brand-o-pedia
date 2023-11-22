@@ -34,8 +34,6 @@ export const searchbar = (generateContent) => {
         // const brandBox = document.querySelector('.brand')
         const brandBtns = document.querySelector('.brand-btns')
 
-        const arr = []
-
         const hideFinderBtns = () => {
             brandBtns.classList.add('hide')
             finder.value = null
@@ -64,9 +62,13 @@ export const searchbar = (generateContent) => {
 
                     // brandBox.classList.add('hide')
                 }
+            el.addEventListener('click', showContent)
+                
             })
+
         }
         const showContent = (e) => {
+            console.log(e.target);
             nameBrand = e.target.innerText
             let id = e.target.getAttribute('data-id')
             const data = {
@@ -111,7 +113,9 @@ export const searchbar = (generateContent) => {
                 e.preventDefault()
             }
         });
-        brandBtns.addEventListener('click', showContent)
+        // brandBtns.forEach(e => {
+        //     addEventListener('click', showContent)
+        // })
     }
     finder()
 }

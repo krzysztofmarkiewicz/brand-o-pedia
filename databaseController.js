@@ -32,7 +32,6 @@ class databaseController {
                 const parsedData = JSON.parse(data);
                 console.log(parsedData);
                 const numOfElements = parsedData[root].map(e => {
-                    console.log(e.id);
                     return e.id
                 })
                 const index = numOfElements.indexOf(id)
@@ -195,23 +194,25 @@ class databaseController {
             }
             try {
                 const levelOfDB = (req.query.level).toLowerCase();
-                const name = (req.query.name).toLowerCase();
+                const id = (req.query.id).toLowerCase();
                 const jsonData = JSON.parse(data)
                 let elementToSend = []
                 const elemOfDB = jsonData[levelOfDB].map(e => {
-                    if (e.name.toLowerCase() === name) {
+                    if (e.id === id) {
                         elementToSend.push(e)
                     }
                 })
+                // res.send(elementToSend[0])
+
                 if (elementToSend.length === 1) {
                     res.send(elementToSend[0])
                 } else if (elementToSend.length > 1) {
-                    console.log(`Błąd bazy danych. W bazie danych znajdują się ${elementToSend.length} elementy z kluczen "name". Klucz "name" powinien być unikalny.`);
+                    console.log(`Błąd bazy danych. W bazie danych znajdują się ${elementToSend.length} elementy z tym samym ID . Klucz ID powinien być unikalny.`);
 
-                    res.status(404).send(`Błąd bazy danych. W bazie danych znajdują się ${elementToSend.length} elementy z kluczen "name". Klucz "name" powinien być unikalny.`)
+                    res.status(404).send(`Błąd bazy danych. W bazie danych znajdują się ${elementToSend.length} elementy z tym samym ID . Klucz ID powinien być unikalny.`)
                 } else {
-                    console.log(`Brak w bazie danych elementu z kluczem "name"`);
-                    res.status(404).send(`Brak w bazie danych elementu z kluczem "name"`)
+                    console.log(`Brak w bazie danych elementu z takim ID`);
+                    res.status(404).send(`Brak w bazie danych elementu z takim ID`)
                 }
 
             } catch (err) {
@@ -236,7 +237,9 @@ class databaseController {
                         res.status(200).send(e)
                         // res.send(e)
                     } else {
-                        res.status(404).send({step:'TA MARKA NIE MA DODANEJ INSTRUKCJI ZAMAWIANIA'})
+                        res.status(404).send({
+                            step: 'TA MARKA NIE MA DODANEJ INSTRUKCJI ZAMAWIANIA'
+                        })
                     }
                 })
             } catch (err) {
@@ -365,9 +368,6 @@ class databaseController {
                             id: '0'
                         }]
                     })
-
-                    // console.log(`Baza jest pusta`);
-                    // res.status(404).send()
                 }
 
             } catch (err) {
