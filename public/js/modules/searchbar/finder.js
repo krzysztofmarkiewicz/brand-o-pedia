@@ -1,4 +1,7 @@
 import {
+    NewHTMLElement
+} from '../../functions.js'
+import {
     getDatabaseFromServer
 } from '../../get_json_database.js'
 
@@ -23,8 +26,13 @@ export const searchbar = (generateContent) => {
         })
 
         database.map(el => {
-            const btn = $(`<button type="button" class="search_btn hide" data-id="${el.id}"data-name-brand="${el.key}">${el.key}</button>`)
-            $('.brand-btns').append(btn)
+            const searchbarBtn = new NewHTMLElement('button', ['search_btn', 'hide'], {
+                'type': 'button',
+                'data-id': el.id,
+                'data-name-brand': el.key
+            }, el.key).createHTMLElement()
+
+            document.querySelector('.brand-btns').append(searchbarBtn)
         })
     }
     navGenerate()
@@ -62,8 +70,8 @@ export const searchbar = (generateContent) => {
 
                     // brandBox.classList.add('hide')
                 }
-            el.addEventListener('click', showContent)
-                
+                el.addEventListener('click', showContent)
+
             })
 
         }
@@ -92,7 +100,7 @@ export const searchbar = (generateContent) => {
                         id: id
                     }
                     setTimeout(() => {
-                        
+
                         generateContent(data)
                         hideFinderBtns()
                     }, 300);

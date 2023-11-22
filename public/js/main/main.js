@@ -10,29 +10,49 @@ import {
 
 const generateContent = async (elem) => {
     const brand = await getDatabaseFromServer(`/brand?level=brands&id=${elem.id}`)
-    // const brand = await getDatabaseFromServer(`/brand?level=brands&name=BRAK`)
-    // const brand = ''
 
-    $(".brand-name").text(brand.name);
-    $(".brand-name").attr("data-id", brand.indexOrder)
-    $(".we-order-via-type").text(brand.howWeOrder)
-    $(".brand-url").html(brand.url)
-    $(".brand-url").attr("href", `http://www.${brand.url}`)
-    $(".brand-url").attr("target", "_blank")
-    $(".brand-supplier").text(brand.supplier)
-    $(".fulfilment-lasts").html(brand.fulfilmentLasts)
-    $(".about").html(brand.about)
-    $(".details").html(brand.details)
-    $(".info-box").children("span").text(brand.name)
-    $(".check-availability").children("div").html(brand.checkAvailability)
-    $(".orders").children("div").html(brand.orders)
-    $(".queries").children("div").html(brand.queries)
-    $(".complaints").children("div").html(brand.complaints)
-    $(".returns").children("div").html(brand.returns)
+    const main = document.querySelector('main')
 
-    $(".brand").show()
-    $(".order-inst-btn").show()
+    const brandName = document.querySelector('.brand-name')
+    brandName.innerText = brand.name
+    brandName.setAttribute('data-id', brand.indexOrder)
 
+    const weOrderViaType = document.querySelector('.we-order-via-type')
+    weOrderViaType.innerText = brand.howWeOrder
+
+    const brandUrl = document.querySelector('.brand-url')
+    brandUrl.innerHTML = `www.${brand.url}`
+    brandUrl.setAttribute("href", `http://www.${brand.url}`)
+    brandUrl.setAttribute("target", "_blank")
+
+    const brandSupplier = document.querySelector('.brand-supplier')
+    brandSupplier.innerText = brand.supplier
+
+    const fulfilmentLasts = document.querySelector('.fulfilment-lasts')
+    fulfilmentLasts.innerHTML = brand.fulfilmentLasts
+
+    const about = document.querySelector('.about')
+    about.innerHTML = brand.about
+
+    const details = document.querySelector('.details')
+    details.innerHTML = brand.details
+
+    const checkAvailability = document.querySelector('.check-availability').querySelector(':scope > .how-order__info')
+    checkAvailability.innerHTML = brand.checkAvailability
+
+    const orders = document.querySelector('.orders').querySelector(':scope > .how-order__info')
+    orders.innerHTML = brand.orders
+
+    const queries = document.querySelector('.queries').querySelector(':scope > .how-order__info')
+    queries.innerHTML = brand.queries
+
+    const complaints = document.querySelector('.complaints').querySelector(':scope > .how-order__info')
+    complaints.innerHTML = brand.complaints
+
+    const returns = document.querySelector('.returns').querySelector(':scope > .how-order__info')
+    returns.innerHTML = brand.returns
+
+    main.classList.remove('hide')
 }
 searchbar(generateContent)
 
@@ -49,19 +69,27 @@ howOrderBoxesHeader.forEach(el => {
 
 //-----------------------------------------------------------------------
 // generates an ordering instruction section 
+const instrContent = document.querySelector('.instruction-content')
+const orderingInstructions = document.querySelector('.ordering-instructions')
+const instrBtnNext = document.querySelector('.instr-btn--next')
+const instrBtnPrev = document.querySelector('.instr-btn--prev')
+const instrBtn = document.querySelector('.order-inst-btn')
+const instrBtnClose = document.querySelector('.instr-btn--close')
+
+
+
 let currentStep = 0;
 let stepsNumber = 0
 
+
+
+
 const showInstuction = async (e) => {
     const getOrderingID = document.querySelector('.brand-name').getAttribute('data-id')
-    // const getType = $('.we-order-via-type').text().toLowerCase()
 
-
-    //check if exists ordering instruction for this brand
 
     const res = await getDatabaseFromServer(`/orderingsteps?id=${getOrderingID}`)
 
-    console.log(res);
     currentStep = e
     const stepsArr = []
     for (const data in res) {
@@ -70,37 +98,35 @@ const showInstuction = async (e) => {
         }
     }
     stepsNumber = stepsArr.length
-    $(".instruction-content").html(stepsArr[e - 1])
-    $(".ordering-instructions").show()
-
-    // console.log(res);
-
-
+    instrContent.innerHTML = stepsArr[e - 1]
+    orderingInstructions.classList.remove('hide')
 }
 
+
 const startInstruction = () => {
-    $(".order-inst-btn").click(showInstuction(1))
+    instrBtn.addEventListener('click', showInstuction(1))
 }
 
 const nextStepInstruction = () => {
     if (currentStep < stepsNumber) {
-        $(".order-inst-btn").click(showInstuction(currentStep + 1))
+        instrBtn.addEventListener('click', showInstuction(currentStep + 1))
     }
 }
 
 const prevStepInstruction = () => {
     if (currentStep > 1) {
-        $(".order-inst-btn").click(showInstuction(currentStep - 1))
+        instrBtn.addEventListener('click', showInstuction(currentStep - 1))
+
     }
 }
 
 const closeInstruction = () => {
     currentStep = 1
-    $(".instruction-content").html('')
-    $(".ordering-instructions").hide()
+    instrContent.innerHTML = ''
+    orderingInstructions.classList.add('hide')
 }
 
-$('.instr-btn--next').click(nextStepInstruction)
-$('.instr-btn--prev').click(prevStepInstruction)
-$(".order-inst-btn").click(startInstruction)
-$('.instr-btn--close').click(closeInstruction)
+instrBtnNext.addEventListener('click', nextStepInstruction)
+instrBtnPrev.addEventListener('click', prevStepInstruction)
+instrBtn.addEventListener('click', startInstruction)
+instrBtnClose.addEventListener('click', closeInstruction)

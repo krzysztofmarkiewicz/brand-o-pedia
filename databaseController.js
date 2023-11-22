@@ -237,8 +237,6 @@ class databaseController {
 
                     if (e.id === id) {
                         res.status(200).send(e)
-                        console.log(e);
-                        // res.send(e)
                     } 
                     else {
                         res.status(404)
