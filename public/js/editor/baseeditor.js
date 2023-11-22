@@ -67,7 +67,8 @@ const addNewLineInElement = (parent, nameElement, content) => {
 
 const addNewElement = (parent, jsonData) => {
     const divBrand = new NewHTMLElement('div', ['brand'], {
-        'data-id': jsonData.id
+        'data-id': jsonData.id,
+        'id': parent.closest('section').innerText + "-" + jsonData.id
     }, '').createHTMLElement()
     parent.appendChild(divBrand)
 
@@ -158,26 +159,13 @@ const dataBaseTableGenerate = async () => {
 }
 dataBaseTableGenerate()
 
-
-
 const generateContent = async (elem) => {
-    const brand = await getDatabaseFromServer(`/brand?level=brands&name=${elem}`)
-    const content = document.querySelector(`[data-id="${brand.id}"].brand`)
-
-    const div = new NewHTMLElement('section', null, {
-        'id': 'brands'
-    }, '').createHTMLElement()
-
-    div.appendChild(content)
-    div.firstElementChild.children[1].classList.remove('hide')
-    div.firstElementChild.firstElementChild.removeEventListener('click', showContent)
-
-    const clog = () => {
-        location.reload()
-    }
-    popup(div, clog)
+    const root = document.querySelector('#brands').querySelector(':scope > .wrap-brands')
+    const element = root.querySelector(`#brands-${elem.id}`).querySelector(':scope > .brand__wrap-elements')
+    root.classList.remove('hide')
+    element.classList.remove('hide')
+    window.location.href = '#brands-' + elem.id
 }
-
 
 searchbar(generateContent)
 
@@ -279,7 +267,8 @@ const addNewElementToDatabase = (e) => {
             newElement = {
                 "id": String(res),
                 "index": "",
-                "name": `- New element ID: ${String(res)} -`,
+                // "name": `- New element ID: ${String(res)} -`,
+                "name": `- New element`,
                 "url": "",
                 "howWeOrder": "",
                 "about": "",
@@ -316,6 +305,41 @@ const addNewElementToDatabase = (e) => {
         })
 
         addNewElement(oldContent, newElement)
+
+        const addNewElemToSearchBar = () => {
+            const searchbar = document.querySelector('.brand-btns')
+
+            const newElem = new NewHTMLElement('button', ['hide'], {
+                'data-id': newElement.id,
+                'data-name-brand': newElement.name
+            }, newElement.name).createHTMLElement()
+            searchbar.appendChild(newElem)
+
+
+            const allBtns = [...searchbar.querySelectorAll('button')]
+
+            allBtns.sort(function (a, b) {
+                if (a.innerText.toLowerCase() < b.innerText.toLowerCase()) {
+                    return -1;
+                }
+                if (a.innerText.toLowerCase() > b.innerText.toLowerCase()) {
+                    return 1;
+                }
+                return 0;
+            })
+            searchbar.innerText = ''
+            allBtns.forEach(e => {
+                searchbar.appendChild(e)
+
+            })
+        }
+        addNewElemToSearchBar()
+
+
+
+        // searchbar.forEach(element => {
+        // console.log(element);
+        // });
     })
 
 }

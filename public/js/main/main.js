@@ -9,7 +9,10 @@ import {
 
 
 const generateContent = async (elem) => {
-    const brand = await getDatabaseFromServer(`/brand?level=brands&name=${elem}`)
+    const brand = await getDatabaseFromServer(`/brand?level=brands&name=${elem.nameBrand}`)
+    // const brand = await getDatabaseFromServer(`/brand?level=brands&name=BRAK`)
+    // const brand = ''
+    console.log(typeof elem.nameBrand);
 
     $(".brand-name").text(brand.name);
     $(".we-order-via-type").text(brand.howWeOrder)
@@ -52,17 +55,26 @@ let stepsNumber = 0
 const showInstuction = async (e) => {
     const getType = $('.we-order-via-type').text().toLowerCase()
 
-    const jsondata = await getDatabaseFromServer(`/orderingsteps?name=${getType}`)
-    currentStep = e
-    const stepsArr = []
-    for (const data in jsondata) {
-        if (data.includes('step')) {
-            stepsArr.push(jsondata[data]);
+
+    //check if exists ordering instruction for this brand
+
+    const res = await getDatabaseFromServer(`/orderingsteps?name=${getType}`)
+    
+       console.log(e);
+        currentStep = e
+        const stepsArr = []
+        for (const data in res) {
+            if (data.includes('step')) {
+                stepsArr.push(res[data]);
+            }
         }
-    }
-    stepsNumber = stepsArr.length
-    $(".instruction-content").html(stepsArr[e - 1])
-    $(".ordering-instructions").show()
+        stepsNumber = stepsArr.length
+        $(".instruction-content").html(stepsArr[e - 1])
+        $(".ordering-instructions").show()
+
+        console.log(res);
+    
+
 }
 
 const startInstruction = () => {

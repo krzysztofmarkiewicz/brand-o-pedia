@@ -20,6 +20,9 @@ h1 {
   color: #3c8dbc;
   white-space: nowrap;
 }
+h1 span {
+  font-size: 50%;
+}
 
 .menu-wrap {
   position: relative;

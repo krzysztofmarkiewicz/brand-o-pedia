@@ -23,7 +23,7 @@ export const searchbar = (generateContent) => {
         })
 
         database.map(el => {
-            const btn = $(`<button type="button" class="hide" data-id="${el.id}"data-name-brand="${el.key}">${el.key}</button>`)
+            const btn = $(`<button type="button" class="search_btn hide" data-id="${el.id}"data-name-brand="${el.key}">${el.key}</button>`)
             $('.brand-btns').append(btn)
         })
     }
@@ -50,20 +50,30 @@ export const searchbar = (generateContent) => {
             arr.forEach(el => {
                 if (e.target.value === '') {
                     el.classList.add('hide')
+                    el.classList.remove('show')
                     // brandBox.classList.remove('hide')
                 } else if (el.dataset.nameBrand.toLowerCase().includes(text.toLowerCase())) {
                     el.classList.remove('hide')
+                    el.classList.add('show')
                 } else if (e.target.value === 'a') {
                     el.classList.remove('hide')
+                    el.classList.add('show')
                 } else {
                     el.classList.add('hide')
+                    el.classList.remove('show')
+
                     // brandBox.classList.add('hide')
                 }
             })
         }
         const showContent = (e) => {
             nameBrand = e.target.innerText
-            generateContent(nameBrand)
+            let id = e.target.getAttribute('data-id')
+            const data = {
+                nameBrand: nameBrand,
+                id: id
+            }
+            generateContent(data)
             hideFinderBtns()
         }
         //nasłuch na pasek wyszukiwania
@@ -73,13 +83,31 @@ export const searchbar = (generateContent) => {
         finder.addEventListener('keypress', function (e) {
 
             if (e.key === 'Enter') {
-                database.forEach(el => {
-                    if (el.key.toLowerCase() === e.target.value.toLowerCase()) {
-                        nameBrand = e.target.value
-                        generateContent(nameBrand)
-                        hideFinderBtns()
+                const unHideButtons = document.querySelectorAll('.search_btn.show')
+                console.log(unHideButtons.length);
+                if (unHideButtons.length === 1) {
+                    const id = unHideButtons[0].getAttribute('data-id')
+                    finder.value = unHideButtons[0].getAttribute('data-name-brand')
+                    const data = {
+                        id: id
                     }
-                })
+                    generateContent(data)
+                    hideFinderBtns()
+                } else {
+                    e.preventDefault()
+                    return
+                }
+                // database.forEach(el => {
+
+
+                //     if (el.key.toLowerCase() === e.target.value.toLowerCase()) {
+                //         const data = {
+                //             nameBrand: e.target.value
+                //         }
+                //         generateContent(data)
+                //         hideFinderBtns()
+                //     }
+                // })
                 e.preventDefault()
             }
         });

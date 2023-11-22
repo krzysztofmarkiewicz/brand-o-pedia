@@ -36,7 +36,7 @@ class databaseController {
                     return e.id
                 })
                 const index = numOfElements.indexOf(id)
- 
+
                 parsedData[root][index][key] = content
                 writeFile(baseUrl, JSON.stringify(parsedData, null, 2), (err) => {
                     if (err) {
@@ -230,35 +230,19 @@ class databaseController {
             try {
                 const name = (req.query.name)
                 const jsonData = JSON.parse(data)
-                // console.log(name);
-                // console.log(jsonData.ordering);
-                let elem
+
                 jsonData.ordering.forEach(e => {
                     if (e.name === name) {
-                        // console.log(e);
-                        elem = e
+                        res.status(200).send(e)
+                        // res.send(e)
+                    } else {
+                        res.status(404).send({step:'TA MARKA NIE MA DODANEJ INSTRUKCJI ZAMAWIANIA'})
                     }
                 })
-                console.log(elem);
-                const keysArr = []
-                for (const key in elem) {
-                    keysArr.push(key)
-                }
-                const countSteps = (e) => {
-                    if (e.includes('step'))
-                        return e
-                }
-                const steps = {
-                    steps: keysArr.filter(countSteps).length
-                }
-                // console.log(steps);
-
-                res.send(elem)
             } catch (err) {
                 res.status(500).send(`Błąd odczytu z bazy danych`)
                 console.error('Błąd parsowania danych JSON:', err);
             }
-
         })
     }
     async getNumberOfOrderingSteps(req, res) {
