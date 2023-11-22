@@ -22,21 +22,28 @@ section
     width: 100%
     max-width: 1080px
 .section-header
+    font-size: 26px
+    color:#0B0138
+    text-align: left
     cursor: pointer
     order: 1
-
+    &:hover, &:focus
+        color: #2402BA
 
 .brand
     display: flex
     flex-direction: column
     cursor: pointer
-
-
     &__name 
-        font-weight: bolder
-        font-size: 20px
         margin-left: 50px
         padding: 5px 0
+        font-size: 20px
+        font-weight: bolder
+        text-align: left
+        color: #0B0138
+        &:hover, &:focus
+            color: #2402BA
+
 
     &__wrap-elements
         border: 1px black solid

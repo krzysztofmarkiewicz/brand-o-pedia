@@ -229,17 +229,19 @@ class databaseController {
                 return
             }
             try {
-                const name = (req.query.name)
+                const id = (req.query.id)
                 const jsonData = JSON.parse(data)
 
+                console.log(id);
                 jsonData.ordering.forEach(e => {
-                    if (e.name === name) {
+
+                    if (e.id === id) {
                         res.status(200).send(e)
+                        console.log(e);
                         // res.send(e)
-                    } else {
-                        res.status(404).send({
-                            step: 'TA MARKA NIE MA DODANEJ INSTRUKCJI ZAMAWIANIA'
-                        })
+                    } 
+                    else {
+                        res.status(404)
                     }
                 })
             } catch (err) {

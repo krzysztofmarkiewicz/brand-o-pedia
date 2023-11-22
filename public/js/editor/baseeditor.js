@@ -72,7 +72,7 @@ const addNewElement = (parent, jsonData) => {
     }, '').createHTMLElement()
     parent.appendChild(divBrand)
 
-    const brandName = new NewHTMLElement('p', ['brand__name'], null, jsonData.name).createHTMLElement()
+    const brandName = new NewHTMLElement('button', ['brand__name'], null, jsonData.name).createHTMLElement()
     divBrand.appendChild(brandName)
     brandName.addEventListener('click', showContent)
 
@@ -119,7 +119,7 @@ const dataBaseTableGenerate = async () => {
         }, '').createHTMLElement()
         main.appendChild(section)
 
-        const sectionHeader = new NewHTMLElement('h2', ['section-header'], null, elem).createHTMLElement()
+        const sectionHeader = new NewHTMLElement('button', ['section-header'], null, elem).createHTMLElement()
         section.appendChild(sectionHeader)
         sectionHeader.addEventListener('click', showContent)
 

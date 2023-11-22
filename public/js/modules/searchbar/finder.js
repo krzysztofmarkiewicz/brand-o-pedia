@@ -68,7 +68,6 @@ export const searchbar = (generateContent) => {
 
         }
         const showContent = (e) => {
-            console.log(e.target);
             nameBrand = e.target.innerText
             let id = e.target.getAttribute('data-id')
             const data = {
@@ -86,15 +85,17 @@ export const searchbar = (generateContent) => {
 
             if (e.key === 'Enter') {
                 const unHideButtons = document.querySelectorAll('.search_btn.show')
-                console.log(unHideButtons.length);
                 if (unHideButtons.length === 1) {
                     const id = unHideButtons[0].getAttribute('data-id')
                     finder.value = unHideButtons[0].getAttribute('data-name-brand')
                     const data = {
                         id: id
                     }
-                    generateContent(data)
-                    hideFinderBtns()
+                    setTimeout(() => {
+                        
+                        generateContent(data)
+                        hideFinderBtns()
+                    }, 300);
                 } else {
                     e.preventDefault()
                     return

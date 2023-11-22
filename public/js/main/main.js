@@ -12,9 +12,9 @@ const generateContent = async (elem) => {
     const brand = await getDatabaseFromServer(`/brand?level=brands&id=${elem.id}`)
     // const brand = await getDatabaseFromServer(`/brand?level=brands&name=BRAK`)
     // const brand = ''
-    console.log(typeof elem.nameBrand);
 
     $(".brand-name").text(brand.name);
+    $(".brand-name").attr("data-id", brand.indexOrder)
     $(".we-order-via-type").text(brand.howWeOrder)
     $(".brand-url").html(brand.url)
     $(".brand-url").attr("href", `http://www.${brand.url}`)
@@ -53,27 +53,28 @@ let currentStep = 0;
 let stepsNumber = 0
 
 const showInstuction = async (e) => {
-    const getType = $('.we-order-via-type').text().toLowerCase()
+    const getOrderingID = document.querySelector('.brand-name').getAttribute('data-id')
+    // const getType = $('.we-order-via-type').text().toLowerCase()
 
 
     //check if exists ordering instruction for this brand
 
-    const res = await getDatabaseFromServer(`/orderingsteps?name=${getType}`)
-    
-       console.log(e);
-        currentStep = e
-        const stepsArr = []
-        for (const data in res) {
-            if (data.includes('step')) {
-                stepsArr.push(res[data]);
-            }
-        }
-        stepsNumber = stepsArr.length
-        $(".instruction-content").html(stepsArr[e - 1])
-        $(".ordering-instructions").show()
+    const res = await getDatabaseFromServer(`/orderingsteps?id=${getOrderingID}`)
 
-        console.log(res);
-    
+    console.log(res);
+    currentStep = e
+    const stepsArr = []
+    for (const data in res) {
+        if (data.includes('step')) {
+            stepsArr.push(res[data]);
+        }
+    }
+    stepsNumber = stepsArr.length
+    $(".instruction-content").html(stepsArr[e - 1])
+    $(".ordering-instructions").show()
+
+    // console.log(res);
+
 
 }
 
