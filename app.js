@@ -51,7 +51,7 @@ app.post('/login', express.urlencoded({
     })
 })
 
-app.get('/', (req, res) => {
+app.get('/', isAuthorized, (req, res) => {
     res.render('main')
 })
 
@@ -72,7 +72,7 @@ app.get('/logout', function (req, res, next) {
 
         req.session.regenerate(function (err) {
             if (err) next(err)
-            res.redirect('/main')
+            res.redirect('/')
         })
     })
 })
@@ -83,8 +83,7 @@ app.post('/delelement', databaseController.deleteElementFromDataBase)
 app.post('/addnewline', databaseController.addNewLinetoElement)
 app.post('/dellaststep', databaseController.deleteLastStep)
 app.get('/database', databaseController.getWholeDatabase)
-app.get('/brand', databaseController.getElemOfDB)
-app.get('/orderingsteps', databaseController.getOrderingSteps)
+app.get('/getelemfromdatabase', databaseController.getElemfromDB)
 app.get('/numberoforderingsteps', databaseController.getNumberOfOrderingSteps)
 app.get('/list', databaseController.getListsofElementsByKeyFromDB)
 

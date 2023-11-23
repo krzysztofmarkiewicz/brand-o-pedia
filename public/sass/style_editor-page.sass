@@ -33,9 +33,9 @@ section
 .brand
     display: flex
     flex-direction: column
+    margin-left: 50px
     cursor: pointer
     &__name 
-        margin-left: 50px
         padding: 5px 0
         font-size: 20px
         font-weight: bolder
@@ -110,16 +110,11 @@ section
     flex-direction: column
     justify-content: space-between
     align-items: center
-    overflow: auto
-    width: 80%
-    height: 80%
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755)
     background-color: #fff
-    .brand
-        &__name
-            margin-left: 0
-        &__wrap-elements
-            margin-left: 0
-            border: 0
+    overflow: auto
+    &__content
+        padding:20px 40px
 
 
 @media screen and (max-width: 768px) 

@@ -7,9 +7,10 @@ import {
     searchbar
 } from '../modules/searchbar/finder.js'
 
-
+//generates content on the main page. Gets an element from database and fills in elements on the main page
 const generateContent = async (elem) => {
-    const brand = await getDatabaseFromServer(`/brand?level=brands&id=${elem.id}`)
+
+    const brand = await getDatabaseFromServer(`/getelemfromdatabase?level=brands&id=${elem.id}`)
 
     const main = document.querySelector('main')
 
@@ -68,7 +69,7 @@ howOrderBoxesHeader.forEach(el => {
 
 
 //-----------------------------------------------------------------------
-// generates an ordering instruction section 
+// generates content in the ordering instruction section 
 const instrContent = document.querySelector('.instruction-content')
 const orderingInstructions = document.querySelector('.ordering-instructions')
 const instrBtnNext = document.querySelector('.instr-btn--next')
@@ -76,19 +77,14 @@ const instrBtnPrev = document.querySelector('.instr-btn--prev')
 const instrBtn = document.querySelector('.order-inst-btn')
 const instrBtnClose = document.querySelector('.instr-btn--close')
 
-
-
 let currentStep = 0;
 let stepsNumber = 0
 
-
-
-
+//gets element form ordering database, chooses the step and shows in the ordering intruction
 const showInstuction = async (e) => {
     const getOrderingID = document.querySelector('.brand-name').getAttribute('data-id')
 
-
-    const res = await getDatabaseFromServer(`/orderingsteps?id=${getOrderingID}`)
+    const res = await getDatabaseFromServer(`/getelemfromdatabase?level=ordering&id=${getOrderingID}`)
 
     currentStep = e
     const stepsArr = []
@@ -97,6 +93,7 @@ const showInstuction = async (e) => {
             stepsArr.push(res[data]);
         }
     }
+
     stepsNumber = stepsArr.length
     instrContent.innerHTML = stepsArr[e - 1]
     orderingInstructions.classList.remove('hide')
@@ -104,19 +101,18 @@ const showInstuction = async (e) => {
 
 
 const startInstruction = () => {
-    instrBtn.addEventListener('click', showInstuction(1))
+    showInstuction(1)
 }
 
 const nextStepInstruction = () => {
     if (currentStep < stepsNumber) {
-        instrBtn.addEventListener('click', showInstuction(currentStep + 1))
+        showInstuction(currentStep + 1)
     }
 }
 
 const prevStepInstruction = () => {
     if (currentStep > 1) {
-        instrBtn.addEventListener('click', showInstuction(currentStep - 1))
-
+        showInstuction(currentStep - 1)
     }
 }
 

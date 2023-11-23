@@ -79,7 +79,7 @@ export const RunTinymceEditor = (e) => {
                     }
 
                 })
-                console.log(item);
+                console.log('Updated database: '+item);
             }
             sendItemToBackend()
             endEditing()

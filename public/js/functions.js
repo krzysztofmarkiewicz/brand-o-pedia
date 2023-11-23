@@ -9,7 +9,6 @@ export const showHideElements = (showOrHide, elementsToShowOrHide) => {
                     el.classList.remove(`hide`)
                 } else if (showOrHide === 'hide') {
                     el.classList.add(`hide`)
-                    console.log(el);
                 } else {
                     console.error('First argument "showOrHide" must be a string and must have the value "hide" or "show"');
                 }
@@ -21,9 +20,14 @@ export const showHideElements = (showOrHide, elementsToShowOrHide) => {
 }
 
 
-
-// const xxx = new NewHTMLElement('', [], '', '').createHTMLElement()
-// xxx.appendChild(xxx)
+//The class is used to create a new element on page. It needs four arguments. 
+//1. type of element (e.g. 'button', 'div') - it must be a string
+//2. adds classes (e.g. ['className', 'otherClassName']) - it must be an array. It can be an array with one element. You can add few classes.
+//3. adds atributes with their value (e.g. {'firstArgument':'value', 'secondArgument':'value'}) - it must be an object. It can be an object with one element. You can add few arguments.
+//4.content
+//You can create a new element using the createHTMLElement function
+// eg. const newElement = new NewHTMLElement('button', ['redBtn', 'menuBtn], '{'type':'submit',}', 'Add It').createHTMLElement()
+//Then you can adds element to the page e.g. document.querySelector('body).appendChild(newElement)
 export class NewHTMLElement {
     constructor(type, classNames, atributes, content) {
         this.type = type;
@@ -44,8 +48,39 @@ export class NewHTMLElement {
                 element.setAttribute(elem, this.atributes[elem])
             }
         }
-        // element.setAttribute(this.atribute[0], this.atribute[1])
+
         element.innerHTML = this.content
         return element
     }
+}
+
+
+//gets textareas and sets their height (max. one line or auto height)
+export const textareas = (textAreas) => {
+
+    function limitTextarea(e) {
+        e.target.id = "edit"
+        const textarea = document.querySelector("#edit");
+        const lines = textarea.value.split("\n");
+
+        //sets max. one line in the textarea has the data attribute (oneliner === 'true')
+        if (textarea.dataset.oneliner === 'true') {
+            if (lines.length > 1) {
+                textarea.value = lines[0];
+            }
+        }
+        //auto resizer. Sets the height of the textarea to the height of the content.
+        else {
+            textarea.style.height = `0px`
+            textarea.style.height = `${textarea.scrollHeight}px`
+        }
+    }
+    //listeners
+    textAreas.forEach(el => {
+        el.addEventListener('click', limitTextarea)
+        el.addEventListener('input', limitTextarea)
+        el.addEventListener('blur', () => {
+            el.removeAttribute('id')
+        })
+    })
 }

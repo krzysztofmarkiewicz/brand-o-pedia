@@ -3,5 +3,4 @@ async function getDatabaseFromServer(url) {
     let data = await response.json()
     return data;
 }
-
 export {getDatabaseFromServer}

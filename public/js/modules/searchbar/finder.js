@@ -5,9 +5,12 @@ import {
     getDatabaseFromServer
 } from '../../get_json_database.js'
 
+//The function is responsible for the operation of the search bar.
 export const searchbar = (generateContent) => {
     let nameBrand = ''
     let database
+
+//generates buttons in searchbar. Gets data from database, sorts alphabetically, creates buttons and puts to searchbar.
     const navGenerate = async () => {
         const jsondata = await getDatabaseFromServer('/list?level=brands&key=name')
         database = jsondata.elements
@@ -37,16 +40,15 @@ export const searchbar = (generateContent) => {
     }
     navGenerate()
 
+    //The function is responible for how the searchabar works
     const finder = () => {
         const finder = document.querySelector('.finder')
-        // const brandBox = document.querySelector('.brand')
         const brandBtns = document.querySelector('.brand-btns')
 
         const hideFinderBtns = () => {
             brandBtns.classList.add('hide')
             finder.value = null
         }
-
 
         const searchEngine = (e) => {
             brandBtns.classList.remove('hide')
@@ -57,7 +59,6 @@ export const searchbar = (generateContent) => {
                 if (e.target.value === '') {
                     el.classList.add('hide')
                     el.classList.remove('show')
-                    // brandBox.classList.remove('hide')
                 } else if (el.dataset.nameBrand.toLowerCase().includes(text.toLowerCase())) {
                     el.classList.remove('hide')
                     el.classList.add('show')
@@ -67,14 +68,12 @@ export const searchbar = (generateContent) => {
                 } else {
                     el.classList.add('hide')
                     el.classList.remove('show')
-
-                    // brandBox.classList.add('hide')
                 }
                 el.addEventListener('click', showContent)
-
             })
 
         }
+
         const showContent = (e) => {
             nameBrand = e.target.innerText
             let id = e.target.getAttribute('data-id')
@@ -85,10 +84,11 @@ export const searchbar = (generateContent) => {
             generateContent(data)
             hideFinderBtns()
         }
-        //nasłuch na pasek wyszukiwania
+
+        //searchbar listeners
         finder.addEventListener('keyup', searchEngine);
 
-        //nasłuch na enter w pasku wyszukiwania
+        //listener for enter in searchbar. The function checks how many buttons are visible. When more than one is visible, the Enter button has no effect. When one button is visible, the Enter button fills the search bar, enters the entire button name, and after 300 ms generates the content.
         finder.addEventListener('keypress', function (e) {
 
             if (e.key === 'Enter') {
@@ -108,23 +108,9 @@ export const searchbar = (generateContent) => {
                     e.preventDefault()
                     return
                 }
-                // database.forEach(el => {
-
-
-                //     if (el.key.toLowerCase() === e.target.value.toLowerCase()) {
-                //         const data = {
-                //             nameBrand: e.target.value
-                //         }
-                //         generateContent(data)
-                //         hideFinderBtns()
-                //     }
-                // })
                 e.preventDefault()
             }
         });
-        // brandBtns.forEach(e => {
-        //     addEventListener('click', showContent)
-        // })
     }
     finder()
 }

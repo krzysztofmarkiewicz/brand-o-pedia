@@ -3,7 +3,6 @@ import {
     readFile
 } from "fs"
 
-// const baseUrl = './database/database.json'
 const baseUrl = './database/database.json'
 
 class databaseController {
@@ -15,39 +14,39 @@ class databaseController {
             const id = req.body.id
             const key = req.body.key
             const content = req.body.content
-
-
-            console.log({
+            const item = {
                 root: root,
                 id: id,
                 key: key,
                 content: content
-            });
+            }
+            console.log(item);
 
-            readFile(baseUrl, (error, data) => {
-                if (error) {
-                    console.log(error);
+            readFile(baseUrl, (err, data) => {
+                if (err) {
+                    res.status(500).send(`Error reading from database`)
+                    console.error('Error reading JSON file:', err);
                     return;
                 }
                 const parsedData = JSON.parse(data);
-                console.log(parsedData);
                 const numOfElements = parsedData[root].map(e => {
                     return e.id
                 })
                 const index = numOfElements.indexOf(id)
 
                 parsedData[root][index][key] = content
+              
                 writeFile(baseUrl, JSON.stringify(parsedData, null, 2), (err) => {
                     if (err) {
-                        console.log("Failed to write updated data to file");
+                        console.error("Failed to write updated data to file");
                         return;
                     }
                     console.log("Updated file successfully");
                 });
             })
 
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            console.error(err);
 
         }
     }
@@ -58,11 +57,11 @@ class databaseController {
 
             const root = req.body.root
             const newElement = req.body.newElement
-            console.log(newElement.id);
 
-            readFile(baseUrl, (error, data) => {
-                if (error) {
-                    console.log(error);
+            readFile(baseUrl, (err, data) => {
+                if (err) {
+                    res.status(500).send(`Error reading from database`)
+                    console.error('Error reading JSON file:', err);
                     return;
                 }
                 const parsedData = JSON.parse(data);
@@ -71,15 +70,15 @@ class databaseController {
 
                 writeFile(baseUrl, JSON.stringify(parsedData, null, 2), (err) => {
                     if (err) {
-                        console.log("Failed to write updated data to file");
+                        console.error("Failed to write updated data to file");
                         return;
                     }
                     console.log("Updated file successfully");
                 });
             })
 
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            console.error(err);
 
         }
     }
@@ -98,9 +97,10 @@ class databaseController {
                 key: key,
                 value: value
             });
-            readFile(baseUrl, (error, data) => {
-                if (error) {
-                    console.log(error);
+            readFile(baseUrl, (err, data) => {
+                if (err) {
+                    res.status(500).send(`Error reading from database`)
+                    console.error('Error reading JSON file:', err);
                     return;
                 }
                 const parsedData = JSON.parse(data);
@@ -113,14 +113,14 @@ class databaseController {
                 })
                 writeFile(baseUrl, JSON.stringify(parsedData, null, 2), (err) => {
                     if (err) {
-                        console.log("Failed to write updated data to file");
+                        console.error("Failed to write updated data to file");
                         return;
                     }
                     console.log("Updated file successfully");
                 });
             })
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            console.error(err);
         }
     }
 
@@ -132,9 +132,10 @@ class databaseController {
             const id = req.body.id
 
 
-            readFile(baseUrl, (error, data) => {
-                if (error) {
-                    console.log(error);
+            readFile(baseUrl, (err, data) => {
+                if (err) {
+                    res.status(500).send(`Error reading from database`)
+                    console.error('Error reading JSON file:', err);
                     return;
                 }
                 const parsedData = JSON.parse(data);
@@ -152,15 +153,15 @@ class databaseController {
                 parsedData[root].splice(indexArrayToDel, 1)
                 writeFile(baseUrl, JSON.stringify(parsedData, null, 2), (err) => {
                     if (err) {
-                        console.log("Failed to write updated data to file");
+                        console.error("Failed to write updated data to file");
                         return;
                     }
                     console.log("Updated file successfully");
                 });
             })
 
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            console.error(err);
 
         }
     }
@@ -170,26 +171,26 @@ class databaseController {
     async getWholeDatabase(req, res) {
         readFile(baseUrl, (err, data) => {
             if (err) {
-                res.status(500).send(`Błąd odczytu pliku: ${err}`)
-                console.error('Błąd odczytu pliku JSON:', err);
+                res.status(500).send(`Error reading from database`)
+                console.error('Error reading JSON file:', err);
                 return;
             }
             try {
                 const jsonData = JSON.parse(data);
                 res.send(jsonData)
-            } catch (error) {
-                res.status(500).send(`Błąd odczytu z bazy danych`)
-                console.error('Błąd parsowania danych JSON:', error);
+            } catch (err) {
+                res.status(500).send(`Error reading from database`)
+                console.error('JSON data parsing error:', err);
             }
         })
     }
 
-    //gets element od 
-    async getElemOfDB(req, res) {
+    //gets element 
+    async getElemfromDB(req, res) {
         readFile(baseUrl, (err, data) => {
             if (err) {
-                res.status(500).send(`Błąd odczytu z bazy danych`)
-                console.error('Błąd odczytu pliku JSON:', err);
+                res.status(500).send(`Error reading from database`)
+                console.error('Error reading JSON file:', err);
                 return
             }
             try {
@@ -197,62 +198,36 @@ class databaseController {
                 const id = (req.query.id).toLowerCase();
                 const jsonData = JSON.parse(data)
                 let elementToSend = []
-                const elemOfDB = jsonData[levelOfDB].map(e => {
+
+                jsonData[levelOfDB].map(e => {
                     if (e.id === id) {
                         elementToSend.push(e)
                     }
                 })
-                // res.send(elementToSend[0])
 
                 if (elementToSend.length === 1) {
                     res.send(elementToSend[0])
                 } else if (elementToSend.length > 1) {
-                    console.log(`Błąd bazy danych. W bazie danych znajdują się ${elementToSend.length} elementy z tym samym ID . Klucz ID powinien być unikalny.`);
+                    console.error(`Database error. There are ${elementToSend.length} elements in the database with the same ID. The ID key should be unique.`);
 
-                    res.status(404).send(`Błąd bazy danych. W bazie danych znajdują się ${elementToSend.length} elementy z tym samym ID . Klucz ID powinien być unikalny.`)
+                    res.status(404).send(`Database error. There are ${elementToSend.length} elements in the database with the same ID. The ID key should be unique.`)
                 } else {
-                    console.log(`Brak w bazie danych elementu z takim ID`);
-                    res.status(404).send(`Brak w bazie danych elementu z takim ID`)
+                    console.error(`There is no element with this ID in the database`);
+                    res.status(404).send(`There is no element with this ID in the database`)
                 }
 
             } catch (err) {
-                res.status(500).send(`Błąd odczytu z bazy danych`)
-                console.error('Błąd parsowania danych JSON:', err);
+                res.status(500).send(`Error reading from database`)
+                console.error('JSON data parsing error:', err);
             }
         })
     }
-    async getOrderingSteps(req, res) {
-        readFile(baseUrl, (err, data) => {
-            if (err) {
-                res.status(500).send(`Błąd odczytu z bazy danych`)
-                console.error('Błąd odczytu pliku JSON:', err);
-                return
-            }
-            try {
-                const id = (req.query.id)
-                const jsonData = JSON.parse(data)
 
-                console.log(id);
-                jsonData.ordering.forEach(e => {
-
-                    if (e.id === id) {
-                        res.status(200).send(e)
-                    } 
-                    else {
-                        res.status(404)
-                    }
-                })
-            } catch (err) {
-                res.status(500).send(`Błąd odczytu z bazy danych`)
-                console.error('Błąd parsowania danych JSON:', err);
-            }
-        })
-    }
     async getNumberOfOrderingSteps(req, res) {
         readFile(baseUrl, (err, data) => {
             if (err) {
-                res.status(500).send(`Błąd odczytu z bazy danych`)
-                console.error('Błąd odczytu pliku JSON:', err);
+                res.status(500).send(`Error reading from database`)
+                console.error('Error reading JSON file:', err);
                 return
             }
             try {
@@ -276,17 +251,14 @@ class databaseController {
                 const steps = {
                     steps: keysArr.filter(countSteps).length
                 }
-                console.log(steps);
-
                 res.send(steps)
             } catch (err) {
-                res.status(500).send(`Błąd odczytu z bazy danych`)
-                console.error('Błąd parsowania danych JSON:', err);
+                res.status(500).send(`Error reading from database`)
+                console.error('JSON data parsing error:', err);
             }
 
         })
     }
-
 
     async deleteLastStep(req, res) {
         try {
@@ -294,10 +266,10 @@ class databaseController {
 
             const root = req.body.root
             const id = req.body.id
-
-            readFile(baseUrl, (error, data) => {
-                if (error) {
-                    console.log(error);
+            readFile(baseUrl, (err, data) => {
+                if (err) {
+                    res.status(500).send(`Error reading from database`)
+                    console.error('Error reading JSON file:', err);
                     return;
                 }
                 const parsedData = JSON.parse(data);
@@ -316,15 +288,16 @@ class databaseController {
                 })
                 writeFile(baseUrl, JSON.stringify(parsedData, null, 2), (err) => {
                     if (err) {
-                        console.log("Failed to write updated data to file");
+                        console.error("Failed to write updated data to file");
                         return;
                     }
+                    console.log(`Deleted a last step from index ${id} in ${root} `);
                     console.log("Updated file successfully");
                 });
             })
 
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            console.error(err);
 
         }
     }
@@ -334,8 +307,8 @@ class databaseController {
 
         readFile(baseUrl, (err, data) => {
             if (err) {
-                res.status(500).send(`Błąd odczytu z bazy danych`)
-                console.error('Błąd odczytu pliku JSON:', err);
+                res.status(500).send(`Error reading from database`)
+                console.error('Error reading JSON file:', err);
                 return
             }
             try {
@@ -371,8 +344,8 @@ class databaseController {
                 }
 
             } catch (err) {
-                res.status(500).send(`Błąd odczytu z bazy danych`)
-                console.error('Błąd parsowania danych JSON:', err);
+                res.status(500).send(`Error reading from database`)
+                console.error('JSON data parsing error:', err);
             }
 
         })
