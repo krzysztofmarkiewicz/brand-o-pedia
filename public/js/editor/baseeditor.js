@@ -181,7 +181,7 @@ const sendDatatoDB = (e) => {
     const newContent = e.target.parentElement.previousSibling.value
 
     item = {
-        root: 'root',
+        root: root,
         id: id,
         key: key,
         content: newContent

@@ -1,5 +1,5 @@
 function isAuthorized(req, res, next) {
-    console.log('zalogowano');
+    console.log('logged in');
     // let url = req.url.replace(/\/|\?/g, '')
     // if (url === 'main' || url === 'editor' ){
     //     res.cookie('url', url)

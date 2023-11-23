@@ -3,7 +3,7 @@ import {
     readFile
 } from "fs"
 
-const baseUrl = './database/database.json'
+const baseUrl = process.env.DATABASE_FILE
 
 class databaseController {
 
