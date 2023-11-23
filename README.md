@@ -1,18 +1,17 @@
-# ---PL---
-# Brand-o-pedia 
+# ---PL---<br>Brand-o-pedia 
 to mały projekt stworzony podczas nauki na frontend developera dla mojego kolegi, który prowadzi swój sklep i będzie wykorzystywana lokalnie w sieci firmy.
 
 Aplikacja posiada małą bazę danych w pliku JSON z danymi współpracujących dostawców i producentów.  Służy do szkolenia nowych pracowników i jest swego rodzaju kompendium pomocnym na początku dla każdego pracownika. 
 
 **Użyte technologie:** Html, CSS(SASS),  Javascript, Express.js.
 
-### Uruchomienie.
+## Uruchomienie.
 
 Aby uruchomić aplikację wymagane jest zainstalowanie node.js oraz dodatkowych zależności poprzez NPM.
 
-1. Sklonuj to repozytorium.
-2. Zainstaluj node.js
-3. Zainstaluj zależlości:
+1. Sklonuj to repozytorium
+2. Zainstaluj node.js 18.16
+3. Zainstaluj zależlości
 4. Uruchom w terminalu „npm run build
 
 **Wymagane zależności:**
@@ -26,12 +25,10 @@ Aby uruchomić aplikację wymagane jest zainstalowanie node.js oraz dodatkowych 
 - "fs": "^0.0.1-security",
 - "http": "^0.0.1-security”
 
-Aplikacja uruchomi się na twoim localhost na porcie 3020. Hasło do aplikacji to: admin.
-Możesz zmienić te wartości w pliku .env
+Aplikacja uruchomi się na twoim localhost na porcie 3020. Hasło do aplikacji to: admin Możesz zmienić te wartości w pliku .env
 
 
-# ---EN---
-# Brand-o-pedia
+# ---EN---<br>Brand-o-pedia
 
 Brand-o-pedia is a small project created during my frontend developer training for my friend, who owns a store. It will be used locally within the company's network.
 
@@ -39,13 +36,13 @@ The application has a small database in a JSON file with data about collaboratin
 
 **Technologies used:** HTML, CSS (SASS), Javascript, Express.js.
 
-### How to Run
+## How to Run
 
 To run the application, you need to install Node.js and additional dependencies through NPM.
 
-1. Clone this repository.
-2. Install Node.js.
-3. Install dependencies:
+1. Clone this repository
+2. Install Node.js 18.16
+3. Install dependencies
 4. npm run build
 
 **Required Dependencies:**
@@ -59,6 +56,4 @@ To run the application, you need to install Node.js and additional dependencies 
 "fs": "^0.0.1-security",
 "http": "^0.0.1-security"
 
-The application will run on your localhost on port 3020. The password for the application is: admin.
-
-You can modify these values in the .env file.
+The application will run on your localhost on port 3020. The password for the application is: admin. You can modify these values in the .env file.
