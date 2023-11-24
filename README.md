@@ -3,6 +3,8 @@ to mały projekt stworzony podczas nauki na frontend developera dla mojego koleg
 
 Aplikacja posiada małą bazę danych w pliku JSON z danymi współpracujących dostawców i producentów.  Służy do szkolenia nowych pracowników i jest swego rodzaju kompendium pomocnym na początku dla każdego pracownika. 
 
+**Werjsa live:** https://frog01-20191.wykr.es/
+
 **Użyte technologie:** Html, CSS(SASS),  Javascript, Express.js.
 
 ## Uruchomienie.
@@ -33,6 +35,8 @@ Aplikacja uruchomi się na twoim localhost na porcie 3020. Hasło do aplikacji t
 Brand-o-pedia is a small project created during my frontend developer training for my friend, who owns a store. It will be used locally within the company's network.
 
 The application has a small database in a JSON file with data about collaborating suppliers and manufacturers. It is designed for training new employees and serves as a kind of compendium helpful for every employee at the beginning.
+
+**Live version:** https://frog01-20191.wykr.es/
 
 **Technologies used:** HTML, CSS (SASS), Javascript, Express.js.
 
