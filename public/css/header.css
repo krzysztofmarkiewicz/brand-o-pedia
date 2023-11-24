@@ -72,6 +72,64 @@ nav {
   z-index: 100;
 }
 
+.popup-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2980392157);
+  overflow: hidden;
+}
+
+.popup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 80%;
+  padding: 20px 40px 10px 40px;
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755);
+          box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755);
+  background-color: #fff;
+  overflow: auto;
+}
+.popup__content {
+  padding-bottom: 20px;
+}
+
+.help__content {
+  margin: auto;
+  line-height: 2;
+}
+.help__content h2 {
+  text-align: center;
+}
+.help__content p {
+  margin-left: 20px;
+  font-weight: bold;
+}
+.help__content ul {
+  margin-left: 60px;
+}
+
 @media screen and (max-width: 768px) {
   header {
     -webkit-box-orient: horizontal;

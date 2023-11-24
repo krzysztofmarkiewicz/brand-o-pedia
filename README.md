@@ -3,6 +3,8 @@ to mały projekt stworzony podczas nauki na frontend developera dla mojego koleg
 
 Aplikacja posiada małą bazę danych w pliku JSON z danymi współpracujących dostawców i producentów.  Służy do szkolenia nowych pracowników i jest swego rodzaju kompendium pomocnym na początku dla każdego pracownika. 
 
+*Jest to wersja wstępna. Jest wiele do zrobienia. Przede wszystkim  refaktoryzacja kodu javascript, poprawa plików CSS itd. Wszystko w miarę postępów w nauce.*
+
 **Werjsa live:** https://frog01-20191.wykr.es/
 
 **Użyte technologie:** Html, CSS(SASS),  Javascript, Express.js.
@@ -29,12 +31,13 @@ Aby uruchomić aplikację wymagane jest zainstalowanie node.js oraz dodatkowych 
 
 Aplikacja uruchomi się na twoim localhost na porcie 3020. Hasło do aplikacji to: admin Możesz zmienić te wartości w pliku .env
 
-
 # ---EN---<br>Brand-o-pedia
 
 Brand-o-pedia is a small project created during my frontend developer training for my friend, who owns a store. It will be used locally within the company's network.
 
 The application has a small database in a JSON file with data about collaborating suppliers and manufacturers. It is designed for training new employees and serves as a kind of compendium helpful for every employee at the beginning.
+
+*"This is a preliminary version. There is a lot to be done, primarily refactoring the JavaScript code, improving the CSS files, etc. Everything is progressing as learning advances."*
 
 **Live version:** https://frog01-20191.wykr.es/
 
@@ -47,7 +50,7 @@ To run the application, you need to install Node.js and additional dependencies 
 1. Clone this repository
 2. Install Node.js 18.16
 3. Install dependencies
-4. npm run build
+4. Run in terminal: npm run build
 
 **Required Dependencies:**
 "cookie-parser": "^1.4.6",
