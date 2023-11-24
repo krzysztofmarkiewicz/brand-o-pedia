@@ -100,21 +100,35 @@ section
     justify-content: center
     align-items: center
     position: fixed
+    top: 0
     width: 100vw
     height: 100vh
     background-color: #0000004c
-    top: 0
     overflow: hidden
 .popup
     display: flex
     flex-direction: column
     justify-content: space-between
     align-items: center
+    max-width: 80%
+    padding:20px 40px 10px 40px
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755)
     background-color: #fff
     overflow: auto
     &__content
-        padding:20px 40px
+        padding-bottom: 20px
+.help
+    &__content
+        margin: auto
+        // padding: 30px
+        line-height: 2
+        & h2
+            text-align: center
+        & p
+            margin-left: 20px
+            font-weight: bold
+        & ul
+            margin-left: 60px
 
 
 @media screen and (max-width: 768px) 

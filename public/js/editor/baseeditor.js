@@ -62,7 +62,7 @@ const addNewLineInElement = (parent, nameElement, content) => {
     }
 }
 
-//generates new element of database on the page and put it in the parent element
+//generates new element of database on the page and put it to the parent element
 const addNewElement = (parent, jsonData) => {
     const divBrand = new NewHTMLElement('div', ['brand'], {
         'data-id': jsonData.id,
@@ -106,7 +106,7 @@ const addNewElement = (parent, jsonData) => {
     }
 }
 
-//gets whole database and generate root elements on the page with all elements
+//gets whole database and generate root elements on the editor page with all elements
 const dataBaseTableGenerate = async () => {
     const jsonData = await getDatabaseFromServer('/database')
     //gets root element and creates main roots (sections)
@@ -186,7 +186,8 @@ const sendDatatoDB = (e) => {
         key: key,
         content: newContent
     }
-    console.log('Updated database: '+item);
+    console.log('Updated database: ');
+    console.log(item);
 
 
     fetch("/update", {

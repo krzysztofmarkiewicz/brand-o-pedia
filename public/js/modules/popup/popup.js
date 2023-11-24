@@ -19,7 +19,9 @@ export const popup = (content, nextStepFunction) => {
     popupWrap.appendChild(popup)
 
     const popupContent = new NewHTMLElement('div', ['popup__content'], null, '').createHTMLElement()
-    popupContent.innerText = content
+    console.log(popupContent);
+    console.log(content);
+    popupContent.innerHTML = content
     popup.appendChild(popupContent)
 
     const popupBtns = new NewHTMLElement('div', ['popup__btns'], null, '').createHTMLElement()
@@ -27,9 +29,10 @@ export const popup = (content, nextStepFunction) => {
 
     const cancelBtn = new NewHTMLElement('button', ['popup__btn', 'popup__btn--cancel'], null, 'Cancel').createHTMLElement()
     popupBtns.appendChild(cancelBtn)
-
     const nextBtn = new NewHTMLElement('button', ['popup__btn', 'popup__btn--cancel'], null, 'Confirm').createHTMLElement()
-    popupBtns.appendChild(nextBtn)
+    if (nextStepFunction !== undefined) {
+        popupBtns.appendChild(nextBtn)
+    }
 
     //function to close a popup
     const cancel = () => {

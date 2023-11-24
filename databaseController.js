@@ -212,8 +212,7 @@ class databaseController {
 
                     res.status(404).send(`Database error. There are ${elementToSend.length} elements in the database with the same ID. The ID key should be unique.`)
                 } else {
-                    console.error(`There is no element with this ID in the database`);
-                    res.status(404).send(`There is no element with this ID in the database`)
+                    res.send({'step':'Ten dostawca nie posiada instrukcji zamawiania.'})
                 }
 
             } catch (err) {

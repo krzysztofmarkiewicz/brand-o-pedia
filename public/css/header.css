@@ -80,18 +80,18 @@ nav {
             flex-direction: row;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    /* height: auto */
+    height: auto;
     border: none;
   }
   h1 {
     position: relative;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 40%;
-            flex: 1 1 40%;
     width: 100vw;
     margin-top: 5px;
     font-size: 16px;
     text-align: center;
+  }
+  .brand-btns {
+    top: 78px;
   }
   .menu {
     position: absolute;

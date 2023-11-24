@@ -7,6 +7,7 @@ import {
     searchbar
 } from '../modules/searchbar/finder.js'
 
+
 //generates content on the main page. Gets an element from database and fills in elements on the main page
 const generateContent = async (elem) => {
 
@@ -22,8 +23,8 @@ const generateContent = async (elem) => {
     weOrderViaType.innerText = brand.howWeOrder
 
     const brandUrl = document.querySelector('.brand-url')
-    brandUrl.innerHTML = `www.${brand.url}`
-    brandUrl.setAttribute("href", `http://www.${brand.url}`)
+    brandUrl.innerHTML = `${brand.url}`
+    brandUrl.setAttribute("href", `${brand.url}`)
     brandUrl.setAttribute("target", "_blank")
 
     const brandSupplier = document.querySelector('.brand-supplier')
@@ -126,3 +127,7 @@ instrBtnNext.addEventListener('click', nextStepInstruction)
 instrBtnPrev.addEventListener('click', prevStepInstruction)
 instrBtn.addEventListener('click', startInstruction)
 instrBtnClose.addEventListener('click', closeInstruction)
+
+
+
+
