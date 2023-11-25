@@ -1,5 +1,8 @@
 main
     position: relative
+    align-self: center
+    max-width: 1080px
+
 .name-brand 
     display: flex
     justify-content: space-between
@@ -99,17 +102,17 @@ main
 
 
 .ordering-instructions .instruction-content-wrap 
+    position: absolute
     display: flex
     flex-direction: column
     justify-content: space-between
-    position: absolute
-    font-size: 14px
-    background-color: #fff
-    border-radius: 30px
+    width: 400px
     top: 30px
     bottom: 30px
     right: 100px
-    width: 400px
+    background-color: #fff
+    border-radius: 30px
+    font-size: 14px
 
 
 .ordering-instructions .instruction-content-wrap .instruction-content 
@@ -151,19 +154,20 @@ main
     .hide
         display: none
 
-@media screen and (max-width: 500px) 
+@media only screen and (max-width: 600px) 
     .ordering-instructions .instruction-content-wrap 
         position: fixed
-        flex-direction: column
-        justify-content: space-between
+        width: 100vw
+        height: 100vh
+        top: 0
+        bottom: 0
+        right: 0
+        border-radius: 0
         font-size: 14px
         background-color: #fff
-        border-radius: 30px
-        top: 0
-        bottom: 30px
-        right: 0
-        width: 100%
-        height: 100%
+        
+        
+        
     
 
 

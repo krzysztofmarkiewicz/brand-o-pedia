@@ -1,15 +1,15 @@
 import {
-    NewHTMLElement
+    NewHTMLElement, blockBody
 } from '../../functions.js'
 
 //creates popup on the page 
 export const popup = (content, nextStepFunction) => {
     const body = document.querySelector('body')
-    const main = body.querySelectorAll('button, textarea, input')
+    // const main = body.querySelectorAll('button, textarea, input')
 
     //blocks all interactive elements under popup
-    main.forEach(el => el.setAttribute('disabled', 'true'))
-    body.style.overflow = "hidden"
+    // main.forEach(el => el.setAttribute('disabled', 'true'))
+    blockBody(['header','main'])
 
     //generates popup elements on the page
     const popupWrap = new NewHTMLElement('div', ['popup-wrap'], null, '').createHTMLElement()
@@ -36,8 +36,8 @@ export const popup = (content, nextStepFunction) => {
 
     //function to close a popup
     const cancel = () => {
-        body.style.overflow = "auto"
-        main.forEach(el => el.removeAttribute('disabled'))
+        blockBody(['header','main'])
+        // main.forEach(el => el.removeAttribute('disabled'))
 
         popupWrap.remove()
         cancelBtn.removeEventListener('click', cancel)

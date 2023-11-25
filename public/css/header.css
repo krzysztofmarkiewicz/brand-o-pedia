@@ -3,9 +3,9 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -38,6 +38,7 @@ nav {
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
+  max-width: 1080px;
   padding: 0 10px;
 }
 
@@ -87,7 +88,8 @@ nav {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2980392157);
-  overflow: hidden;
+  overflow: scroll;
+  z-index: 100;
 }
 
 .popup {
@@ -109,7 +111,7 @@ nav {
   -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755);
           box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755);
   background-color: #fff;
-  overflow: auto;
+  overflow: scroll;
 }
 .popup__content {
   padding-bottom: 20px;

@@ -6,7 +6,9 @@ import {
 import {
     searchbar
 } from '../modules/searchbar/finder.js'
-
+import {
+    blockBody
+} from '../functions.js'
 
 //generates content on the main page. Gets an element from database and fills in elements on the main page
 const generateContent = async (elem) => {
@@ -103,6 +105,7 @@ const showInstuction = async (e) => {
 
 const startInstruction = () => {
     showInstuction(1)
+    blockBody(['header','main'])
 }
 
 const nextStepInstruction = () => {
@@ -121,13 +124,11 @@ const closeInstruction = () => {
     currentStep = 1
     instrContent.innerHTML = ''
     orderingInstructions.classList.add('hide')
+    blockBody(['header','main'])
+
 }
 
 instrBtnNext.addEventListener('click', nextStepInstruction)
 instrBtnPrev.addEventListener('click', prevStepInstruction)
 instrBtn.addEventListener('click', startInstruction)
 instrBtnClose.addEventListener('click', closeInstruction)
-
-
-
-

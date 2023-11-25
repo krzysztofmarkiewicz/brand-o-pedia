@@ -3,7 +3,7 @@ to mały projekt stworzony podczas nauki na frontend developera dla mojego koleg
 
 Aplikacja posiada małą bazę danych w pliku JSON z danymi współpracujących dostawców i producentów.  Służy do szkolenia nowych pracowników i jest swego rodzaju kompendium pomocnym na początku dla każdego pracownika. 
 
-*Jest to wersja wstępna. Jest wiele do zrobienia. Przede wszystkim  refaktoryzacja kodu javascript, poprawa plików CSS itd. Wszystko w miarę postępów w nauce.*
+*Jest to wersja wstępna. Jest wiele do zrobienia. Przede wszystkim  refaktoryzacja kodu javascript, poprawa plików CSS, uzupełnienie kodu Html o ARIA,zmiana podejścia na mobile first itd. Wszystko w miarę postępów w nauce.*
 
 **Werjsa live:** https://frog01-20191.wykr.es/
 
@@ -37,7 +37,7 @@ Brand-o-pedia is a small project created during my frontend developer training f
 
 The application has a small database in a JSON file with data about collaborating suppliers and manufacturers. It is designed for training new employees and serves as a kind of compendium helpful for every employee at the beginning.
 
-*"This is a preliminary version. There is a lot to be done, primarily refactoring the JavaScript code, improving the CSS files, etc. Everything is progressing as learning advances."*
+*"This is a preliminary version. There is a lot to be done, primarily refactoring the JavaScript code, improving the CSS files, adding ARIA to the HTML code, changing the approach to "mobile first". etc. Everything is progressing as learning advances."*
 
 **Live version:** https://frog01-20191.wykr.es/
 

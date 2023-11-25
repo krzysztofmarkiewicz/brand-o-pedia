@@ -84,3 +84,22 @@ export const textareas = (textAreas) => {
         })
     })
 }
+
+
+//blocks/unblocks body (e.g when popup is visible or not) with blocked interactive element in choosed elements (e.g. blockBody(['header','main']) )
+export const blockBody = (elementsToBlock) => {
+    const body = document.querySelector('body:not(.ordering-instructions)')
+    body.classList.toggle('body__blocked')
+
+    elementsToBlock.forEach(el => {
+        const element = document.querySelector(el)
+        const elements = element.querySelectorAll('button, textarea, checkbox, input,a,[role=button]')
+        if (body.classList.contains('body__blocked')) {
+            console.log('bloced');
+            elements.forEach(el => el.setAttribute('tabindex', '-1'))
+        } else {
+            elements.forEach(el => el.removeAttribute('tabindex'))
+            console.log('unblocked');
+        }
+    })
+}

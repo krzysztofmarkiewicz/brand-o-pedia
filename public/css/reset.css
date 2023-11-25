@@ -9,11 +9,22 @@
 
 body {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: #fff;
   color: #222;
   font-size: 16px;
   line-height: 1.4;
   font-family: "Montserrat", sans-serif;
+}
+
+.body__blocked {
+  overflow: hidden;
 }
 
 a {

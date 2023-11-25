@@ -1,7 +1,7 @@
 header 
     position: relative
     display: flex
-    justify-content: space-between
+    justify-content: space-evenly
     align-items: center
     width: 100%
     height: 70px
@@ -22,8 +22,8 @@ h1
 
 nav
     flex-grow: 2
+    max-width: 1080px
     padding: 0 10px
-
 
 .wrap-finder 
     display: flex
@@ -61,7 +61,8 @@ nav
     width: 100vw
     height: 100vh
     background-color: #0000004c
-    overflow: hidden
+    overflow: scroll
+    z-index: 100
 .popup
     display: flex
     flex-direction: column
@@ -71,7 +72,7 @@ nav
     padding:20px 40px 10px 40px
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755)
     background-color: #fff
-    overflow: auto
+    overflow: scroll
     &__content
         padding-bottom: 20px
         
