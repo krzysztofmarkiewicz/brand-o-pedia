@@ -1,22 +1,76 @@
-.login-form {
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 300px;
+  background-color: hsl(0, 100%, 100%);
+  color: hsl(210, 8%, 14%);
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Montserrat", sans-serif;
+}
+
+.body__blocked {
+  overflow: hidden;
+}
+
+input, textarea, button {
+  border-radius: 10px;
+  outline-color: hsl(202, 52%, 49%);
+}
+
+input, textarea {
+  background-color: hsl(0, 100%, 100%);
+}
+
+button {
+  background-color: Transparent;
+  margin: 5px 10px;
+  padding: 5px 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3c8dbc;
+}
+button:hover {
+  color: #94cdef;
+}
+
+a {
+  color: hsl(202, 52%, 49%);
+  text-decoration: none;
+}
+a:hover {
+  color: hsl(202, 52%, 70%);
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.login-form {
+  margin: auto;
   margin-top: 100px;
-  padding: 20px;
-  padding-right: 40px;
-  padding-left: 40px;
   text-align: center;
-  border-radius: 5px;
 }
 .login-form__input-container {
   display: -webkit-box;
@@ -26,19 +80,15 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-item-align: center;
-      align-self: center;
 }
 .login-form__input {
   font-size: 20px;
-  margin: 5px 0 30px 0;
+  margin: 10px 0 20px 0;
   padding: 5px 10px;
   border: 1px black solid;
-  border-radius: 5px;
+  border-radius: 20px;
   text-align: center;
 }
 .login-form__btn {
-  -ms-flex-item-align: center;
-      align-self: center;
   font-size: 20px;
 }/*# sourceMappingURL=style_login-page.css.map */

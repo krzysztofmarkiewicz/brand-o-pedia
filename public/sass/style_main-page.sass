@@ -6,14 +6,12 @@ main
     width: 100%
     max-width: 1166px
 
-
 .name-brand 
     display: flex
     justify-content: space-between
     flex-wrap: wrap
     align-items: center
     width: 100%
-
 
 .name-brand
     font-size: 20px
@@ -37,7 +35,6 @@ main
         border: 1px $almostBlack solid
         border-top: 0
         overflow: hidden
-
     &__box:first-of-type
         border-top: 1px $almostBlack solid
         border-top-left-radius: $border-radius
@@ -48,9 +45,6 @@ main
         &:first-child
             background-color: red
             border: 1px $almostBlack solid
-
-
-
     &__header 
         display: flex
         justify-content: space-between
@@ -62,11 +56,9 @@ main
         transition: background-color .3s
         color: $almostBlack
         border-radius: 0
-
         &::after
             content: "V"
             transition: transform .3s   
-
     &__header.show 
         background-color: $ultraLigthBlue
         transition: background-color transform .3s
@@ -74,10 +66,8 @@ main
             content: "V"
             transform: rotate(180deg)
             transition: transform .3s
-
     &__info 
         max-height: 0px
-        
         transition: max-height .3s ease-out
         overflow: hidden
         &>div
@@ -91,6 +81,7 @@ main
 .about-brand 
     padding: 0 30px
 
+// Ordering instruction
 .ordering-instructions 
     display: flex
     position: fixed
@@ -99,7 +90,6 @@ main
     height: 100vh
     background-color: $shadow
     z-index: 2
-
 
 .ordering-instructions .instruction-content-wrap 
     position: absolute
@@ -120,7 +110,12 @@ main
     margin-left: 15px
     overflow: auto
 
-// Ordering instruction buttons
+.instruction-btns 
+    margin: 10px
+    display: flex
+    justify-content: space-around
+    align-content: stretch
+
 .menu-btn--order-inst-btn 
     margin-left: 10px
     text-transform: uppercase
@@ -129,20 +124,9 @@ main
     color: #3c8dbc
     border: 1px #3c8dbc solid
 
-
 .menu-btn--instr-btn 
     height: 40px
     width: 100%
-.menu-btn--instr-btn:hover 
-
-.instruction-btns 
-    margin: 10px
-    display: flex
-    justify-content: space-around
-    align-content: stretch
-
-.about 
-    height: 50px
 
 .hide 
     display: none
@@ -155,9 +139,6 @@ main
     .how-order__box 
         padding-top: 0
         width: 100%
-    
-    .hide
-        display: none
 
 @media only screen and (max-width: 600px) 
     .ordering-instructions .instruction-content-wrap 

@@ -236,6 +236,17 @@ main {
   overflow: auto;
 }
 
+.instruction-btns {
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
 .menu-btn--order-inst-btn {
   margin-left: 10px;
   text-transform: uppercase;
@@ -248,21 +259,6 @@ main {
 .menu-btn--instr-btn {
   height: 40px;
   width: 100%;
-}
-
-.instruction-btns {
-  margin: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
-}
-
-.about {
-  height: 50px;
 }
 
 .hide {
@@ -279,9 +275,6 @@ main {
   .how-order__box {
     padding-top: 0;
     width: 100%;
-  }
-  .hide {
-    display: none;
   }
 }
 @media only screen and (max-width: 600px) {
