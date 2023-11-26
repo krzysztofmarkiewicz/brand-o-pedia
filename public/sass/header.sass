@@ -1,12 +1,16 @@
 header 
     position: relative
     display: flex
-    justify-content: space-evenly
-    align-items: center
-    width: 100%
-    height: 70px
-
+    justify-content: center
     border-bottom: 1px #000 solid
+    &> div
+        display: flex
+        justify-content: space-between
+        align-items: center
+        max-width: 1166px
+        width: 100%
+        height: 70px
+
 h1 
     position: relative
     padding-left: 20px
@@ -22,8 +26,8 @@ h1
 
 nav
     flex-grow: 2
-    max-width: 1080px
-    padding: 0 10px
+    max-width: 4000px
+    padding: 0 30px
 
 .wrap-finder 
     display: flex
@@ -35,7 +39,7 @@ nav
     border: 1px #000 solid
     height: 40px
     width: 100%
-    max-width: 400px
+    // max-width: 400px
     padding-left: 20px
 
 
@@ -60,7 +64,8 @@ nav
     top: 0
     width: 100vw
     height: 100vh
-    background-color: #0000004c
+    background-color: rgba(0, 0, 0, 0.298)
+    background-color: hsla(0, 0%, 0%, 0.3)
     overflow: scroll
     z-index: 100
 .popup
@@ -70,6 +75,7 @@ nav
     align-items: center
     max-width: 80%
     padding:20px 40px 10px 40px
+    border-radius: 25px
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755)
     background-color: #fff
     overflow: scroll
@@ -88,14 +94,16 @@ nav
             font-weight: bold
         & ul
             margin-left: 60px
-
+.mobile-menu-btn
+    display: none
 
 @media screen and (max-width: 768px) 
     header 
-        flex-direction: row
-        flex-wrap: wrap
-        height: auto
         border: none
+        &> div
+            flex-direction: row
+            flex-wrap: wrap
+            height: auto
     
     h1 
         position: relative
@@ -124,6 +132,74 @@ nav
         height: 120px
         border: 1px black solid
         transition: height 0.5s, 
+
+    .mobile-menu-btn
+        position: relative
+        display: flex
+        justify-content: center
+        width: 60px
+        height: 60px
+        margin-right: 20px    
+
+
+    //hamburger menu button 
+    //  * Made by Erik Terwan
+    //  * 24th of November 2015
+    //  * MIT License
+
+    #menuToggle 
+        position: absolute
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        width: 100%
+        height: 100%
+        z-index: 1
+
+
+    #menuToggle input 
+        display: block
+        width: 100%
+        height: 100%
+        position: absolute
+        // top: -7px
+        // left: -5px
+        cursor: pointer
+        opacity: 0
+        z-index: 2
+
+    #menuToggle span 
+        display: block
+        width: 33px
+        height: 4px
+        margin-bottom: 5px
+        position: relaabsolutetive
+        background: #3c8dbc
+        border-radius: 3px
+        z-index: 1
+        transform-origin: 4px 0px
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease
+
+    #menuToggle span:first-child 
+        transform-origin: 0% 0%
+
+    #menuToggle span:nth-last-child(2) 
+        transform-origin: 0% 100%
+
+    #menuToggle input:checked~span 
+        opacity: 1
+        transform: rotate(45deg) translate(-2px, -1px)
+        background: #3c8dbc
+
+    #menuToggle input:checked~span:nth-last-child(3) 
+        opacity: 0
+        transform: rotate(0deg) scale(0.2, 0.2)
+
+    #menuToggle input:checked~span:nth-last-child(2) 
+        transform: rotate(-45deg) translate(0, -1px)
+        
+
 
 
     

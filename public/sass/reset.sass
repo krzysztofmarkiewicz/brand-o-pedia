@@ -1,3 +1,18 @@
+//colors
+$white: hsla(0, 100%, 100%, 1)
+$blue: hsla(202, 52%, 49%, 1)
+$lightBlue: hsla(202, 52%, 70%, 1)
+$ultraLigthBlue: hsla(202, 52%, 95%, 1)
+$almostBlack: hsla(210, 8%, 14%, 1)
+$ligthBlack: hsla(210, 8%, 34%, 1)
+$shadow: hsla(0, 0%, 0%, 0.3)
+$white: hsla(360, 100%, 100%, 1)
+
+
+//border radius
+$border-radius: 20px
+    
+
 *,
 *::before,
 *::after 
@@ -10,8 +25,8 @@ body
     position: relative
     display: flex
     flex-direction: column
-    background-color: #fff
-    color: #222
+    background-color: $white
+    color: $almostBlack
     font-size: 16px
     line-height: 1.4
     font-family: "Montserrat", sans-serif
@@ -19,14 +34,38 @@ body
     overflow: hidden
 
 
+input, textarea, button
+    border-radius: 10px
+    outline-color: $blue
+
+input, textarea
+    background-color: $white
+
+button
+    background-color: Transparent
+    margin: 5px 10px
+    padding: 5px 10px
+    border: none
+    font-size: 16px
+    font-weight: bold
+    color: #3c8dbc
+    &:hover
+        color: #94cdef
+
+
+
 a 
-    color: #b51515
+    color: $blue
     text-decoration: none
     &:hover 
-        color: #3c8dbc
+        color: $lightBlue
         transition: color .2s
 
+a, button
+    cursor: pointer
 
+.hide 
+    display: none
 
 
     

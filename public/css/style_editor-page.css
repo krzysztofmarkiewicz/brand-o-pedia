@@ -1,14 +1,89 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: hsl(0, 100%, 100%);
+  color: hsl(210, 8%, 14%);
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Montserrat", sans-serif;
+}
+
+.body__blocked {
+  overflow: hidden;
+}
+
+input, textarea, button {
+  border-radius: 10px;
+  outline-color: hsl(202, 52%, 49%);
+}
+
+input, textarea {
+  background-color: hsl(0, 100%, 100%);
+}
+
+button {
+  background-color: Transparent;
+  margin: 5px 10px;
+  padding: 5px 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3c8dbc;
+}
+button:hover {
+  color: #94cdef;
+}
+
+a {
+  color: hsl(202, 52%, 49%);
+  text-decoration: none;
+}
+a:hover {
+  color: hsl(202, 52%, 70%);
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+h1::after, h1::before {
+  content: " EDITOR ";
+  color: red;
+  font-weight: bolder;
+}
 h1::after {
   position: absolute;
-  content: "EDITOR";
   top: 30px;
-  right: 0;
-  color: red;
+  right: 85px;
   font-size: 20px;
-  font-weight: bolder;
+}
+h1::before {
+  display: none;
 }
 
 main {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,15 +111,20 @@ section {
 
 .section-header {
   font-size: 26px;
-  color: #0B0138;
+  color: hsl(210, 8%, 14%);
   text-align: left;
-  cursor: pointer;
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
 }
-.section-header:hover, .section-header:focus {
-  color: #2402BA;
+.section-header:hover {
+  color: hsl(210, 8%, 34%);
+}
+
+.wrap-brands {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
 }
 
 .brand {
@@ -56,21 +136,18 @@ section {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-left: 50px;
-  cursor: pointer;
 }
 .brand__name {
-  padding: 5px 0;
   font-size: 20px;
-  font-weight: bolder;
   text-align: left;
-  color: #0B0138;
+  color: hsl(210, 8%, 14%);
 }
-.brand__name:hover, .brand__name:focus {
-  color: #2402BA;
+.brand__name:hover {
+  color: hsl(210, 8%, 34%);
 }
 .brand__wrap-elements {
   border: 1px black solid;
-  border-radius: 5px;
+  border-radius: 20px;
   margin-left: 100px;
   padding: 10px;
 }
@@ -78,18 +155,16 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 10px 0;
+  padding: 10px 20px;
 }
 .brand__element-name {
   width: 250px;
-  padding: 0 20px;
   font-weight: bold;
 }
 .brand__element-edited {
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
-  overflow: hidden;
 }
 .brand__element-value {
   width: 100%;
@@ -106,22 +181,7 @@ section {
   -ms-flex-item-align: left;
       align-self: left;
   border-radius: 20px;
-  color: #3c8dbc;
-}
-
-.add-Element-Btn[disabled=true] {
-  color: #94acba;
-  cursor: auto;
-}
-
-.wrap-brands {
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
-}
-
-.hide {
-  display: none;
+  color: hsl(202, 52%, 49%);
 }
 
 @media screen and (max-width: 768px) {
@@ -129,11 +189,10 @@ section {
     display: none;
   }
   h1::before {
-    content: "EDITOR ";
-    color: red;
-    font-weight: bolder;
+    display: inline;
   }
   .brand__name {
+    display: sticky;
     margin-left: 20px;
   }
   .brand__wrap-elements {

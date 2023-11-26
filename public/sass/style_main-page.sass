@@ -1,7 +1,11 @@
+@import reset.sass
+
 main
     position: relative
     align-self: center
-    max-width: 1080px
+    width: 100%
+    max-width: 1166px
+
 
 .name-brand 
     display: flex
@@ -15,81 +19,77 @@ main
     font-size: 20px
     word-break: break-word
 
-
-
-
 .wrap-order 
     display: flex
     justify-content: space-between
 
-
 .main-info 
     margin: 30px
-
 
 .how-order 
     flex-direction: column
     margin: 30px
     list-style-position: inside
+    color: $almostBlack
+    border-radius: $border-radius
+    &__box 
+        width: 450px
+        border: 1px $almostBlack solid
+        border-top: 0
+        overflow: hidden
+
+    &__box:first-of-type
+        border-top: 1px $almostBlack solid
+        border-top-left-radius: $border-radius
+        border-top-right-radius: $border-radius
+    &__box:last-of-type
+        border-bottom-left-radius: $border-radius
+        border-bottom-right-radius: $border-radius
+        &:first-child
+            background-color: red
+            border: 1px $almostBlack solid
 
 
-.how-order__box 
-    width: 450px
-    border: 1px #000 solid
-    border-top: 0
 
+    &__header 
+        display: flex
+        justify-content: space-between
+        width: 100%
+        margin: 0
+        padding: 10px 20px
+        font-size: 20px
+        font-weight: bold
+        transition: background-color .3s
+        color: $almostBlack
+        border-radius: 0
 
-.how-order__box:first-of-type 
-    border-top: 1px #000 solid
+        &::after
+            content: "V"
+            transition: transform .3s   
 
+    &__header.show 
+        background-color: $ultraLigthBlue
+        transition: background-color transform .3s
+        &::after 
+            content: "V"
+            transform: rotate(180deg)
+            transition: transform .3s
 
-.how-order__header 
-    display: flex
-    justify-content: space-between
-    font-size: 20px
-    font-weight: bold
-    padding: 10px 20px
-    transition: background-color .3s
-    cursor: pointer
-
-
-.how-order__header.show 
-    background-color: #ececec
-    transition: background-color .3s
-
-
-.how-order__header.show::after 
-    content: "V"
-    transform: rotate(180deg)
-
-
-.how-order__header::after 
-    content: "V"
-
-
-.how-order__info 
-    max-height: 0px
-    padding: 0px 20px 0px 20px
-    transition: max-height .3s ease-out
-    overflow: hidden
-
-
-.how-order__info p:first-of-type 
-    padding-top: 15px
-
-
-.how-order__info p:last-of-type 
-    padding-bottom: 15px
-
+    &__info 
+        max-height: 0px
+        
+        transition: max-height .3s ease-out
+        overflow: hidden
+        &>div
+            padding: 10px 20px
 
 .how-order__info.show 
-    max-height: 200px
+    max-height: 1000px
     transition: max-height .3s ease-in
-
+    overflow: scroll
 
 .about-brand 
     padding: 0 30px
-
 
 .ordering-instructions 
     display: flex
@@ -97,7 +97,7 @@ main
     top: 0
     width: 100vw
     height: 100vh
-    background-color: rgba(108, 108, 108, .564)
+    background-color: $shadow
     z-index: 2
 
 
@@ -114,30 +114,35 @@ main
     border-radius: 30px
     font-size: 14px
 
-
 .ordering-instructions .instruction-content-wrap .instruction-content 
     padding-left: 20px
     margin-top: 30px
     margin-left: 15px
     overflow: auto
 
+// Ordering instruction buttons
+.menu-btn--order-inst-btn 
+    margin-left: 10px
+    text-transform: uppercase
+    font-weight: bold
+    background-color: #fff
+    color: #3c8dbc
+    border: 1px #3c8dbc solid
 
 
+.menu-btn--instr-btn 
+    height: 40px
+    width: 100%
+.menu-btn--instr-btn:hover 
 
-
-// a 
-//     color: #b51515
-//     text-decoration: none
-
-
-// a:hover 
-//     color: #3c8dbc
-//     transition: color .2s
-
+.instruction-btns 
+    margin: 10px
+    display: flex
+    justify-content: space-around
+    align-content: stretch
 
 .about 
     height: 50px
-
 
 .hide 
     display: none
@@ -166,9 +171,4 @@ main
         font-size: 14px
         background-color: #fff
         
-        
-        
-    
-
-
 /*# sourceMappingURL=style.css.map */

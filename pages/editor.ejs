@@ -8,7 +8,6 @@
     <title>Brand-o-pedia</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap">
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/style_editor-page.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -17,17 +16,19 @@
 
 <body disabled="true">
     <header>
-        <%- include ('../pages/partials/header/header.ejs')%>
-            <%- include ('../modules/searchbar.ejs')%>
-                <%- include ('../modules/buttons/headerbuttons/menubtn.ejs')%>
-                <%- include ('../modules/buttons/headerbuttons/helpbtn.ejs')%>
+        <div>
+
+            <%- include ('../pages/partials/header/header.ejs')%>
+                <%- include ('../modules/searchbar.ejs')%>
+                    <%- include ('../modules/buttons/headerbuttons/menubtn.ejs')%>
                     <div class="menu-wrap">
                         <div class="menu">
-                                <%- include ('../modules/buttons/headerbuttons/mainbtn.ejs')%>
-                                    <%- include ('../modules/buttons/headerbuttons/logoutbtn.ejs')%>
-                        </div>
-                    </div>
-                    <!-- <%- include ('../pages/partials/header/help.ejs')%> -->
+                                    <%- include ('../modules/buttons/headerbuttons/helpbtn.ejs')%>
+                                    <%- include ('../modules/buttons/headerbuttons/mainbtn.ejs')%>
+                                        <%- include ('../modules/buttons/headerbuttons/logoutbtn.ejs')%>
+                                </div>
+                            </div>
+        </div>
 
     </header>
     <main>

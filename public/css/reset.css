@@ -16,8 +16,8 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #fff;
-  color: #222;
+  background-color: hsl(0, 100%, 100%);
+  color: hsl(210, 8%, 14%);
   font-size: 16px;
   line-height: 1.4;
   font-family: "Montserrat", sans-serif;
@@ -27,12 +27,42 @@ body {
   overflow: hidden;
 }
 
+input, textarea, button {
+  border-radius: 10px;
+  outline-color: hsl(202, 52%, 49%);
+}
+
+input, textarea {
+  background-color: hsl(0, 100%, 100%);
+}
+
+button {
+  background-color: Transparent;
+  margin: 5px 10px;
+  padding: 5px 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3c8dbc;
+}
+button:hover {
+  color: #94cdef;
+}
+
 a {
-  color: #b51515;
+  color: hsl(202, 52%, 49%);
   text-decoration: none;
 }
 a:hover {
-  color: #3c8dbc;
+  color: hsl(202, 52%, 70%);
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
 }/*# sourceMappingURL=reset.css.map */

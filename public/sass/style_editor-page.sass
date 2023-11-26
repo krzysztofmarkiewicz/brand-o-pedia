@@ -1,13 +1,19 @@
+@import reset.sass
+    
 h1 
+    &::after, &::before
+        content: " EDITOR "
+        color: red
+        font-weight: bolder
     &::after
         position: absolute
-        content: "EDITOR"
         top: 30px
-        right: 0
-        color: red
+        right: 85px
         font-size: 20px
-        font-weight: bolder
+    &::before
+        display: none
 main
+    position: relative
     display: flex
     flex-direction: column
     align-items: center
@@ -17,46 +23,43 @@ section
     flex-direction: column
     width: 100%
     max-width: 1080px
+
 .section-header
     font-size: 26px
-    color:#0B0138
+    color: $almostBlack
     text-align: left
-    cursor: pointer
     order: 1
-    &:hover, &:focus
-        color: #2402BA
+    &:hover
+        color: $ligthBlack
 
+.wrap-brands
+    order: 3
 .brand
     display: flex
     flex-direction: column
     margin-left: 50px
-    cursor: pointer
     &__name 
-        padding: 5px 0
         font-size: 20px
-        font-weight: bolder
         text-align: left
-        color: #0B0138
-        &:hover, &:focus
-            color: #2402BA
-
+        color: $almostBlack
+        &:hover
+            color: $ligthBlack
 
     &__wrap-elements
         border: 1px black solid
-        border-radius: 5px
+        border-radius: $border-radius
         margin-left: 100px
         padding: 10px
 
     &__element 
         display: flex
-        padding: 10px 0
+        padding: 10px 20px
     &__element-name 
         width: 250px
-        padding: 0 20px
         font-weight: bold
     &__element-edited
         flex-grow: 2
-        overflow: hidden
+        // overflow: hidden
 
 
     &__element-value
@@ -65,40 +68,22 @@ section
         font-size: 16px
         padding: 10px
         resize: vertical
+
 .add-Element-Btn
     order: 2
     align-self: left
-    // width: 40px
-    // height: 40px
-    border-radius: 20px
-    // font-size: 20px
-    color: #3c8dbc
-    
-
-.add-Element-Btn[disabled='true']
-    color: #94acba
-    cursor: auto
-
-
-.wrap-brands
-    order: 3
-       
-
-.hide 
-    display: none
-
-
+    border-radius: $border-radius
+    color: hsla(202, 52%, 49%, 1)
 
 @media screen and (max-width: 768px) 
     h1
         &::after
             display: none
         &::before
-            content: "EDITOR "
-            color: red
-            font-weight: bolder
+            display: inline
     .brand
         &__name
+            display: sticky
             margin-left:20px
         &__wrap-elements
             margin-left: 20px

@@ -42,19 +42,19 @@ const generateContent = async (elem) => {
     details.innerHTML = brand.details
 
     const checkAvailability = document.querySelector('.check-availability').querySelector(':scope > .how-order__info')
-    checkAvailability.innerHTML = brand.checkAvailability
+    checkAvailability.firstElementChild.innerHTML = brand.checkAvailability
 
     const orders = document.querySelector('.orders').querySelector(':scope > .how-order__info')
-    orders.innerHTML = brand.orders
+    orders.firstElementChild.innerHTML = brand.orders
 
     const queries = document.querySelector('.queries').querySelector(':scope > .how-order__info')
-    queries.innerHTML = brand.queries
+    queries.firstElementChild.innerHTML = brand.queries
 
     const complaints = document.querySelector('.complaints').querySelector(':scope > .how-order__info')
-    complaints.innerHTML = brand.complaints
+    complaints.firstElementChild.innerHTML = brand.complaints
 
     const returns = document.querySelector('.returns').querySelector(':scope > .how-order__info')
-    returns.innerHTML = brand.returns
+    returns.firstElementChild.innerHTML = brand.returns
 
     main.classList.remove('hide')
 }

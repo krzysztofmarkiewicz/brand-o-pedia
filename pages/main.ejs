@@ -8,7 +8,6 @@
     <title>Brand-o-pedia</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap">
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/style_main-page.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -16,21 +15,23 @@
 
 <body>
     <header>
-        <%- include ('../pages/partials/header/header.ejs')%>
-            <%- include ('../modules/searchbar.ejs')%>
-                <%- include ('../modules/buttons/headerbuttons/menubtn.ejs')%>
-                <%- include ('..//modules/buttons/headerbuttons/helpbtn.ejs')%>
+        <div>
+            <%- include ('../pages/partials/header/header.ejs')%>
+                <%- include ('../modules/searchbar.ejs')%>
+                    <%- include ('../modules/buttons/headerbuttons/menubtn.ejs')%>
                     <div class="menu-wrap">
-
+                        
                         <div class="menu">
+                                    <%- include ('..//modules/buttons/headerbuttons/helpbtn.ejs')%>
 
-                                <%- include ('..//modules/buttons/headerbuttons/editorbtn.ejs')%>
-                                    <%- include ('..//modules/buttons/headerbuttons/logoutbtn.ejs')%>
-                        </div>
-                    </div>
+                                    <%- include ('..//modules/buttons/headerbuttons/editorbtn.ejs')%>
+                                        <%- include ('..//modules/buttons/headerbuttons/logoutbtn.ejs')%>
+                                </div>
+                            </div>
+        </div>
     </header>
 
-    <main class="brand hide">
+    <main class="brand">
 
         <div class="wrap-order">
             <div class="main-info">
@@ -55,24 +56,34 @@
             </div>
             <div class="how-order">
                 <div class="check-availability how-order__box">
-                    <h3 class="how-order__header">Sprawdzanie dostępności</h3>
-                    <div class="how-order__info"></div>
+                    <button class="how-order__header">Sprawdzanie dostępności</button>
+                    <div class="how-order__info">
+                        <div></div>
+                    </div>
                 </div>
                 <div class="orders how-order__box">
-                    <h3 class="how-order__header">Zamówienia</h3>
-                    <div class="how-order__info"></div>
+                    <button class="how-order__header">Zamówienia</button>
+                    <div class="how-order__info">
+                        <div></div>
+                    </div>
                 </div>
                 <div class="queries how-order__box">
-                    <h3 class="how-order__header">Zapytania</h3>
-                    <div class="how-order__info"></div>
+                    <button class="how-order__header">Zapytania</button>
+                    <div class="how-order__info">
+                        <div></div>
+                    </div>
                 </div>
                 <div class="complaints how-order__box">
-                    <h3 class="how-order__header">Reklamacje</h3>
-                    <div class="how-order__info"></div>
+                    <button class="how-order__header">Reklamacje</button>
+                    <div class="how-order__info">
+                        <div></div>
+                    </div>
                 </div>
                 <div class="returns how-order__box">
-                    <h3 class="how-order__header">Zwroty</h3>
-                    <div class="how-order__info"></div>
+                    <button class="how-order__header">Zwroty</button>
+                    <div class="how-order__info">
+                        <div></div>
+                    </div>
                 </div>
             </div>
         </div>

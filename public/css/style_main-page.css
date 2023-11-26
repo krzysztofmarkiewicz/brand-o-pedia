@@ -1,8 +1,78 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: hsl(0, 100%, 100%);
+  color: hsl(210, 8%, 14%);
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Montserrat", sans-serif;
+}
+
+.body__blocked {
+  overflow: hidden;
+}
+
+input, textarea, button {
+  border-radius: 10px;
+  outline-color: hsl(202, 52%, 49%);
+}
+
+input, textarea {
+  background-color: hsl(0, 100%, 100%);
+}
+
+button {
+  background-color: Transparent;
+  margin: 5px 10px;
+  padding: 5px 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3c8dbc;
+}
+button:hover {
+  color: #94cdef;
+}
+
+a {
+  color: hsl(202, 52%, 49%);
+  text-decoration: none;
+}
+a:hover {
+  color: hsl(202, 52%, 70%);
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
 main {
   position: relative;
   -ms-flex-item-align: center;
       align-self: center;
-  max-width: 1080px;
+  width: 100%;
+  max-width: 1166px;
 }
 
 .name-brand {
@@ -45,18 +115,28 @@ main {
           flex-direction: column;
   margin: 30px;
   list-style-position: inside;
+  color: hsl(210, 8%, 14%);
+  border-radius: 20px;
 }
-
 .how-order__box {
   width: 450px;
-  border: 1px #000 solid;
+  border: 1px hsl(210, 8%, 14%) solid;
   border-top: 0;
+  overflow: hidden;
 }
-
 .how-order__box:first-of-type {
-  border-top: 1px #000 solid;
+  border-top: 1px hsl(210, 8%, 14%) solid;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
-
+.how-order__box:last-of-type {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.how-order__box:last-of-type:first-child {
+  background-color: red;
+  border: 1px hsl(210, 8%, 14%) solid;
+}
 .how-order__header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -64,50 +144,52 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 10px 20px;
   font-size: 20px;
   font-weight: bold;
-  padding: 10px 20px;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
-  cursor: pointer;
+  color: hsl(210, 8%, 14%);
+  border-radius: 0;
 }
-
+.how-order__header::after {
+  content: "V";
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
 .how-order__header.show {
-  background-color: #ececec;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
+  background-color: hsl(202, 52%, 95%);
+  -webkit-transition: background-color transform 0.3s;
+  transition: background-color transform 0.3s;
 }
-
 .how-order__header.show::after {
   content: "V";
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
-
-.how-order__header::after {
-  content: "V";
-}
-
 .how-order__info {
   max-height: 0px;
-  padding: 0px 20px 0px 20px;
   -webkit-transition: max-height 0.3s ease-out;
   transition: max-height 0.3s ease-out;
   overflow: hidden;
 }
-
-.how-order__info p:first-of-type {
-  padding-top: 15px;
-}
-
-.how-order__info p:last-of-type {
-  padding-bottom: 15px;
+.how-order__info > div {
+  padding: 10px 20px;
 }
 
 .how-order__info.show {
-  max-height: 200px;
+  max-height: 1000px;
   -webkit-transition: max-height 0.3s ease-in;
   transition: max-height 0.3s ease-in;
+  overflow: scroll;
 }
 
 .about-brand {
@@ -122,7 +204,7 @@ main {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(108, 108, 108, 0.564);
+  background-color: hsla(0, 0%, 0%, 0.3);
   z-index: 2;
 }
 
@@ -152,6 +234,31 @@ main {
   margin-top: 30px;
   margin-left: 15px;
   overflow: auto;
+}
+
+.menu-btn--order-inst-btn {
+  margin-left: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #fff;
+  color: #3c8dbc;
+  border: 1px #3c8dbc solid;
+}
+
+.menu-btn--instr-btn {
+  height: 40px;
+  width: 100%;
+}
+
+.instruction-btns {
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
 }
 
 .about {
