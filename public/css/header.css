@@ -27,9 +27,12 @@ body {
   overflow: hidden;
 }
 
-input, textarea, button {
-  border-radius: 20px;
-  outline-color: hsl(202, 52%, 49%);
+input, textarea, button, [role=button] {
+  border-radius: 10px;
+  outline: none;
+}
+input:focus, textarea:focus, button:focus, [role=button]:focus {
+  border: 3px hsl(202, 52%, 49%) solid;
 }
 
 input, textarea {
@@ -46,7 +49,7 @@ button {
   color: hsl(202, 52%, 49%);
 }
 button:hover {
-  color: 20px;
+  color: hsl(202, 52%, 70%);
 }
 
 a {
@@ -147,7 +150,7 @@ nav {
   background-color: hsl(202, 52%, 95%);
   text-align: right;
   overflow: scroll;
-  z-index: 100;
+  z-index: 10;
 }
 
 .popup-wrap {
@@ -166,7 +169,7 @@ nav {
   height: 100vh;
   background-color: hsla(0, 0%, 0%, 0.3);
   overflow: hidden;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .popup {
@@ -186,7 +189,7 @@ nav {
   max-height: 90%;
   max-width: 80%;
   padding: 20px 40px 10px 40px;
-  border-radius: 20px;
+  border-radius: 10px;
   -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755);
           box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755);
   background-color: hsl(0, 100%, 100%);
@@ -258,7 +261,7 @@ nav {
     -webkit-transition: right 0.5s;
     transition: right 0.5s;
     overflow: hidden;
-    z-index: 1000;
+    z-index: 100;
   }
   .showMenu {
     right: -1px;
@@ -276,6 +279,7 @@ nav {
     width: 60px;
     height: 60px;
     margin-right: 20px;
+    z-index: 100;
   }
   #menuToggle {
     position: absolute;

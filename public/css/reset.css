@@ -27,11 +27,11 @@ body {
   overflow: hidden;
 }
 
-input, textarea, button {
+input, textarea, button, [role=button] {
   border-radius: 10px;
   outline: none;
 }
-input:focus, textarea:focus, button:focus {
+input:focus, textarea:focus, button:focus, [role=button]:focus {
   border: 3px hsl(202, 52%, 49%) solid;
 }
 
@@ -49,7 +49,7 @@ button {
   color: hsl(202, 52%, 49%);
 }
 button:hover {
-  color: 10px;
+  color: hsl(202, 52%, 70%);
 }
 
 a {
