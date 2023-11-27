@@ -4,12 +4,8 @@ import {
 
 const menuBtn = document.querySelector('.mobile-menu-btn')
 const menu = document.querySelector('.menu')
-const menuWrap = document.querySelector('.menu-wrap')
-
 const showMenu = (e) => {
-    menuWrap.classList.toggle('showMenuWrap')
     menu.classList.toggle('showMenu')
-    console.log(e.target);
 }
 
 menuBtn.addEventListener('click', showMenu)

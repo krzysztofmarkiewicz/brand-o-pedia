@@ -1,3 +1,72 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: hsl(0, 100%, 100%);
+  color: hsl(210, 8%, 14%);
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Montserrat", sans-serif;
+}
+
+.body__blocked {
+  overflow: hidden;
+}
+
+input, textarea, button {
+  border-radius: 20px;
+  outline-color: hsl(202, 52%, 49%);
+}
+
+input, textarea {
+  background-color: hsl(0, 100%, 100%);
+}
+
+button {
+  background-color: Transparent;
+  margin: 5px 10px;
+  padding: 5px 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: hsl(202, 52%, 49%);
+}
+button:hover {
+  color: 20px;
+}
+
+a {
+  color: hsl(202, 52%, 49%);
+  text-decoration: none;
+}
+a:hover {
+  color: hsl(202, 52%, 70%);
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
 header {
   position: relative;
   display: -webkit-box;
@@ -6,7 +75,7 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-bottom: 1px #000 solid;
+  border-bottom: 1px hsl(210, 8%, 14%) solid;
 }
 header > div {
   display: -webkit-box;
@@ -26,7 +95,7 @@ header > div {
 h1 {
   position: relative;
   padding-left: 20px;
-  color: #3c8dbc;
+  color: hsl(202, 52%, 49%);
   white-space: nowrap;
 }
 h1 span {
@@ -63,7 +132,7 @@ nav {
 .finder {
   font-size: 16px;
   position: relative;
-  border: 1px #000 solid;
+  border: 1px hsl(210, 8%, 14%) solid;
   height: 40px;
   width: 100%;
   padding-left: 20px;
@@ -75,7 +144,7 @@ nav {
   left: 0;
   top: 70px;
   padding-left: 0px;
-  background-color: #e7f7ff;
+  background-color: hsl(202, 52%, 95%);
   text-align: right;
   overflow: scroll;
   z-index: 100;
@@ -95,9 +164,8 @@ nav {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.298);
   background-color: hsla(0, 0%, 0%, 0.3);
-  overflow: scroll;
+  overflow: hidden;
   z-index: 100;
 }
 
@@ -115,12 +183,13 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  max-height: 90%;
   max-width: 80%;
   padding: 20px 40px 10px 40px;
-  border-radius: 25px;
+  border-radius: 20px;
   -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755);
           box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755);
-  background-color: #fff;
+  background-color: hsl(0, 100%, 100%);
   overflow: scroll;
 }
 .popup__content {
@@ -171,8 +240,7 @@ nav {
   }
   .menu {
     position: absolute;
-    background-color: #ffffff;
-    border: rgba(249, 0, 0, 0) 0px solid;
+    background-color: hsl(0, 100%, 100%);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -183,20 +251,19 @@ nav {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 0px;
-    right: 0px;
     top: 25px;
-    margin-right: 10px;
-    -webkit-transition: height 0.5s, border 0.5s;
-    transition: height 0.5s, border 0.5s;
+    right: -100px;
+    -webkit-box-shadow: 0 0 5px 0px hsl(210, 8%, 14%);
+            box-shadow: 0 0 5px 0px hsl(210, 8%, 14%);
+    -webkit-transition: right 0.5s;
+    transition: right 0.5s;
     overflow: hidden;
     z-index: 1000;
   }
   .showMenu {
-    height: 120px;
-    border: 1px black solid;
-    -webkit-transition: height 0.5s;
-    transition: height 0.5s;
+    right: -1px;
+    -webkit-transition: right 0.5s;
+    transition: right 0.5s;
   }
   .mobile-menu-btn {
     position: relative;
@@ -244,7 +311,7 @@ nav {
     height: 4px;
     margin-bottom: 5px;
     position: relaabsolutetive;
-    background: #3c8dbc;
+    background: hsl(202, 52%, 49%);
     border-radius: 3px;
     z-index: 1;
     -webkit-transform-origin: 4px 0px;
@@ -266,7 +333,7 @@ nav {
     opacity: 1;
     -webkit-transform: rotate(45deg) translate(-2px, -1px);
             transform: rotate(45deg) translate(-2px, -1px);
-    background: #3c8dbc;
+    background: hsl(202, 52%, 49%);
   }
   #menuToggle input:checked ~ span:nth-last-child(3) {
     opacity: 0;

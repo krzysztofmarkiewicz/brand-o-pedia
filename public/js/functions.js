@@ -77,6 +77,11 @@ export const textareas = (textAreas) => {
     }
     //listeners
     textAreas.forEach(el => {
+        el.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && (el.dataset.oneliner) === 'true') {
+                e.preventDefault()
+            }
+        })
         el.addEventListener('click', limitTextarea)
         el.addEventListener('input', limitTextarea)
         el.addEventListener('blur', () => {

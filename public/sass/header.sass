@@ -1,8 +1,10 @@
+@import reset.sass
+    
 header 
     position: relative
     display: flex
     justify-content: center
-    border-bottom: 1px #000 solid
+    border-bottom: 1px $almostBlack solid
     &> div
         display: flex
         justify-content: space-between
@@ -14,7 +16,7 @@ header
 h1 
     position: relative
     padding-left: 20px
-    color: #3c8dbc
+    color: $blue
     white-space: nowrap
     span
         font-size: 50%
@@ -36,13 +38,11 @@ nav
 .finder 
     font-size: 16px
     position: relative
-    border: 1px #000 solid
+    border: 1px $almostBlack solid
     height: 40px
     width: 100%
     // max-width: 400px
     padding-left: 20px
-
-
 
 .brand-btns 
     position: absolute
@@ -51,7 +51,7 @@ nav
     top: 70px
     padding-left: 0px
     // box-shadow: 0px 0px 10px black
-    background-color: #e7f7ff
+    background-color: $ultraLigthBlue
     text-align: right
     overflow: scroll
     z-index: 100
@@ -64,20 +64,20 @@ nav
     top: 0
     width: 100vw
     height: 100vh
-    background-color: rgba(0, 0, 0, 0.298)
-    background-color: hsla(0, 0%, 0%, 0.3)
-    overflow: scroll
+    background-color: $shadow
+    overflow: hidden
     z-index: 100
 .popup
     display: flex
     flex-direction: column
     justify-content: space-between
     align-items: center
+    max-height: 90%
     max-width: 80%
     padding:20px 40px 10px 40px
-    border-radius: 25px
+    border-radius: $border-radius
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.755)
-    background-color: #fff
+    background-color: $white
     overflow: scroll
     &__content
         padding-bottom: 20px
@@ -94,6 +94,7 @@ nav
             font-weight: bold
         & ul
             margin-left: 60px
+
 .mobile-menu-btn
     display: none
 
@@ -115,23 +116,21 @@ nav
         top: 78px
     .menu
         position: absolute
-        background-color: #ffffff
-        border: #f9000000 0px solid
+        background-color: $white
         flex-direction: column
         justify-content: center
         align-items: center
-        height: 0px
-        right: 0px
         top: 25px
-        margin-right: 10px
-        transition: height 0.5s, border .5s
+        right: -100px
+        box-shadow: 0 0 5px 0px $almostBlack
+        transition: right .5s
         overflow: hidden
         z-index: 1000
 
     .showMenu
-        height: 120px
-        border: 1px black solid
-        transition: height 0.5s, 
+        right: -1px
+        transition: right .5s
+
 
     .mobile-menu-btn
         position: relative
@@ -175,7 +174,7 @@ nav
         height: 4px
         margin-bottom: 5px
         position: relaabsolutetive
-        background: #3c8dbc
+        background: $blue
         border-radius: 3px
         z-index: 1
         transform-origin: 4px 0px
@@ -190,7 +189,7 @@ nav
     #menuToggle input:checked~span 
         opacity: 1
         transform: rotate(45deg) translate(-2px, -1px)
-        background: #3c8dbc
+        background: $blue
 
     #menuToggle input:checked~span:nth-last-child(3) 
         opacity: 0

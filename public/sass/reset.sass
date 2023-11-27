@@ -8,18 +8,15 @@ $ligthBlack: hsla(210, 8%, 34%, 1)
 $shadow: hsla(0, 0%, 0%, 0.3)
 $white: hsla(360, 100%, 100%, 1)
 
-
 //border radius
-$border-radius: 20px
+$border-radius: 10px
     
-
 *,
 *::before,
 *::after 
     box-sizing: border-box
     margin: 0
     padding: 0
-
 
 body 
     position: relative
@@ -33,13 +30,15 @@ body
 .body__blocked
     overflow: hidden
 
-
 input, textarea, button
-    border-radius: 10px
-    outline-color: $blue
+    border-radius: $border-radius
+    outline: none
+    &:focus
+        border: 3px $blue solid
 
 input, textarea
     background-color: $white
+    
 
 button
     background-color: Transparent
@@ -48,11 +47,9 @@ button
     border: none
     font-size: 16px
     font-weight: bold
-    color: #3c8dbc
+    color: $blue
     &:hover
-        color: #94cdef
-
-
+        color: $border-radius
 
 a 
     color: $blue

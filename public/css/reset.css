@@ -29,7 +29,10 @@ body {
 
 input, textarea, button {
   border-radius: 10px;
-  outline-color: hsl(202, 52%, 49%);
+  outline: none;
+}
+input:focus, textarea:focus, button:focus {
+  border: 3px hsl(202, 52%, 49%) solid;
 }
 
 input, textarea {
@@ -43,10 +46,10 @@ button {
   border: none;
   font-size: 16px;
   font-weight: bold;
-  color: #3c8dbc;
+  color: hsl(202, 52%, 49%);
 }
 button:hover {
-  color: #94cdef;
+  color: 10px;
 }
 
 a {

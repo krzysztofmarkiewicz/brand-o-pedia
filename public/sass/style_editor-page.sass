@@ -1,5 +1,5 @@
 @import reset.sass
-    
+  
 h1 
     &::after, &::before
         content: " EDITOR "
@@ -34,6 +34,7 @@ section
 
 .wrap-brands
     order: 3
+    
 .brand
     display: flex
     flex-direction: column
@@ -46,7 +47,7 @@ section
             color: $ligthBlack
 
     &__wrap-elements
-        border: 1px black solid
+        border: 1px $almostBlack solid
         border-radius: $border-radius
         margin-left: 100px
         padding: 10px
@@ -59,8 +60,7 @@ section
         font-weight: bold
     &__element-edited
         flex-grow: 2
-        // overflow: hidden
-
+        overflow: hidden
 
     &__element-value
         width: 100%
