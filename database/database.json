@@ -1,24 +1,6 @@
 {
   "brands": [
     {
-      "id": "0",
-      "indexOrder": "2",
-      "name": "BRAK",
-      "url": "BRAK",
-      "howWeOrder": "step",
-      "about": "BRAK",
-      "supplier": "BRAK",
-      "fulfilmentLasts": "BRAKsasasasa",
-      "details": "sdasdasdBRAK",
-      "checkAvailability": "BRAK",
-      "queries": "BRAK",
-      "orders": "BRAK",
-      "shipping": "BRAK",
-      "returns": "BRAK",
-      "complaints": "BRAK",
-      "notes": "BRAK"
-    },
-    {
       "id": "1",
       "indexOrder": "1",
       "name": "Firma nr 1",
@@ -53,24 +35,6 @@
       "returns": "<p>zwroty msożliwe do 14 dni</p>",
       "complaints": "<p>Reklamacje: </p>",
       "notes": "Dodatkowe informacje o firmie 2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corpoam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut.Dodatkowe informacje o firmie 2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corpoam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut."
-    },
-    {
-      "id": "3",
-      "indexOrder": "",
-      "name": "- New element",
-      "url": "",
-      "howWeOrder": "",
-      "about": "",
-      "supplier": "",
-      "fulfilmentLasts": "",
-      "details": "",
-      "checkAvailability": "",
-      "queries": "",
-      "orders": "",
-      "shipping": "",
-      "returns": "",
-      "complaints": "",
-      "notes": ""
     }
   ],
   "ordering": [

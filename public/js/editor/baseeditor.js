@@ -8,7 +8,8 @@ import {
     RunTinymceEditor
 } from './tinymce_add.js'
 import {
-    NewHTMLElement, textareas
+    NewHTMLElement,
+    textareas
 } from '../functions.js'
 import {
     popup
@@ -149,7 +150,7 @@ const dataBaseTableGenerate = async () => {
             addNewElement(wrapBrands, jsonData[elem][key])
         }
     }
-    
+
     const textAreas = document.querySelectorAll('.brand__element-value')
     textareas(textAreas)
 }
@@ -291,7 +292,7 @@ const addNewElementToDatabase = (root, oldContent) => {
         const addNewElemToSearchBar = () => {
             const searchbar = document.querySelector('.brand-btns')
 
-            const newElem = new NewHTMLElement('button', ['hide'], {
+            const newElem = new NewHTMLElement('button', ['search_btn','hide'], {'type':'button',
                 'data-id': newElement.id,
                 'data-name-brand': newElement.name
             }, newElement.name).createHTMLElement()
@@ -408,6 +409,7 @@ const deleteLine = (e) => {
 //delete element from database
 const delElemToSearchBar = (id) => {
     const elem = document.querySelector(`[data-id="${id}"].search_btn`)
+    console.log(elem);
     elem.remove()
 }
 
@@ -429,7 +431,9 @@ const deleteElementFromDataBase = (root, id) => {
     }).then((req) => {
         if (req.status === 200) {
             elementToDelete.remove()
-            delElemToSearchBar(id)
+            if (root === 'brands') {
+                delElemToSearchBar(id)
+            }
         }
     })
 }
