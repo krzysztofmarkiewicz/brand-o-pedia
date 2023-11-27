@@ -100,11 +100,9 @@ export const blockBody = (elementsToBlock) => {
         const element = document.querySelector(el)
         const elements = element.querySelectorAll('button, textarea, checkbox, input,a,[role=button]')
         if (body.classList.contains('body__blocked')) {
-            console.log('bloced');
             elements.forEach(el => el.setAttribute('tabindex', '-1'))
         } else {
             elements.forEach(el => el.removeAttribute('tabindex'))
-            console.log('unblocked');
         }
     })
 }

@@ -1,5 +1,5 @@
 @import reset.sass
-    
+
 header 
     position: relative
     display: flex
@@ -27,6 +27,7 @@ h1
     display: flex
 
 nav
+    // position: relative
     flex-grow: 2
     max-width: 4000px
     padding: 0 30px
@@ -72,7 +73,7 @@ nav
     flex-direction: column
     justify-content: space-between
     align-items: center
-    max-height: 90%
+    max-height: 80%
     max-width: 80%
     padding:20px 40px 10px 40px
     border-radius: $border-radius
@@ -114,22 +115,28 @@ nav
         text-align: center
     .brand-btns
         top: 78px
-    .menu
+    .menu-btns-wrap
         position: absolute
-        background-color: $white
+        right: 0
+    .menu
+        position: fixed
+        background-color: $blue
         flex-direction: column
         justify-content: center
         align-items: center
-        top: 25px
+        top: 100px
         right: -100px
-        box-shadow: 0 0 5px 0px $almostBlack
-        transition: right .5s
-        overflow: hidden
+        padding: 10px 0
+        // box-shadow: 0 0 5px 0px $almostBlack
+        transition: right .3s
         z-index: 100
+        &>form
+            &>button
+                color: $white
 
-    .showMenu
+    .show-menu
         right: -1px
-        transition: right .5s
+        transition: right .3s
 
 
     .mobile-menu-btn
@@ -157,6 +164,7 @@ nav
         width: 100%
         height: 100%
         z-index: 1
+        overflow: hidden
 
 
     #menuToggle input 

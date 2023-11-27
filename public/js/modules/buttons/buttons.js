@@ -5,7 +5,7 @@ import {
 const menuBtn = document.querySelector('.mobile-menu-btn')
 const menu = document.querySelector('.menu')
 const showMenu = (e) => {
-    menu.classList.toggle('showMenu')
+    menu.classList.toggle('show-menu')
 }
 
 menuBtn.addEventListener('click', showMenu)
@@ -26,5 +26,6 @@ const content = '<div class="help" id="help"><div class="help__content"><h2>HELP
 
 helpBtn.addEventListener('click', (e) => {
     popup(content)
+    menu.classList.remove('show-menu');
     e.preventDefault()
 })

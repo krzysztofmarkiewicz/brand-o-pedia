@@ -5,10 +5,8 @@ import {
 //creates popup on the page 
 export const popup = (content, nextStepFunction) => {
     const body = document.querySelector('body')
-    // const main = body.querySelectorAll('button, textarea, input')
 
     //blocks all interactive elements under popup
-    // main.forEach(el => el.setAttribute('disabled', 'true'))
     blockBody(['header','main'])
 
     //generates popup elements on the page
@@ -19,8 +17,6 @@ export const popup = (content, nextStepFunction) => {
     popupWrap.appendChild(popup)
 
     const popupContent = new NewHTMLElement('div', ['popup__content'], null, '').createHTMLElement()
-    console.log(popupContent);
-    console.log(content);
     popupContent.innerHTML = content
     popup.appendChild(popupContent)
 
@@ -37,7 +33,6 @@ export const popup = (content, nextStepFunction) => {
     //function to close a popup
     const cancel = () => {
         blockBody(['header','main'])
-        // main.forEach(el => el.removeAttribute('disabled'))
 
         popupWrap.remove()
         cancelBtn.removeEventListener('click', cancel)
@@ -52,6 +47,4 @@ export const popup = (content, nextStepFunction) => {
     //listeners
     cancelBtn.addEventListener('click', cancel)
     nextBtn.addEventListener('click', next)
-
-    //function to remove listeners
 }

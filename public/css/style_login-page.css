@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 *,
 *::before,
 *::after {
@@ -5,6 +6,7 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -20,18 +22,17 @@ body {
   color: hsl(210, 8%, 14%);
   font-size: 16px;
   line-height: 1.4;
-  font-family: "Montserrat", sans-serif;
 }
 
 .body__blocked {
   overflow: hidden;
 }
 
-input, textarea, button {
+input, textarea, button, [role=button] {
   border-radius: 10px;
   outline: none;
 }
-input:focus, textarea:focus, button:focus {
+input:focus, textarea:focus, button:focus, [role=button]:focus {
   border: 3px hsl(202, 52%, 49%) solid;
 }
 
