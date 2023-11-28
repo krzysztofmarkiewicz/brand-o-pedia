@@ -57,6 +57,7 @@ const generateContent = async (elem) => {
     returns.firstElementChild.innerHTML = brand.returns
 
     main.classList.remove('hide')
+    main.previousElementSibling.classList.add('hide')
 }
 searchbar(generateContent)
 

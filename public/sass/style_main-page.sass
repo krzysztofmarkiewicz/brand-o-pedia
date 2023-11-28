@@ -1,5 +1,27 @@
 @import reset.sass
 
+
+        
+.start-info
+    padding: 0 20px 50px 20px
+    text-align: center
+    color: $blue
+    & p
+        font-size: 20px
+    &>p:first-of-type
+        font-size: 60px
+        animation: blink 1s infinite
+
+@keyframes blink
+ 0% 
+    opacity: 0
+ 49%
+    opacity: 0
+ 50% 
+    opacity: 1
+
+
+
 main
     position: relative
     align-self: center

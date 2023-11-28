@@ -62,7 +62,7 @@ export const searchbar = (generateContent) => {
                 } else if (el.dataset.nameBrand.toLowerCase().includes(text.toLowerCase())) {
                     el.classList.remove('hide')
                     el.classList.add('show')
-                } else if (e.target.value === 'all') {
+                } else if (e.target.value.toLowerCase() === 'all') {
                     el.classList.remove('hide')
                     el.classList.add('show')
                 } else {

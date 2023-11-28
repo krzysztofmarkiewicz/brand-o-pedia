@@ -16,24 +16,22 @@ function isAuthorized(req, res, next) {
         return year + '.' + month + '.' + day + ' - ' + hour + ':' + minute + ':' + second
     }
 
+    let url = req.url.replace(/\/|\?/g, '')
+    if (url === 'main' || url === 'editor') {
+        res.cookie('url', url)
+    } else {
+        res.cookie('url', 'main')
+    }
+    if (process.env.USER_PASSWORD === req.session.password) {
+        console.log('logged in: ' + timeCount());
 
-    // console.log('logged in: ');
-    // let url = req.url.replace(/\/|\?/g, '')
-    // if (url === 'main' || url === 'editor') {
-    //     res.cookie('url', url)
-    // } else {
-    //     res.cookie('url', 'main')
-    // }
-    // if (process.env.USER_PASSWORD === req.session.password) {
-    //     console.log('logged in: ' + timeCount());
-
-    //     next()
-    // } else {
-    //     res.render('login.ejs')
-    // }
+        next()
+    } else {
+        res.render('login.ejs')
+    }
 
 
-    next()
+    // next()
 }
 
 export default isAuthorized

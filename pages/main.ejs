@@ -17,20 +17,24 @@
             <%- include ('../pages/partials/header/header.ejs')%>
                 <%- include ('../modules/searchbar.ejs')%>
                     <%- include ('../modules/buttons/headerbuttons/menubtn.ejs')%>
-                    <div class="menu-wrap">
-                        
-                        <div class="menu">
-                                    <%- include ('..//modules/buttons/headerbuttons/helpbtn.ejs')%>
+                        <div class="menu-wrap">
+
+                            <div class="menu">
+                                <%- include ('..//modules/buttons/headerbuttons/helpbtn.ejs')%>
 
                                     <%- include ('..//modules/buttons/headerbuttons/editorbtn.ejs')%>
                                         <%- include ('..//modules/buttons/headerbuttons/logoutbtn.ejs')%>
-                                </div>
                             </div>
+                        </div>
         </div>
     </header>
 
-    <main class="brand">
-
+    <div class="start-info">
+        <p>^</p>
+        <p>Wprowadź nazwę marki lub wpisz "all" by wyświetlić wszystkie marki.
+        </p>
+    </div>
+    <main class="brand hide">
         <div class="wrap-order">
             <div class="main-info">
                 <div class="name-brand">
