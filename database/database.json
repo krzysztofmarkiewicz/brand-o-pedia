@@ -1,6 +1,24 @@
 {
   "brands": [
     {
+      "id": "0",
+      "indexOrder": "2",
+      "name": "BRAK",
+      "url": "BRAK",
+      "howWeOrder": "step",
+      "about": "BRAK",
+      "supplier": "BRAK",
+      "fulfilmentLasts": "BRAK",
+      "details": "BRAK",
+      "checkAvailability": "BRAK",
+      "queries": "BRAK",
+      "orders": "BRAK",
+      "shipping": "BRAK",
+      "returns": "BRAK",
+      "complaints": "BRAK",
+      "notes": "BRAK"
+    },
+    {
       "id": "1",
       "indexOrder": "1",
       "name": "Firma nr 1",
@@ -27,14 +45,14 @@
       "about": "Firma 2 zajmuje się czymś tam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corporis? Accusamus, ipsam obcaecati tempora voluptatum consectetur ipsa soluta vero it ut iusto quasi doloremque. Odit excepturi facere ad necessitatibus! Atque dolorum expedita molesluptatem deserunt optio impedit quisquam rerum assumenda suscipit, sint ad, soluta nulla. Qui fugiat ipsum modi.",
       "supplier": "Dostawca firmy 2",
       "fulfilmentLasts": "<p> 1) gdy dostępne 24h </p> <p>gdy brak min. 3 miesiące </p>",
-      "details": "Firma 1 sp. z o.o. <br>Opiekun handlowy Andrzej  ,:<br>@: Andrzej@firma2.com<br>tel \nodatkowe informacje o firmie 2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corpoam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut.Dodatkowe ",
-      "checkAvailability": "Dostawca: Dostawca firmy 2 JAK ZAMAWIAĆ?\nZamawiamy poprzez: mail\nCzas realizacji\n1) gdy dostępne 24h\n\ngdy brak min. 3 miesiące\n\nPodstawowe informacje\nFirma 1 sp. z o.o.\nOpiekun handlowy Andrzej ,:\n@: Andrzej@firma2.com\ntel odatkowe informacje o firmie 2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corpoam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut.Dodatkowe\n\nSprawdzanie dostępności\nTelefonicznie- sprzedaż@firma2.com\n\ntel: 600 253 452 54\n\n'\nZamówienia\nPanel B2B - https://panel.firma2.com\nZapytania\nReklamacje\nReklamacje:\n\nZwroty\nzwroty możliwe do 14 dni\nO marce:\nFirma 2 zajmuje się czymś tam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corporis? Accusamus, ipsam obcaecati tempora voluptatum consectetur ipsa soluta vero it ut iusto quasi doloremque. Odit excepturi facere ad necessitatibus! Atque dol\n\n\n\n\n",
+      "details": "Firma 1 sp. z o.o. <br>Opiekun handlowy Andrzej  ,:<br>@: Andrzej@firma2.com<br>tel",
+      "checkAvailability": "<p><strong>Telefonicznie- </strong> <a href='https://panelfirma2.com</a></p><p><strong>Mailowo:</strong><a href='mailto:sprzedaż@firma1.com'>sprzedaż@firma2.com</a></p><p><strong>tel: 600 253 452 54</strong></p>'",
       "queries": " czat na stronie lub  telefon ",
       "orders": "Panel B2B - https://panel.firma2.com",
       "shipping": "Wysyłka transportem lub transport wysyłką :)",
-      "returns": "<p>zwroty msożliwe do 14 dni</p>",
+      "returns": "zwroty możliwe do 14 dni",
       "complaints": "<p>Reklamacje: </p>",
-      "notes": "Dodatkowe informacje o firmie 2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corpoam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut.Dodatkowe informacje o firmie 2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corpoam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut."
+      "notes": "Dodatkowe informacje o firmie 2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corpoam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut."
     }
   ],
   "ordering": [

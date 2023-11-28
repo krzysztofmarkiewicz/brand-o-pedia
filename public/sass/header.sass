@@ -106,8 +106,8 @@ nav
             flex-direction: row
             flex-wrap: wrap
             height: auto
-    
-    h1 
+
+    h1
         position: relative
         width: 100vw
         margin-top: 5px
@@ -133,6 +133,10 @@ nav
         &>form
             &>button
                 color: $white
+                border: 3px $blue solid
+                &:focus
+                    border: 3px $white solid
+
 
     .show-menu
         right: -1px
