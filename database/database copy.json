@@ -19,7 +19,7 @@
         },
         {
             "id": "1",
-            "indexOrder": "1",
+            "indexOrder": "2",
             "name": "Firma nr 1",
             "url": "firma1.com/",
             "howWeOrder": "B2B'",
@@ -56,7 +56,6 @@
     ],
     "ordering": [{
             "id": "0",
-            "index": "",
             "name": "Mail",
             "step1": "Wykonaj czynności z punktu 1",
             "step2": "Wykonaj czynności z punktu 2",
@@ -68,7 +67,6 @@
         },
         {
             "id": "1",
-            "index": "",
             "name": "b2b",
             "step1": "step1",
             "step2": "step2",

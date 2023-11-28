@@ -269,7 +269,6 @@ const addNewElementToDatabase = (root, oldContent) => {
         } else if (root === 'ordering') {
             newElement = {
                 "id": String(res),
-                "indexOrder": "",
                 "name": `Nowy element ID: ${String(res)}`,
                 "step1": "",
             }
@@ -353,14 +352,9 @@ const howManyIsOrderingSteps = async (id) => {
 const addNewStepToOrderingElement = (e) => {
     const id = e.target.closest('.brand').dataset.id
 
+    howManyIsOrderingSteps(id).then(key => addNewLineToElement(e, `step${key+1}`))
 
-    const nextStep = () => {
-        howManyIsOrderingSteps(id).then(key => addNewLineToElement(e, `step${key+1}`))
-    }
-
-    const infoPopup = 'Czy na pewno chcesz usunąć ten element'
-
-    popup(infoPopup, nextStep)
+    popup('Dodano kolejny krok do instrukcji zamawiania')
 }
 
 //delete new line from an element of a database and from the page
@@ -400,7 +394,7 @@ const deleteLine = (e) => {
         deleteLastLine(root, id)
     }
 
-    const infoPopup = 'Czy na pewno chcesz usunąć ten element'
+    const infoPopup = 'Czy na pewno chcesz usunąć ostatni krok z instrukcji zamawiania?'
 
     popup(infoPopup, nextStep)
 }
