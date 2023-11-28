@@ -1,24 +1,6 @@
 {
   "brands": [
     {
-      "id": "0",
-      "indexOrder": "2",
-      "name": "BRAK",
-      "url": "BRAK",
-      "howWeOrder": "step",
-      "about": "BRAK",
-      "supplier": "BRAK",
-      "fulfilmentLasts": "BRAK",
-      "details": "BRAK",
-      "checkAvailability": "BRAK",
-      "queries": "BRAK",
-      "orders": "BRAK",
-      "shipping": "BRAK",
-      "returns": "BRAK",
-      "complaints": "BRAK",
-      "notes": "BRAK"
-    },
-    {
       "id": "1",
       "indexOrder": "1",
       "name": "Firma nr 1",

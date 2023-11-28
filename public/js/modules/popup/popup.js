@@ -23,10 +23,11 @@ export const popup = (content, nextStepFunction) => {
     const popupBtns = new NewHTMLElement('div', ['popup__btns'], null, '').createHTMLElement()
     popup.appendChild(popupBtns)
 
-    const cancelBtn = new NewHTMLElement('button', ['popup__btn', 'popup__btn--cancel'], null, 'Cancel').createHTMLElement()
+    const cancelBtn = new NewHTMLElement('button', ['popup__btn', 'popup__btn--close'], null, 'Close').createHTMLElement()
     popupBtns.appendChild(cancelBtn)
-    const nextBtn = new NewHTMLElement('button', ['popup__btn', 'popup__btn--cancel'], null, 'Confirm').createHTMLElement()
+    const nextBtn = new NewHTMLElement('button', ['popup__btn', 'popup__btn--confirm'], null, 'Confirm').createHTMLElement()
     if (nextStepFunction !== undefined) {
+        cancelBtn.innerText='Cancel'
         popupBtns.appendChild(nextBtn)
     }
 

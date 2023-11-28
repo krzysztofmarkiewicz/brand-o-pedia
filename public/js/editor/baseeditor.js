@@ -177,11 +177,6 @@ const sendDatatoDB = (e) => {
     const content = e.target.closest('.brand__wrap-elements').previousSibling.innerHTML
 
     let item = {}
-    // if (key === 'id') {
-
-    //     alert('NIE MOŻESZ EDYTOWAĆ POLA ID')
-    //     return
-    // }
     const newContent = e.target.parentElement.previousSibling.value
 
     item = {
@@ -210,6 +205,7 @@ const sendDatatoDB = (e) => {
 
         e.target.closest('.brand__wrap-elements').previousSibling.innerHTML = newContent
     }
+    popup('Zapisano')
 }
 
 //add new element to the database
