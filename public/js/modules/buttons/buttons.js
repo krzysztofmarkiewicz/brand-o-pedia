@@ -4,7 +4,6 @@ import {
 
 const menuBtn = document.querySelector('.mobile-menu-btn')
 const menuToggle= menuBtn.querySelector(':scope input')
-console.log(menuToggle);
 const menu = document.querySelector('.menu')
 const showMenu = (e) => {
     menu.classList.toggle('show-menu')

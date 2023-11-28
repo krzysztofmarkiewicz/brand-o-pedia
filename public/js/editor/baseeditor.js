@@ -44,10 +44,13 @@ const addNewLineInElement = (parent, nameElement, content) => {
 
     const editorBtns = new NewHTMLElement('div', ['brand__editor-btns'], null, '').createHTMLElement()
     divElementEdited.appendChild(editorBtns)
-
-    const saveBtn = new NewHTMLElement('button', ['btn', 'brand__btn', 'brand__btn--save'], null, 'Save').createHTMLElement()
-    editorBtns.appendChild(saveBtn)
-    saveBtn.addEventListener('click', sendDatatoDB)
+    if (divKey.innerText === 'id') {
+        divValue.disabled = 'true'
+    } else {
+        const saveBtn = new NewHTMLElement('button', ['btn', 'brand__btn', 'brand__btn--save'], null, 'Save').createHTMLElement()
+        editorBtns.appendChild(saveBtn)
+        saveBtn.addEventListener('click', sendDatatoDB)
+    }
 
     if (oneLiners.includes(divKey.textContent)) {
         divValue.dataset.oneliner = true
@@ -174,11 +177,11 @@ const sendDatatoDB = (e) => {
     const content = e.target.closest('.brand__wrap-elements').previousSibling.innerHTML
 
     let item = {}
-    if (key === 'id') {
+    // if (key === 'id') {
 
-        alert('NIE MOŻESZ EDYTOWAĆ POLA ID')
-        return
-    }
+    //     alert('NIE MOŻESZ EDYTOWAĆ POLA ID')
+    //     return
+    // }
     const newContent = e.target.parentElement.previousSibling.value
 
     item = {
@@ -292,7 +295,8 @@ const addNewElementToDatabase = (root, oldContent) => {
         const addNewElemToSearchBar = () => {
             const searchbar = document.querySelector('.brand-btns')
 
-            const newElem = new NewHTMLElement('button', ['search_btn','hide'], {'type':'button',
+            const newElem = new NewHTMLElement('button', ['search_btn', 'hide'], {
+                'type': 'button',
                 'data-id': newElement.id,
                 'data-name-brand': newElement.name
             }, newElement.name).createHTMLElement()
