@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap';
 *,
 *::before,
 *::after {
@@ -6,7 +6,6 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -22,6 +21,7 @@ body {
   color: hsl(210, 8%, 14%);
   font-size: 16px;
   line-height: 1.4;
+  font-family: "Montserrat", sans-serif;
 }
 
 .body__blocked {
@@ -32,7 +32,7 @@ input, textarea, button, [role=button] {
   border-radius: 10px;
   outline: none;
 }
-input:focus, textarea:focus, button:focus, [role=button]:focus {
+input:focus-visible, textarea:focus-visible, button:focus-visible, [role=button]:focus-visible {
   border: 3px hsl(202, 52%, 49%) solid;
 }
 
@@ -51,6 +51,9 @@ button {
 }
 button:hover {
   color: hsl(202, 52%, 70%);
+}
+button:active {
+  color: hsl(202, 52%, 49%);
 }
 
 a {
@@ -76,22 +79,18 @@ a, button {
   margin-top: 100px;
   text-align: center;
 }
-.login-form__input-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
 .login-form__input {
   font-size: 20px;
   margin: 10px 0 20px 0;
-  padding: 5px 10px;
+  padding: 5px 10pxa;
   border: 1px hsl(210, 8%, 14%) solid;
   border-radius: 10px;
   text-align: center;
+}
+.login-form__input-label > span {
+  display: block;
+  font-size: 14px;
+  color: gray;
 }
 .login-form__btn {
   font-size: 20px;
