@@ -20,7 +20,6 @@ class databaseController {
                 key: key,
                 content: content
             }
-            console.log(item);
 
             readFile(baseUrl, (err, data) => {
                 if (err) {
@@ -29,13 +28,14 @@ class databaseController {
                     return;
                 }
                 const parsedData = JSON.parse(data);
+                console.log(parsedData);
                 const numOfElements = parsedData[root].map(e => {
                     return e.id
                 })
                 const index = numOfElements.indexOf(id)
 
                 parsedData[root][index][key] = content
-              
+
                 writeFile(baseUrl, JSON.stringify(parsedData, null, 2), (err) => {
                     if (err) {
                         console.error("Failed to write updated data to file");
@@ -53,18 +53,27 @@ class databaseController {
 
     async addElementToDataBase(req, res) {
         try {
-            res.status(200).end()
 
             const root = req.body.root
             const newElement = req.body.newElement
 
             readFile(baseUrl, (err, data) => {
                 if (err) {
-                    res.status(500).send(`Error reading from database`)
+                    res.status(200).send(`Error reading from database`)
                     console.error('Error reading JSON file:', err);
                     return;
                 }
                 const parsedData = JSON.parse(data);
+
+                if (parsedData[root].length >= 10) {
+                    res.status(300).end()
+                    console.log(parsedData[root].length);
+                    return
+                }
+                res.status(200).end()
+
+                console.log(parsedData[root].length);
+
 
                 parsedData[root].push(newElement)
 
@@ -85,7 +94,6 @@ class databaseController {
 
     async addNewLinetoElement(req, res) {
         try {
-            res.status(200).end()
             const root = req.body.root
             const id = req.body.id
             const key = req.body.key
@@ -104,6 +112,7 @@ class databaseController {
                     return;
                 }
                 const parsedData = JSON.parse(data);
+
                 parsedData[root].forEach(e => {
                     if (e.id === id) {
                         Object.assign(e, {
@@ -111,6 +120,7 @@ class databaseController {
                         })
                     }
                 })
+
                 writeFile(baseUrl, JSON.stringify(parsedData, null, 2), (err) => {
                     if (err) {
                         console.error("Failed to write updated data to file");
@@ -119,6 +129,8 @@ class databaseController {
                     console.log("Updated file successfully");
                 });
             })
+            res.status(200).end()
+
         } catch (err) {
             console.error(err);
         }
@@ -212,7 +224,9 @@ class databaseController {
 
                     res.status(404).send(`Database error. There are ${elementToSend.length} elements in the database with the same ID. The ID key should be unique.`)
                 } else {
-                    res.send({'step':'Ten dostawca nie posiada instrukcji zamawiania.'})
+                    res.send({
+                        'step': 'Ten dostawca nie posiada instrukcji zamawiania.'
+                    })
                 }
 
             } catch (err) {

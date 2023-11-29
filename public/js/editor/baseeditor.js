@@ -221,6 +221,7 @@ const addElement = (e) => {
 
     popup(infoPopup, nextStep)
 }
+
 //adds new element to database, to the page and the button to the searchbar
 const addNewElementToDatabase = (root, oldContent) => {
     let newElement
@@ -284,37 +285,45 @@ const addNewElementToDatabase = (root, oldContent) => {
             headers: {
                 "Content-type": "application/json",
             }
+        }).then(req => {
+            if (req.status === 300) {
+                console.log(req);
+                popup('Wersja demonstracyjna. Możesz dodać maksymalnie 10 elementów')
+            } else {
+                console.log(req);
+                addNewElement(oldContent, newElement)
+                const addNewElemToSearchBar = () => {
+                    const searchbar = document.querySelector('.brand-btns')
+
+                    const newElem = new NewHTMLElement('button', ['search_btn', 'hide'], {
+                        'type': 'button',
+                        'data-id': newElement.id,
+                        'data-name-brand': newElement.name
+                    }, newElement.name).createHTMLElement()
+                    searchbar.appendChild(newElem)
+
+
+                    const allBtns = [...searchbar.querySelectorAll('button')]
+
+                    allBtns.sort(function (a, b) {
+                        if (a.innerText.toLowerCase() < b.innerText.toLowerCase()) {
+                            return -1;
+                        }
+                        if (a.innerText.toLowerCase() > b.innerText.toLowerCase()) {
+                            return 1;
+                        }
+                        return 0;
+                    })
+                    searchbar.innerText = ''
+                    allBtns.forEach(e => {
+                        searchbar.appendChild(e)
+                    })
+                }
+                addNewElemToSearchBar()
+            }
+
         })
 
-        addNewElement(oldContent, newElement)
-        const addNewElemToSearchBar = () => {
-            const searchbar = document.querySelector('.brand-btns')
-
-            const newElem = new NewHTMLElement('button', ['search_btn', 'hide'], {
-                'type': 'button',
-                'data-id': newElement.id,
-                'data-name-brand': newElement.name
-            }, newElement.name).createHTMLElement()
-            searchbar.appendChild(newElem)
-
-
-            const allBtns = [...searchbar.querySelectorAll('button')]
-
-            allBtns.sort(function (a, b) {
-                if (a.innerText.toLowerCase() < b.innerText.toLowerCase()) {
-                    return -1;
-                }
-                if (a.innerText.toLowerCase() > b.innerText.toLowerCase()) {
-                    return 1;
-                }
-                return 0;
-            })
-            searchbar.innerText = ''
-            allBtns.forEach(e => {
-                searchbar.appendChild(e)
-            })
-        }
-        addNewElemToSearchBar()
     })
 }
 
@@ -336,10 +345,16 @@ const addNewLineToElement = (e, key) => {
         headers: {
             "Content-type": "application/json",
         }
-    })
+    }).then(req => {
+        // if (req.status === 300) {
+        //     console.log(req);
+        //     return
+        // } else {
+        const parentDivBrandElement = e.target.parentElement.previousSibling
+        addNewLineInElement(parentDivBrandElement, key, '')
+        // }
 
-    const parentDivBrandElement = e.target.parentElement.previousSibling
-    addNewLineInElement(parentDivBrandElement, key, '')
+    })
 }
 
 //checks how many steps has an ordering element and return it
@@ -352,9 +367,17 @@ const howManyIsOrderingSteps = async (id) => {
 const addNewStepToOrderingElement = (e) => {
     const id = e.target.closest('.brand').dataset.id
 
-    howManyIsOrderingSteps(id).then(key => addNewLineToElement(e, `step${key+1}`))
+    howManyIsOrderingSteps(id).then(key => {
+        if (key >= 10) {
+            popup('Wersja demonstracyjna. Możesz dodać maksymalnie 10 elementów')
+            return
+        } else {
+            addNewLineToElement(e, `step${key+1}`)
+            popup('Dodano kolejny krok do instrukcji zamawiania')
+        }
 
-    popup('Dodano kolejny krok do instrukcji zamawiania')
+    })
+
 }
 
 //delete new line from an element of a database and from the page
