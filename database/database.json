@@ -1,6 +1,5 @@
 {
-  "brands": [
-    {
+  "brands": [{
       "id": "1",
       "indexOrder": "2",
       "name": "Firma nr 1",
@@ -37,8 +36,7 @@
       "notes": "Dodatkowe informacje o firmie 2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corpoam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut."
     }
   ],
-  "ordering": [
-    {
+  "ordering": [{
       "id": "0",
       "name": "Mail",
       "step1": "Wykonaj czynności z punktu 1",

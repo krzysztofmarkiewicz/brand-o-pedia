@@ -9,7 +9,7 @@ class databaseController {
 
     async updateDatabase(req, res) {
         try {
-            res.status(200).end()
+            
             const root = req.body.root
             const id = req.body.id
             const key = req.body.key
@@ -44,7 +44,7 @@ class databaseController {
                     console.log("Updated file successfully");
                 });
             })
-
+            res.status(200).end()
         } catch (err) {
             console.error(err);
 
@@ -138,7 +138,7 @@ class databaseController {
 
     async deleteElementFromDataBase(req, res) {
         try {
-            res.status(200).end()
+            
 
             const root = req.body.root
             const id = req.body.id
@@ -171,7 +171,7 @@ class databaseController {
                     console.log("Updated file successfully");
                 });
             })
-
+            res.status(200).end()
         } catch (err) {
             console.error(err);
 
@@ -275,7 +275,6 @@ class databaseController {
 
     async deleteLastStep(req, res) {
         try {
-            res.status(200).end()
 
             const root = req.body.root
             const id = req.body.id
@@ -308,6 +307,7 @@ class databaseController {
                     console.log("Updated file successfully");
                 });
             })
+            res.status(200).end()
 
         } catch (err) {
             console.error(err);
