@@ -8,13 +8,13 @@
     <title>Brand-o-pedia</title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/style_editor-page.css">
 </head>
 
 <body>
     <header>
         <div>
-
             <%- include ('../pages/partials/header/header.ejs')%>
                 <%- include ('../modules/searchbar.ejs')%>
                     <%- include ('../modules/buttons/headerbuttons/menubtn.ejs')%>
@@ -34,13 +34,14 @@
     <main>
 
     </main>
+
+    <%- include ('../pages/partials/footer/footer.ejs')%>
+
+
     <script type="module" src="../js/modules/searchbar/finder.js"></script>
     <script type="module" src="../js/editor/baseeditor.js"></script>
     <script src="../js/editor/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script type="module" src="../js/modules/buttons/buttons.js"></script>
-
-    <link rel="stylesheet" href="/css/header.css">
-
 </body>
 
 </html>

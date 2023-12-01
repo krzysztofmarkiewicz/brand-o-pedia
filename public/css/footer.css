@@ -1,0 +1,86 @@
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap';
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: hsl(0, 100%, 100%);
+  color: hsl(210, 8%, 14%);
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Montserrat", sans-serif;
+}
+
+.body__blocked {
+  overflow: hidden;
+}
+
+input, textarea, button, [role=button] {
+  border-radius: 10px;
+  outline: none;
+}
+input:focus-visible, textarea:focus-visible, button:focus-visible, [role=button]:focus-visible {
+  border: 3px hsl(202, 52%, 49%) solid;
+}
+
+input, textarea {
+  background-color: hsl(0, 100%, 100%);
+}
+
+button {
+  background-color: Transparent;
+  margin: 5px 10px;
+  padding: 5px 10px;
+  border: 3px transparent solid;
+  font-size: 16px;
+  font-weight: bold;
+  color: hsl(202, 52%, 49%);
+}
+button:hover {
+  color: hsl(202, 52%, 70%);
+}
+button:active {
+  color: hsl(202, 52%, 49%);
+}
+
+a {
+  color: hsl(202, 52%, 49%);
+  text-decoration: none;
+}
+a:hover {
+  color: hsl(202, 52%, 70%);
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+footer {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  background-color: hsl(202, 52%, 49%);
+  color: hsl(0, 100%, 100%);
+}
+footer > p {
+  text-align: center;
+}/*# sourceMappingURL=footer.css.map */
