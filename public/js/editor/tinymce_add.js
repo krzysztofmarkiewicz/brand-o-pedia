@@ -1,7 +1,13 @@
-export const RunTinymceEditor = (e) => {
+import {
+    blockBody
+} from '../functions.js'
+import {
+    popup
+} from '../modules/popup/popup.js'
 
-    const allEditableFileds = document.querySelectorAll('.brand__element-value')
-    const allEditorBtnsWrapers = document.querySelectorAll('.brand__editor-btns')
+export const RunTinymceEditor = (e) => {
+    const parentTinyMCE = e.target.closest('.brand__element-edited')
+    const buttonsToHide = parentTinyMCE.lastChild
 
     const root = e.target.closest('section').getAttribute('id')
     const key = e.target.closest('.brand__element').firstElementChild.textContent
@@ -11,23 +17,15 @@ export const RunTinymceEditor = (e) => {
     const startContent = content.value
 
     const startEditing = () => {
-        allEditableFileds.forEach(e => {
-            e.setAttribute('disabled', 'true')
-            e.classList.remove('editElement')
-
-        })
-        allEditorBtnsWrapers.forEach(e => {
-            e.classList.add('hide')
-        })
+        parentTinyMCE.classList.add('parent-tinymce')
+        blockBody(['main', 'header'])
+        buttonsToHide.classList.add('hide')
     }
 
     const endEditing = () => {
-        allEditableFileds.forEach(e => {
-            e.removeAttribute('disabled')
-        })
-        allEditorBtnsWrapers.forEach(e => {
-            e.classList.remove('hide')
-        })
+        parentTinyMCE.classList.remove('parent-tinymce')
+        blockBody(['main', 'header'])
+        buttonsToHide.classList.remove('hide')
         tinymce.remove()
         content.removeAttribute('disabled')
     }
@@ -54,7 +52,7 @@ export const RunTinymceEditor = (e) => {
                 text: 'Close',
                 onAction: function () {
                     endEditing()
-                    content.value=startContent
+                    content.value = startContent
                 }
             })
         },
@@ -63,7 +61,7 @@ export const RunTinymceEditor = (e) => {
                 const newContent = tinymce.activeEditor.getContent({
                     format: 'html'
                 })
-            
+
                 item = {
                     root: root,
                     id: id,
@@ -79,10 +77,11 @@ export const RunTinymceEditor = (e) => {
                     }
 
                 })
-                console.log('Updated database: '+item);
+                console.log('Updated database: ' + item);
             }
             sendItemToBackend()
             endEditing()
+            popup('Zapisano')
         }
     })
 }

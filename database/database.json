@@ -1,11 +1,12 @@
 {
-  "brands": [{
+  "brands": [
+    {
       "id": "1",
-      "indexOrder": "2",
+      "indexOrder": "0",
       "name": "Firma nr 1",
       "url": "firma1.com/",
       "howWeOrder": "B2B'",
-      "about": "Firma 1 zajmuje się sprzedażą. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corporis? Accusamus, ipsam obcaecati tempora voluptatum consectetur ipsa soluta vero quibusdam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut. Omnis dolore nesciunt itaque eius modi quae perferendis, illum odit assumenda. Veniam voluptatem molestias nemo fuga eaque impedit aut esse libero, ad error voluptatibus perspiciatis obcaecati necessitatibus assumenda porro aliquam id velit fugit ut iusto quasi doloremque. Odit excepturi facere ad necessitatibus! Atque dolorum expedita molestiae delectus qui sapiente voluptatem deserunt optio impedit quisquam rerum assumenda suscipit, sint ad, soluta nulla. Qui fugiat ipsum modi.",
+      "about": "<p>Firma 1 zajmuje się sprzedażą. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corporis? Accusamus, ipsam obcaecati tempora voluptatum consectetur ipsa soluta vero quibusdam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptataem aut. Omnis dolore nesciunt itaque eius modi quae perferendis, illum odit assumenda. Veniam voluptatem molestias neaaaaaaaamo fuga eaque impedit aut esse libero, ad error voluptatibus perspiciatis obcaecati necessitatibus assumenda porro aliquam id velit fugit ut iusto quasi doloremque. Odit excepturi facere ad necessitatibus! Atque dolorum expedita molestiae delectus qui sapiente voluptatem deserunt optio impedit quisquam rerum assumenda suscipit, sint ad, soluta nulla. Qui fugiat ipsum mosdi.sa</p>",
       "supplier": "Dostawca firmy 1",
       "fulfilmentLasts": "<p> 1) gdy dostępne 24/48 h (1-2 dni robocze) </p> <p>gdy brak min. 3 miesiące </p>",
       "details": "Firma 1 sp. z o.o. <br>Opiekun handlowy pani Jakaś , zajmuje się wycenam i większymi zamówieniami:<br>@: pani@firma1.com<br>tel",
@@ -36,16 +37,14 @@
       "notes": "Dodatkowe informacje o firmie 2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam enim libero tempora facere corpoam quo fugit adipisci eaque! Labore pariatur porro ipsum ex, voluptatem aut."
     }
   ],
-  "ordering": [{
+  "ordering": [
+    {
       "id": "0",
       "name": "Mail",
-      "step1": "Wykonaj czynności z punktu 1",
-      "step2": "Wykonaj czynności z punktu 2",
-      "step3": "Wykonaj czynności z punktu 3",
-      "step4": "Wykonaj czynności z punktu 4",
-      "step5": "Wykonaj czynności z punktu 5",
-      "step6": "Wykonaj czynności z punktu 6",
-      "step7": "Wykonaj czynności z punktu 7"
+      "step1": "<div id=\"noteInputArea\" class=\"quill-input-area ql-container ql-snow\">\n<div class=\"ql-editor\" contenteditable=\"true\" data-gramm=\"false\" aria-owns=\"quill-mention-list\">\n<p><strong style=\"color: rgb(230, 0, 0);\">Krok 1</strong></p>\n<p>&nbsp;</p>\n<ol>\n<li>zr&oacute;b coś</li>\n<li>i coś</li>\n<li>i coś kolejnego</li>\n</ol>\n<p>&nbsp;</p>\n<p>SEKCJA INNA:</p>\n<ol>\n<li><span style=\"color: rgb(68, 68, 68);\">uzupełnij pole</span></li>\n<li><span style=\"color: rgb(68, 68, 68);\">zmień stan</span></li>\n<li>&nbsp;i zr&oacute;b inne rzeczy</li>\n</ol>\n<p>&nbsp;</p>\n<p>Kolejne:</p>\n<ol>\n<li>Wyślij maila</li>\n</ol>\n</div>\n</div>",
+      "step2": "<div class='ql-editor' data-gramm='false' contenteditable='true' aria-owns='quill-mention-list'><p>Oczekujemy na wiadomość email z potwierdzeniem przyjęcia zamówienia.</p></div>",
+      "step3": "<div id=\"noteInputArea\" class=\"quill-input-area ql-container ql-snow\">\n<div class=\"ql-editor\" contenteditable=\"true\" data-gramm=\"false\" aria-owns=\"quill-mention-list\">\n<p>SEKCJA</p>\n<p>&nbsp;</p>\n<ol>\n<li>zmienić&nbsp; 'podstatus'</li>\n</ol>\n<p>&nbsp;</p>\n<p>SEKCJA inna</p>\n<ol>\n<li>podajemy numer zam&oacute;wienia</li>\n<li>&nbsp;</li>\n</ol>\n</div>\n</div>",
+      "step4": "<p>KOLEJNY KROK</p>"
     },
     {
       "id": "1",

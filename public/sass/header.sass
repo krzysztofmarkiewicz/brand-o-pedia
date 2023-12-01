@@ -1,5 +1,23 @@
 @import reset.sass
 
+.parent-tinymce
+    position: fixed
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100vw
+    height: 100vh
+    top: 0
+    left: 0
+    background-color: $shadow
+    z-index: 1000
+    &>*
+        width: 90%
+        height: 90%
+        max-width: 1000px
+
+// .tox-tbtn__select-label
+//     color: red
 header 
     position: relative
     display: flex

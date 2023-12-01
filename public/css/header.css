@@ -74,6 +74,30 @@ a, button {
   display: none;
 }
 
+.parent-tinymce {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: hsla(0, 0%, 0%, 0.3);
+  z-index: 1000;
+}
+.parent-tinymce > * {
+  width: 90%;
+  height: 90%;
+  max-width: 1000px;
+}
+
 header {
   position: relative;
   display: -webkit-box;
