@@ -123,6 +123,10 @@ header > div {
   height: 70px;
 }
 
+.header-wrap {
+  position: relative;
+}
+
 h1 {
   position: relative;
   padding-left: 20px;
@@ -173,8 +177,11 @@ nav {
   position: absolute;
   width: 100%;
   left: 0;
-  top: 70px;
+  top: 75px;
   padding-left: 0px;
+  -webkit-box-shadow: 0px 0px 10px black;
+          box-shadow: 0px 0px 10px black;
+  border-radius: 10px;
   background-color: hsl(202, 52%, 95%);
   text-align: right;
   overflow: scroll;
@@ -197,7 +204,7 @@ nav {
   height: 100vh;
   background-color: hsla(0, 0%, 0%, 0.3);
   overflow: hidden;
-  z-index: 1000;
+  z-index: 900;
 }
 
 .popup {
@@ -286,22 +293,25 @@ nav {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    top: 100px;
-    right: -100px;
-    padding: 10px 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    right: -100vw;
     -webkit-transition: right 0.3s;
     transition: right 0.3s;
-    z-index: 100;
+    z-index: 990;
   }
   .menu > form > button {
     color: hsl(0, 100%, 100%);
+    font-size: 30px;
     border: 3px hsl(202, 52%, 49%) solid;
+    margin: 30px 10px;
   }
   .menu > form > button:focus {
     border: 3px hsl(0, 100%, 100%) solid;
   }
   .show-menu {
-    right: -1px;
+    right: 0px;
     -webkit-transition: right 0.3s;
     transition: right 0.3s;
   }
@@ -316,7 +326,7 @@ nav {
     width: 60px;
     height: 60px;
     margin-right: 20px;
-    z-index: 100;
+    z-index: 1000;
   }
   #menuToggle {
     position: absolute;
@@ -375,7 +385,7 @@ nav {
     opacity: 1;
     -webkit-transform: rotate(45deg) translate(-2px, -1px);
             transform: rotate(45deg) translate(-2px, -1px);
-    background: hsl(202, 52%, 49%);
+    background: hsl(0, 100%, 100%);
   }
   #menuToggle input:checked ~ span:nth-last-child(3) {
     opacity: 0;
