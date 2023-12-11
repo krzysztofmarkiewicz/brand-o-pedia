@@ -9,7 +9,6 @@ class databaseController {
 
     async updateDatabase(req, res) {
         try {
-            
             const root = req.body.root
             const id = req.body.id
             const key = req.body.key
@@ -20,6 +19,7 @@ class databaseController {
                 key: key,
                 content: content
             }
+            console.log(item);
 
             readFile(baseUrl, (err, data) => {
                 if (err) {
@@ -28,7 +28,6 @@ class databaseController {
                     return;
                 }
                 const parsedData = JSON.parse(data);
-                console.log(parsedData);
                 const numOfElements = parsedData[root].map(e => {
                     return e.id
                 })

@@ -68,8 +68,7 @@ export const RunTinymceEditor = (e) => {
                     key: key,
                     content: newContent
                 }
-
-                fetch("http://192.168.0.17:3020/update", {
+                fetch("/update", {
                     method: "POST",
                     body: JSON.stringify(item),
                     headers: {
@@ -77,7 +76,8 @@ export const RunTinymceEditor = (e) => {
                     }
 
                 })
-                console.log('Updated database: ' + item);
+                console.log('Updated database:');
+                console.log(item);
             }
             sendItemToBackend()
             endEditing()

@@ -31,6 +31,9 @@ export const popup = (content, nextStepFunction) => {
         popupBtns.appendChild(nextBtn)
     }
 
+    cancelBtn.focus()
+
+
     //function to close a popup
     const cancel = () => {
         blockBody(['header','main'])
