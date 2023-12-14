@@ -5,10 +5,14 @@ import express from "express"
 const app = express()
 import cors from "cors"
 app.use(cors())
-import ejsLayouts from 'express-ejs-layouts'
+// import ejsLayouts from 'express-ejs-layouts'
 import path from 'path'
 const __dirname = path.resolve()
 import databaseController from './databaseController.js'
+
+import {
+    saveLog
+} from "./functions_server.js";
 
 //Static files
 app.use(express.static(path.join(__dirname, './public')))
@@ -35,17 +39,26 @@ import isAuthorized from './isAuthorized.js'
 app.post('/login', express.urlencoded({
     extended: false
 }), function (req, res) {
-
     req.session.regenerate(function (err) {
         if (err) next(err)
         req.session.password = req.body.password
         req.session.save(function (err) {
             if (err) return next(err)
-            if (req.url === 'main' || req.url === 'editor') {
-                res.redirect(req.url)
+console.log(req.cookies.url);
+
+            if (req.cookies.url === 'main' || req.cookies.url === 'editor') {
+                res.redirect(req.cookies.url)
             } else {
                 res.redirect(`main`)
             }
+
+            if (process.env.USER_PASSWORD === req.session.password) {
+                saveLog('logged in')
+            } else {
+                saveLog('Login attempt failed')
+
+            }
+            
             // res.redirect('main')
         })
     })
@@ -62,11 +75,12 @@ app.get('/editor', isAuthorized, (req, res) => {
 app.get('/main', isAuthorized, (req, res) => {
     res.render('main')
 })
-app.get('/login', (req, res) => {
-    res.render('login')
-})
-app.get('/logout', function (req, res, next) {
+// app.get('/login', (req, res) => {
+//     res.render('login')
+// })
+app.post('/logout', function (req, res, next) {
     req.session.password = null
+    saveLog('Logout')
     req.session.save(function (err) {
         if (err) next(err)
 
